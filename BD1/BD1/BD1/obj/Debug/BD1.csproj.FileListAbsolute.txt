@@ -16,3 +16,5 @@ A:\GIT_ROOT\BD-progra-1\BD1\BD1\BD1\obj\Debug\BD1.csprojResolveAssemblyReference
 A:\GIT_ROOT\BD-progra-1\BD1\BD1\BD1\obj\Debug\BD1.csproj.CoreCompileInputs.cache
 A:\GIT_ROOT\BD-progra-1\BD1\BD1\BD1\obj\Debug\BD1.dll
 A:\GIT_ROOT\BD-progra-1\BD1\BD1\BD1\obj\Debug\BD1.pdb
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BD1\BD1\BD1\obj\Debug\BD1.csprojResolveAssemblyReference.cache
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BD1\BD1\BD1\obj\Debug\BD1.csproj.CoreCompileInputs.cache
