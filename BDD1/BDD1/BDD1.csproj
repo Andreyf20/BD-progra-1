@@ -75,11 +75,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConsultaEstudiante.aspx" />
     <Content Include="Estudiante.aspx" />
     <Content Include="LogIn.aspx" />
+    <Content Include="Profesor.aspx" />
+    <Content Include="ProfesorLogIn.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaEstudiante.aspx.cs">
+      <DependentUpon>ConsultaEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaEstudiante.aspx.designer.cs">
+      <DependentUpon>ConsultaEstudiante.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Estudiante.aspx.cs">
       <DependentUpon>Estudiante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,6 +103,20 @@
     </Compile>
     <Compile Include="LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor.aspx.cs">
+      <DependentUpon>Profesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor.aspx.designer.cs">
+      <DependentUpon>Profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfesorLogIn.aspx.cs">
+      <DependentUpon>ProfesorLogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfesorLogIn.aspx.designer.cs">
+      <DependentUpon>ProfesorLogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

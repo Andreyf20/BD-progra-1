@@ -23,5 +23,10 @@ namespace BDD1
         {
 
         }
+
+        protected void buscar_estudiante_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

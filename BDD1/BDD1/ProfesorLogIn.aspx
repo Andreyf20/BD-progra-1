@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Estudiante.aspx.cs" Inherits="BDD1.Estudiante" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProfesorLogIn.aspx.cs" Inherits="BDD1.ProfesorLogIn" %>
 
 <!DOCTYPE html>
 
@@ -11,25 +11,24 @@
     <form id="form1" runat="server">
         <div>
             <h1 style="text-align:center";>
-                Iniciar Sesión para Estudiantes
+                Iniciar Sesión para Profesores
             </h1>
         </div>
         <p style="text-align:center";>
             Correo:
         </p>
         <p style="text-align:center";>
-            <asp:TextBox ID="correo_Estudiante" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="correo_Profesor" runat="server" ></asp:TextBox>
         </p>
         <p style="text-align:center";>
             Contraseña:
         </p>
         <p style="text-align:center";>
-            <asp:TextBox ID="contraseña_Estudiante" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="contraseña_Profesor" runat="server"></asp:TextBox>
         </p>
         <p style="text-align:center";>
-            <asp:Button ID="buscar_estudiante" runat="server" Text="Buscar Notas" OnClick="buscar_estudiante_Click" Height="43px" Width="136px" />
+            <asp:Button ID="buscar_Profesor" runat="server" Text="Buscar Registros" OnClick="buscar_Profesor_Click" Height="43px" Width="136px" />
         </p>
-        <p>
-            &nbsp;</p>
     </form>
 </body>
+</html>
