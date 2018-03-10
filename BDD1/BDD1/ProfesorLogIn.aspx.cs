@@ -16,7 +16,7 @@ namespace BDD1
 
         protected void buscar_Profesor_Click(object sender, EventArgs e)
         {
-
+            Server.Transfer("Profesor.aspx");
         }
     }
 }

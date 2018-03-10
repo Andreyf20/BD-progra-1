@@ -14,20 +14,20 @@
                 Iniciar Sesión para Profesores
             </h1>
         </div>
-        <p style="text-align:center";>
+        <p style="text-align:center; font-size: large;";>
             Correo:
         </p>
         <p style="text-align:center";>
-            <asp:TextBox ID="correo_Profesor" runat="server" ></asp:TextBox>
+            <asp:TextBox ID="correo_Profesor" runat="server" Width="200px" ></asp:TextBox>
         </p>
-        <p style="text-align:center";>
+        <p style="text-align:center; font-size: large;";>
             Contraseña:
         </p>
         <p style="text-align:center";>
-            <asp:TextBox ID="contraseña_Profesor" runat="server"></asp:TextBox>
+            <asp:TextBox ID="contraseña_Profesor" runat="server" Width="200px"></asp:TextBox>
         </p>
         <p style="text-align:center";>
-            <asp:Button ID="buscar_Profesor" runat="server" Text="Buscar Registros" OnClick="buscar_Profesor_Click" Height="43px" Width="136px" />
+            <asp:Button ID="buscar_Profesor" runat="server" Text="Buscar Registros" OnClick="buscar_Profesor_Click" Height="50px" Width="200px" style="font-size: x-large; background-color: #3366FF" />
         </p>
     </form>
 </body>

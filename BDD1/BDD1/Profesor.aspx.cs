@@ -18,6 +18,7 @@ namespace BDD1
 
         protected void ButtonPeriodos_Click(object sender, EventArgs e)
         {
+            Inicio();
             PanelGrupos.Visible = false;
             PanelInicio.Visible = false;
             PanelPeriodo.Visible = true;
@@ -25,6 +26,7 @@ namespace BDD1
 
         protected void ButtonGrupos_Click(object sender, EventArgs e)
         {
+            Inicio();
             PanelPeriodo.Visible = false;
             PanelInicio.Visible = false;
             PanelGrupos.Visible = true;
@@ -38,9 +40,7 @@ namespace BDD1
 
         protected void ButtonCrearPeriodoOK_Click(object sender, EventArgs e)
         {
-            PanelGrupos.Visible = false;
-            PanelPeriodo.Visible = false;
-            PanelInicio.Visible = true;
+            Inicio();
         }
 
         protected void ButtonAgregarRubros_Click(object sender, EventArgs e)
@@ -68,16 +68,12 @@ namespace BDD1
 
         protected void ButtonModificarGrupoOK_Click(object sender, EventArgs e)
         {
-            PanelGrupos.Visible = false;
-            PanelPeriodo.Visible = false;
-            PanelInicio.Visible = true;
+            Inicio();
         }
 
         protected void ButtonInicio_Click(object sender, EventArgs e)
         {
-            PanelPeriodo.Visible = false;
-            PanelGrupos.Visible = false;
-            PanelInicio.Visible = true;
+            Inicio();
         }
 
         protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
@@ -89,10 +85,21 @@ namespace BDD1
             }
             else
             {
-                PanelPeriodo.Visible = false;
-                PanelGrupos.Visible = false;
-                PanelInicio.Visible = true;
+                Inicio();
             }
+        }
+
+        private void Inicio()
+        {
+            PanelAregarRubro.Visible = false;
+            PanelCrearGrupo.Visible = false;
+            PanelCrearPeriodo.Visible = false;
+            PanelCrearRubros.Visible = false;
+            PanelModificarGrupo.Visible = false;
+            PanelModificarPeriodo.Visible = false;
+            PanelPeriodo.Visible = false;
+            PanelGrupos.Visible = false;
+            PanelInicio.Visible = true;
         }
 
         protected void ButtonAgregarRubroOK_Click(object sender, EventArgs e)
@@ -107,6 +114,11 @@ namespace BDD1
             TextBoxDescripcionRubro.Text = "";
             TextBoxValorRubro.Text = "";
             PanelAregarRubro.Visible = false;
+        }
+
+        protected void ButtonTerminarGrupo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
