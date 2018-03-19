@@ -80,6 +80,7 @@
     <Content Include="LogIn.aspx" />
     <Content Include="Profesor.aspx" />
     <Content Include="ProfesorLogIn.aspx" />
+    <Content Include="Tablas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,13 @@
       <DependentUpon>ProfesorLogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tablas.aspx.cs">
+      <DependentUpon>Tablas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tablas.aspx.designer.cs">
+      <DependentUpon>Tablas.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

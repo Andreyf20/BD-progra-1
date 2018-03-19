@@ -60,22 +60,28 @@
             <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="300px" Height="50px" />
             <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="300px" Height="50px" />
             <asp:Button ID="ButtonTerminarGrupo" runat="server" Text="Terminar Grupo" Width="300px" Height="50px" OnClick="ButtonTerminarGrupo_Click" />
-            <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
-                <h2 >Crear Grupo</h2>
-                Nombre Grupo:&nbsp;
-                <asp:TextBox ID="TextBoxNombreGrupo" runat="server"></asp:TextBox>
-                <br />
-                Hora Inicio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxHoraInicio" runat="server"></asp:TextBox>
-                <br />
-                Hora Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxHoraFin" runat="server"></asp:TextBox>
-                <br />
-                Aula:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxAula" runat="server"></asp:TextBox>
-                <br />
-                <asp:Button ID="ButtonAgregarRubros" runat="server" OnClick="ButtonAgregarRubros_Click"  Text="Agregar Rubros" />
-                <asp:Panel style="text-align:center" ID="PanelCrearRubros" runat="server" Visible="false">
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
+                            <h2 >Crear Grupo</h2>
+                            Nombre Grupo:&nbsp;
+                            <asp:TextBox ID="TextBoxNombreGrupo" runat="server"></asp:TextBox>
+                            <br />
+                            Hora Inicio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:TextBox ID="TextBoxHoraInicio" runat="server"></asp:TextBox>
+                            <br />
+                            Hora Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:TextBox ID="TextBoxHoraFin" runat="server"></asp:TextBox>
+                            <br />
+                            Aula:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:TextBox ID="TextBoxAula" runat="server"></asp:TextBox>
+                            <br />
+                            <asp:Button ID="ButtonAgregarRubros" runat="server" OnClick="ButtonAgregarRubros_Click"  Text="Agregar Rubros" />
+                        </asp:Panel>
+                    </td>
+                    <td>
+                        <asp:Panel style="text-align:center" ID="PanelCrearRubros" runat="server" Visible="false">
                     <h2 >Crear Rubros</h2>
                     Tipo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="DropDownListTipoRubro" runat="server" Width="121px">
                         <asp:ListItem>Exámenes</asp:ListItem>
@@ -93,7 +99,10 @@
                     </asp:RadioButtonList>
                     <br />
                     <asp:Button  ID="ButtonAgregarRubro" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubro_Click" />
-                    <asp:Panel style="text-align:center" ID="PanelAregarRubro" runat="server" Visible="false">
+                </asp:Panel>
+                    </td>
+                    <td>
+                        <asp:Panel style="text-align:center" ID="PanelAregarRubro" runat="server" Visible="false">
                         <h2>Agregar Instancias de Rubro</h2>
                         <textarea id="TextAreaInstancias"  runat="server" name="S1" rows="2"></textarea>
                         <br /> 
@@ -106,8 +115,10 @@
                         <asp:Button ID="ButtonAgregarRubroOK" runat="server" Text="Agregar Instancia" OnClick="ButtonAgregarRubroOK_Click" />
                         <asp:Button ID="ButtonInstanciasOK" runat="server" OnClick="ButtonInstanciasOK_Click" Text="Terminar" />
                     </asp:Panel>
-                </asp:Panel>
-            </asp:Panel>
+                    </td>
+                </tr>
+            </table>
+            
             <asp:Panel ID="PanelModificarGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2>Modificar Grupo</h2>
                 Nombre Grupo:&nbsp;&nbsp;&nbsp;

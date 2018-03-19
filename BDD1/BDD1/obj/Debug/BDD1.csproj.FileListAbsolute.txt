@@ -164,11 +164,10 @@ C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\vb
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.rsp
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\BDD1.dll.CodeAnalysisLog.xml
-C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\BDD1.dll.lastcodeanalysissucceeded
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csproj.CoreCompileInputs.cache
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csproj.CopyComplete
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.dll
 C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.pdb
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csprojResolveAssemblyReference.cache
