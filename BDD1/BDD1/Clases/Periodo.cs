@@ -14,10 +14,6 @@ namespace BDD1
         public List<Grupo> grupos;
         public static int cantPeriodos=0;
 
-        public Periodo()
-        {
-
-        }
         public Periodo(DateTime fechaInicio, DateTime fechaFinal)
         {
             this.ID = ++cantPeriodos;

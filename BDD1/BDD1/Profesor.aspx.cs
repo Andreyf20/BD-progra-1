@@ -10,7 +10,7 @@ namespace BDD1
 {
     public partial class Profesor : System.Web.UI.Page
     {
-        public List<Periodo> periodos = new List<Periodo>();
+        public static List<Periodo> periodos = new List<Periodo>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -40,7 +40,7 @@ namespace BDD1
         protected void ButtonCrearPeriodoOK_Click(object sender, EventArgs e)
         {
             Periodo periodoActual = new Periodo(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
-            this.periodos.Add(periodoActual);
+            periodos.Add(periodoActual);
             Inicio();
             Label1.Text = "Periodo Creado Correctamente";
         }
@@ -167,7 +167,7 @@ namespace BDD1
             TextBoxHoraFin.Text = "";
             TextBoxCodigoGrupo.Text = "";
             Grupo nuevo = new Grupo(nombre,horaInicio,horaFinal,aula,codigoGrupo);
-            this.periodos[0].agregarGrupo(nuevo);
+            periodos[0].agregarGrupo(nuevo);
 
             PanelCrearRubros.Visible = true;
         }

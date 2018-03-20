@@ -44,7 +44,7 @@
                         <asp:Calendar style=" margin: 0 auto;" ID="CalendarInicio" runat="server"></asp:Calendar>
                     </td>
                     <td>
-                        Fecha Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Fecha Fin:
                         <asp:Calendar style=" margin: 0 auto;" ID="CalendarFinal" runat="server"></asp:Calendar>
                     </td>
                 </tr>
@@ -103,7 +103,7 @@
                     <br />
                     Porcentaje: <asp:TextBox ID="TextBoxPorcentajeRubro"   runat="server" Width="110px"></asp:TextBox>
                     <br />
-                    <asp:RadioButtonList  ID="RadioButtonList1" runat="server">
+                    <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonList1" runat="server">
                         <asp:ListItem Selected="True">Fijo</asp:ListItem>
                         <asp:ListItem>Variable</asp:ListItem>
                     </asp:RadioButtonList>
