@@ -20,19 +20,24 @@
             
         </div>
         <asp:Panel ID="PanelMenu" runat="server" Visible="true">
-            <asp:Button ID="ButtonInicio" runat="server" Text="Inicio" OnClick="ButtonInicio_Click" Width="400px" Height="50px"/>
-            <asp:Button ID="ButtonPeriodos" runat="server" Text="Periodos" OnClick="ButtonPeriodos_Click" Width="400px" Height="50px"/>
-            <asp:Button ID="ButtonGrupos" runat="server" Text="Grupos" OnClick="ButtonGrupos_Click" Width="400px" Height="50px"/>
+            <asp:Button ID="ButtonInicio" runat="server" Text="Inicio" OnClick="ButtonInicio_Click" Width="24%" Height="50px"/>
+            <asp:Button ID="ButtonPeriodos" runat="server" Text="Periodos" OnClick="ButtonPeriodos_Click" Width="24%" Height="50px"/>
+            <asp:Button ID="ButtonGrupos" runat="server" Text="Grupos" OnClick="ButtonGrupos_Click" Width="24%" Height="50px"/>
+            <asp:Button ID="ButtonRegistrarNotas" runat="server" Text="Registrar Notas" OnClick="ButtonRegistrarNotas_Click" Width="24%" Height="50px"/>
+
         </asp:Panel>
         <asp:Panel style="text-align:center" ID="PanelInicio" runat="server" Visible="true">
             <h1>Bienvenido Profesor</h1>
+            <h1>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            </h1>
         </asp:Panel>
         <asp:Panel ID="PanelPeriodo" runat="server" Visible="false">
             <h1>Periodos</h1>
-            <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="300px" Height="50px" />
-            <asp:Button ID="ButtonModificarPeriodo" runat="server" Text="Modificar Periodo" OnClick="ButtonModificarPeriodo_Click" Width="300px" Height="50px" />
-            <asp:Button ID="ButtonAnularPeriodo" runat="server" Text="Anular Periodo" Width="300px" Height="50px" />
-            <asp:Button ID="ButtonTerminarPeriodo" runat="server" Text="Terminar Periodo" Width="300px" Height="50px" />
+            <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonModificarPeriodo" runat="server" Text="Modificar Periodo" OnClick="ButtonModificarPeriodo_Click" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonAnularPeriodo" runat="server" Text="Anular Periodo" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonTerminarPeriodo" runat="server" Text="Terminar Periodo" Width="24%" Height="50px" />
             <asp:Panel ID="PanelCrearPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2>Crear Periodo</h2>
                 Fecha Inicio:&nbsp;&nbsp;
@@ -56,10 +61,10 @@
         </asp:Panel>
         <asp:Panel ID="PanelGrupos" runat="server" Visible="false">
             <h1>Grupos</h1>
-            <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="300px" Height="50px"/>
-            <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="300px" Height="50px" />
-            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="300px" Height="50px" />
-            <asp:Button ID="ButtonTerminarGrupo" runat="server" Text="Terminar Grupo" Width="300px" Height="50px" OnClick="ButtonTerminarGrupo_Click" />
+            <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="24%" Height="50px"/>
+            <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonTerminarGrupo" runat="server" Text="Terminar Grupo" Width="24%" Height="50px" OnClick="ButtonTerminarGrupo_Click" />
             <table style="width:100%;">
                 <tr>
                     <td>

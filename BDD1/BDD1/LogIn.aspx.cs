@@ -9,6 +9,8 @@ namespace BDD1
 {
     public partial class LogIn : System.Web.UI.Page
     {
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,6 +18,7 @@ namespace BDD1
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             Server.Transfer("ProfesorLogIn.aspx");
         }
 

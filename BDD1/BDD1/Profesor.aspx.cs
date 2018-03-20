@@ -9,6 +9,7 @@ namespace BDD1
 {
     public partial class Profesor : System.Web.UI.Page
     {
+        public static List<Grupo> grupos= new List<Grupo>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -73,7 +74,8 @@ namespace BDD1
 
         protected void ButtonInicio_Click(object sender, EventArgs e)
         {
-            Inicio();
+            Label1.Text = grupos.Count.ToString();
+            //Inicio();
         }
 
         protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
@@ -117,6 +119,11 @@ namespace BDD1
         }
 
         protected void ButtonTerminarGrupo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonRegistrarNotas_Click(object sender, EventArgs e)
         {
 
         }

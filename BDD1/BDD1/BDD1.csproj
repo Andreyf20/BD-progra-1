@@ -84,6 +84,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\EstadoGrupoxEstudiante.cs" />
+    <Compile Include="Clases\Estudiante.cs" />
+    <Compile Include="Clases\Evaluacion.cs" />
+    <Compile Include="Clases\EvaluacionxEstudiante.cs" />
+    <Compile Include="Clases\GrupoxRubro.cs" />
+    <Compile Include="Clases\Periodo.cs" />
+    <Compile Include="Clases\Rubro.cs" />
     <Compile Include="ConsultaEstudiante.aspx.cs">
       <DependentUpon>ConsultaEstudiante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -91,6 +98,7 @@
     <Compile Include="ConsultaEstudiante.aspx.designer.cs">
       <DependentUpon>ConsultaEstudiante.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Clases\EstadoGrupo.cs" />
     <Compile Include="Estudiante.aspx.cs">
       <DependentUpon>Estudiante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,6 +106,8 @@
     <Compile Include="Estudiante.aspx.designer.cs">
       <DependentUpon>Estudiante.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Grupo.cs" />
+    <Compile Include="Clases\GrupoxEstudiante.cs" />
     <Compile Include="LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

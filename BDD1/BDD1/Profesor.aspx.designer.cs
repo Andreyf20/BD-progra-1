@@ -58,6 +58,15 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonGrupos;
         
         /// <summary>
+        /// Control ButtonRegistrarNotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonRegistrarNotas;
+        
+        /// <summary>
         /// Control PanelInicio.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelInicio;
+        
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// Control PanelPeriodo.
