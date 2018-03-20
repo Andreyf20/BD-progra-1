@@ -7,10 +7,35 @@ namespace BDD1
 {
     public class Periodo
     {
-        int ID;
-        DateTime fechaInicio;
-        DateTime fechaFinal;
-        bool activo;
-        List<Grupo> grupos;
+        public int ID;
+        public DateTime fechaInicio;
+        public DateTime fechaFinal;
+        public bool activo;
+        public List<Grupo> grupos;
+        public static int cantPeriodos=0;
+
+        public Periodo()
+        {
+
+        }
+        public Periodo(DateTime fechaInicio, DateTime fechaFinal)
+        {
+            this.ID = ++cantPeriodos;
+            this.fechaFinal = fechaFinal;
+            this.fechaInicio = fechaInicio;
+            this.activo = true;
+            this.grupos = new List<Grupo>();
+        }
+        public void agregarGrupo(Grupo grupo)
+        {
+            grupos.Add(grupo);
+        }
+        public string toString()
+        {
+            string msg = "";
+            msg += fechaInicio + ", " + fechaFinal;
+            return msg;
+
+        }
     }
 }

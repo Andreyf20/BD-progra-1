@@ -4,19 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 
 namespace BDD1
 {
     public partial class Profesor : System.Web.UI.Page
     {
-        public static List<Grupo> grupos= new List<Grupo>();
+        public List<Periodo> periodos = new List<Periodo>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-   
-
         protected void ButtonPeriodos_Click(object sender, EventArgs e)
         {
             Inicio();
@@ -41,12 +39,10 @@ namespace BDD1
 
         protected void ButtonCrearPeriodoOK_Click(object sender, EventArgs e)
         {
+            Periodo periodoActual = new Periodo(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
+            this.periodos.Add(periodoActual);
             Inicio();
-        }
-
-        protected void ButtonAgregarRubros_Click(object sender, EventArgs e)
-        {
-            PanelCrearRubros.Visible = true;
+            Label1.Text = "Periodo Creado Correctamente";
         }
 
         protected void ButtonModificarPeriodo_Click(object sender, EventArgs e)
@@ -74,15 +70,13 @@ namespace BDD1
 
         protected void ButtonInicio_Click(object sender, EventArgs e)
         {
-            Label1.Text = grupos.Count.ToString();
-            //Inicio();
+            Inicio();
         }
 
         protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
         {
             if(RadioButtonList1.SelectedItem.Text.Equals("Fijo"))
             {
-                Console.WriteLine(RadioButtonList1.SelectedItem);
                 PanelAregarRubro.Visible = true;
             }
             else
@@ -102,6 +96,8 @@ namespace BDD1
             PanelPeriodo.Visible = false;
             PanelGrupos.Visible = false;
             PanelInicio.Visible = true;
+            Label1.Text = "";
+
         }
 
         protected void ButtonAgregarRubroOK_Click(object sender, EventArgs e)
@@ -126,6 +122,54 @@ namespace BDD1
         protected void ButtonRegistrarNotas_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ButtonModificarPeriodoOK_Click(object sender, EventArgs e)
+        {
+            if (RadioButtonList2.SelectedItem.Text.Equals("Activo"))
+            {
+                periodos[0].activo = true;
+            }
+            else
+            {
+                periodos[0].activo = false;
+            }
+            Inicio();
+            Label1.Text = "Periodo Modificado Correctamente";
+        }
+
+        protected void ButtonAnularPeriodo_Click(object sender, EventArgs e)
+        {
+            periodos[0] = null;
+            Inicio();
+            Label1.Text = "Periodo Anulado Correctamente";
+
+        }
+
+        protected void ButtonTerminarPeriodo_Click(object sender, EventArgs e)
+        {
+            periodos[0].activo = false;
+            Inicio();
+            Label1.Text = "Periodo Terminado Correctamente";
+        }
+
+        protected void ButtonCrearGrupoOK_Click(object sender, EventArgs e)
+        {
+
+            string nombre = TextBoxNombreGrupo.Text;
+            string aula = TextBoxAula.Text;
+            string horaInicio = TextBoxHoraInicio.Text;
+            string horaFinal = TextBoxHoraFin.Text;
+            string codigoGrupo = TextBoxCodigoGrupo.Text;
+            TextBoxNombreGrupo.Text = "";
+            TextBoxAula.Text = "";
+            TextBoxHoraInicio.Text = "";
+            TextBoxHoraFin.Text = "";
+            TextBoxCodigoGrupo.Text = "";
+            Grupo nuevo = new Grupo(nombre,horaInicio,horaFinal,aula,codigoGrupo);
+            this.periodos[0].agregarGrupo(nuevo);
+
+            PanelCrearRubros.Visible = true;
         }
     }
 }

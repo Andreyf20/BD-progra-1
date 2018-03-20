@@ -139,22 +139,22 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelCrearPeriodo;
         
         /// <summary>
-        /// Control TextBoxFechaInicio.
+        /// Control CalendarInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFechaInicio;
+        protected global::System.Web.UI.WebControls.Calendar CalendarInicio;
         
         /// <summary>
-        /// Control TextBoxFechaFin.
+        /// Control CalendarFinal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFechaFin;
+        protected global::System.Web.UI.WebControls.Calendar CalendarFinal;
         
         /// <summary>
         /// Control ButtonCrearPeriodoOK.
@@ -175,22 +175,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelModificarPeriodo;
         
         /// <summary>
-        /// Control TextBoxFechaInicioNew.
+        /// Control RadioButtonList2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFechaInicioNew;
-        
-        /// <summary>
-        /// Control TextBoxFechaFinNew.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFechaFinNew;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
         
         /// <summary>
         /// Control ButtonModificarPeriodoOK.
@@ -292,13 +283,22 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.TextBox TextBoxAula;
         
         /// <summary>
-        /// Control ButtonAgregarRubros.
+        /// Control TextBoxCodigoGrupo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAgregarRubros;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCodigoGrupo;
+        
+        /// <summary>
+        /// Control ButtonCrearGrupoOK.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCrearGrupoOK;
         
         /// <summary>
         /// Control PanelCrearRubros.

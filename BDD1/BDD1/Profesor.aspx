@@ -9,14 +9,11 @@
         #TextAreaInstancias {
             width: 344px;
         }
-        .auto-style1 {
-            text-align: center;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div >
             
         </div>
         <asp:Panel ID="PanelMenu" runat="server" Visible="true">
@@ -36,27 +33,32 @@
             <h1>Periodos</h1>
             <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="24%" Height="50px" />
             <asp:Button ID="ButtonModificarPeriodo" runat="server" Text="Modificar Periodo" OnClick="ButtonModificarPeriodo_Click" Width="24%" Height="50px" />
-            <asp:Button ID="ButtonAnularPeriodo" runat="server" Text="Anular Periodo" Width="24%" Height="50px" />
-            <asp:Button ID="ButtonTerminarPeriodo" runat="server" Text="Terminar Periodo" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonAnularPeriodo" runat="server" Text="Anular Periodo" Width="24%" Height="50px" OnClick="ButtonAnularPeriodo_Click" />
+            <asp:Button ID="ButtonTerminarPeriodo" runat="server" Text="Terminar Periodo" Width="24%" Height="50px" OnClick="ButtonTerminarPeriodo_Click" />
             <asp:Panel ID="PanelCrearPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2>Crear Periodo</h2>
-                Fecha Inicio:&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxFechaInicio" runat="server"></asp:TextBox>
-                <br />
-                Fecha Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxFechaFin" runat="server"></asp:TextBox>
-                <br />
+                <table style="width:100%; height: 213px;">
+                <tr>
+                    <td>
+                        Fecha Inicio:
+                        <asp:Calendar style=" margin: 0 auto;" ID="CalendarInicio" runat="server"></asp:Calendar>
+                    </td>
+                    <td>
+                        Fecha Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Calendar style=" margin: 0 auto;" ID="CalendarFinal" runat="server"></asp:Calendar>
+                    </td>
+                </tr>
+                </table>                
                 <asp:Button ID="ButtonCrearPeriodoOK" runat="server" OnClick="ButtonCrearPeriodoOK_Click" Text="Aceptar" />
             </asp:Panel>
             <asp:Panel ID="PanelModificarPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2 >Modificar Periodo</h2>
-                Fecha Inicio:&nbsp;
-                <asp:TextBox ID="TextBoxFechaInicioNew" runat="server"></asp:TextBox>
+                <asp:RadioButtonList  style=" margin: 0 auto;" ID="RadioButtonList2" runat="server">
+                    <asp:ListItem Selected="True">Activo</asp:ListItem>
+                    <asp:ListItem>Inactivo</asp:ListItem>
+                </asp:RadioButtonList>
                 <br />
-                Fecha Fin:&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxFechaFinNew" runat="server"></asp:TextBox>
-                <br />
-                <asp:Button ID="ButtonModificarPeriodoOK" runat="server" OnClick="ButtonCrearPeriodoOK_Click" Text="Aceptar" />
+                <asp:Button ID="ButtonModificarPeriodoOK" runat="server" OnClick="ButtonModificarPeriodoOK_Click" Text="Aceptar" />
             </asp:Panel>
         </asp:Panel>
         <asp:Panel ID="PanelGrupos" runat="server" Visible="false">
@@ -70,7 +72,7 @@
                     <td>
                         <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
                             <h2 >Crear Grupo</h2>
-                            Nombre Grupo:&nbsp;
+                            Nombre Curso:&nbsp;
                             <asp:TextBox ID="TextBoxNombreGrupo" runat="server"></asp:TextBox>
                             <br />
                             Hora Inicio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -82,7 +84,10 @@
                             Aula:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:TextBox ID="TextBoxAula" runat="server"></asp:TextBox>
                             <br />
-                            <asp:Button ID="ButtonAgregarRubros" runat="server" OnClick="ButtonAgregarRubros_Click"  Text="Agregar Rubros" />
+                            Código Grupo :&nbsp;&nbsp;
+                            <asp:TextBox ID="TextBoxCodigoGrupo" runat="server"></asp:TextBox>
+                            <br />
+                            <asp:Button ID="ButtonCrearGrupoOK" runat="server" OnClick="ButtonCrearGrupoOK_Click"  Text="Crear Grupo" />
                         </asp:Panel>
                     </td>
                     <td>
