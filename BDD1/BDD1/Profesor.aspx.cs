@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace BDD1
 {
@@ -70,7 +72,20 @@ namespace BDD1
 
         protected void ButtonInicio_Click(object sender, EventArgs e)
         {
-            Inicio();
+            string id = "1";
+            SqlConnection cn = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=ejemplo;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("select * from cliente where id= '"+id+"'", cn);
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            cn.Close();
+            Response.Write("Datos Cargados");
+
+
+
+
         }
 
         protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
