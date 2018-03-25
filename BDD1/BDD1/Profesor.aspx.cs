@@ -11,7 +11,9 @@ namespace BDD1
 {
     public partial class Profesor : System.Web.UI.Page
     {
-        public static List<Periodo> periodos = new List<Periodo>();
+        public static List<Periodo> periodos = new List<Periodo>(); 
+        public static List<string> evaluaciones = new List<string>();
+        public static List<int> estudiantes = new List<int>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,16 +21,12 @@ namespace BDD1
         protected void ButtonPeriodos_Click(object sender, EventArgs e)
         {
             Inicio();
-            PanelGrupos.Visible = false;
-            PanelInicio.Visible = false;
             PanelPeriodo.Visible = true;
         }
 
         protected void ButtonGrupos_Click(object sender, EventArgs e)
         {
             Inicio();
-            PanelPeriodo.Visible = false;
-            PanelInicio.Visible = false;
             PanelGrupos.Visible = true;
         }
 
@@ -92,6 +90,7 @@ namespace BDD1
             PanelPeriodo.Visible = false;
             PanelGrupos.Visible = false;
             PanelInicio.Visible = true;
+            PanelRegistrarNotas.Visible = false;
             Label1.Text = "";
 
         }
@@ -117,7 +116,18 @@ namespace BDD1
 
         protected void ButtonRegistrarNotas_Click(object sender, EventArgs e)
         {
-
+            Inicio();
+            PanelRegistrarNotas.Visible = true;
+            if (periodos.Count!=0)
+            {
+                for (int i = 0; i < periodos[0].grupos.Count; i++)
+                {
+                    RadioButtonList3.Items.Add(new ListItem(periodos[0].grupos[i].nombreCurso));
+                }
+                ButtonOKGrupo.Visible = true;
+            }
+            
+            PanelRegistrarNotas.Visible = true;
         }
 
         protected void ButtonModificarPeriodoOK_Click(object sender, EventArgs e)
@@ -173,6 +183,32 @@ namespace BDD1
             Inicio();
         }
 
-        
+        protected void ButtonGrupoOK_Click(object sender, EventArgs e)
+        {
+            Inicio();
+            Label1.Text = "Grupo Creado Correctamente";
+
+        }
+
+        protected void ButtonOKGrupo_Click(object sender, EventArgs e)
+        {
+            string grupo = RadioButtonList3.SelectedItem.Text;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            evaluaciones.Add("Examen 1");
+            evaluaciones.Add("Quiz 1");
+            evaluaciones.Add("Examen 2");
+            evaluaciones.Add("Proyecto");
+
+
+            estudiantes.Add(0);
+            estudiantes.Add(1);
+            estudiantes.Add(2);
+            estudiantes.Add(3);
+            estudiantes.Add(4);
+        }
     }
 }

@@ -9,9 +9,11 @@ namespace BDD1
 {
     public partial class Estudiante : System.Web.UI.Page
     {
+        
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -26,7 +28,6 @@ namespace BDD1
 
         protected void buscar_estudiante_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -9,27 +9,19 @@ using System.Web.UI.WebControls;
 
 namespace BDD1
 {
-    public partial class Prueba : System.Web.UI.Page
+    public partial class RegistrarNotas : System.Web.UI.Page
     {
         List<string> evaluaciones = new List<string>();
         List<int> estudiantes = new List<int>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            evaluaciones.Add("Examen 1");
-            evaluaciones.Add("Quiz 1");
-            evaluaciones.Add("Examen 2");
-            evaluaciones.Add("Proyecto");
+            evaluaciones = Profesor.evaluaciones;
+            estudiantes = Profesor.estudiantes;
 
+           registrarNotas(evaluaciones, estudiantes);
+       
             
-            estudiantes.Add(0);
-            estudiantes.Add(1);
-            estudiantes.Add(2);
-            estudiantes.Add(3);
-            estudiantes.Add(4);
-
-            registrarNotas(evaluaciones, estudiantes);
 
         }
 
@@ -100,5 +92,7 @@ namespace BDD1
                 }
             }
         }
+
+        
     }
 }

@@ -15,6 +15,8 @@
     <form id="form1" runat="server">
         <div >
             
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cargar Datos" />
+            
         </div>
         <asp:Panel ID="PanelMenu" runat="server" Visible="true">
             <asp:Button ID="ButtonInicio" runat="server" Text="Inicio" OnClick="ButtonInicio_Click" Width="24%" Height="50px"/>
@@ -109,6 +111,7 @@
                     </asp:RadioButtonList>
                     <br />
                     <asp:Button  ID="ButtonAgregarRubro" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubro_Click" />
+                            <asp:Button ID="ButtonGrupoOK" runat="server" OnClick="ButtonGrupoOK_Click" Text="Terminar" />
                 </asp:Panel>
                     </td>
                     <td>
@@ -145,6 +148,12 @@
                 <br />
                 <asp:Button ID="ButtonModificarGrupoOK" runat="server" OnClick="ButtonModificarGrupoOK_Click" Text="Aceptar" />
             </asp:Panel>
+        </asp:Panel>
+        <asp:Panel style="text-align:center" ID="PanelRegistrarNotas" runat="server" Visible="false">
+            <h1>Registrar Notas</h1>
+            <asp:RadioButtonList ID="RadioButtonList3" runat="server">
+            </asp:RadioButtonList>
+            <asp:Button ID="ButtonOKGrupo" runat="server" Visible="false" OnClick="ButtonOKGrupo_Click" Text="Aceptar" />
         </asp:Panel>
     </form>    
 </body>

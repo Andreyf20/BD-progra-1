@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Prueba.aspx.cs" Inherits="BDD1.Prueba" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarNotas.aspx.cs" Inherits="BDD1.RegistrarNotas" %>
 
 <!DOCTYPE html>
 
@@ -18,6 +18,8 @@
             HorizontalAlign="Center">
         </asp:Table>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        
+        <br />
         </form>
     </body>
 </html>

@@ -10,7 +10,7 @@
 namespace BDD1 {
     
     
-    public partial class Prueba {
+    public partial class RegistrarNotas {
         
         /// <summary>
         /// Control form1.
