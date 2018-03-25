@@ -9,16 +9,7 @@ namespace BDD1
 {
     public class Procedures
     {
-        public static void borrar_periodo(int ID)
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("borrar_periodo", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
+        //Grupo x Estudiante
 
         public static void grupoxestudiante_actualizar_nota_acumulada(int id, int nota )
         {
@@ -31,6 +22,7 @@ namespace BDD1
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
         public static void grupoxestudiante_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -41,6 +33,7 @@ namespace BDD1
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
         public static void grupoxestudiante_crear(int idgrupo, int idestadogxe, int idestudiante)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -53,6 +46,8 @@ namespace BDD1
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        //Grupo x Rubro
 
         public static void grupoxrubro_actualizar_cantidad(int id)
         {
@@ -91,6 +86,8 @@ namespace BDD1
             con.Close();
         }
 
+        //Periodo
+
         public static void periodo_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -126,6 +123,8 @@ namespace BDD1
             con.Close();
         }
 
+        //Rubro
+
         public static void rubro_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -137,16 +136,18 @@ namespace BDD1
             con.Close();
         }
 
-        public static void rubro_crear(string id)
+        public static void rubro_crear(string nombre)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("rubro_crear", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+            cmd.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = nombre;
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        //Validar Log In
 
         public static int validar_login_estudiante(string correo, string contraseña)
         {

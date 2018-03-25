@@ -10,7 +10,7 @@ namespace BDD1
         public int ID;
         public DateTime fechaInicio;
         public DateTime fechaFinal;
-        public bool activo;
+        public int activo;
         public List<Grupo> grupos;
         public static int cantPeriodos=0;
 
@@ -19,7 +19,7 @@ namespace BDD1
             this.ID = ++cantPeriodos;
             this.fechaFinal = fechaFinal;
             this.fechaInicio = fechaInicio;
-            this.activo = true;
+            this.activo = 1;
             this.grupos = new List<Grupo>();
         }
         public void agregarGrupo(Grupo grupo)

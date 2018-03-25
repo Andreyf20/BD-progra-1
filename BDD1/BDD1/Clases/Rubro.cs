@@ -3,6 +3,13 @@
     public class Rubro
     {
         int ID;
-        string nombre;
+        public string nombre;
+        static int cantidadRubros=0;
+
+        public Rubro(string nombre)
+        {
+            this.ID = cantidadRubros++;
+            this.nombre = nombre;
+        }
     }
 }
