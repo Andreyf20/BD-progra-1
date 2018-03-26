@@ -6,11 +6,20 @@ namespace BDD1
 {
     public class GrupoxRubro
     {
-        int ID;
-        int valorPorcentual;
-        bool esFijo;
-        int Q;
-        Rubro rubro;
-        List<Evaluacion> evaluaciones;
+        public int ID;
+        public int valorPorcentual;
+        public bool esFijo;
+        public int cantidad;
+        public Rubro rubro;
+        public List<Evaluacion> evaluaciones = new List<Evaluacion>();
+        
+
+        public GrupoxRubro( Rubro rubro, int valorPorcentual, bool esFijo, int cantidad)
+        {
+            this.valorPorcentual = valorPorcentual;
+            this.esFijo = esFijo;
+            this.cantidad = cantidad;
+            this.rubro = rubro;
+        }
     }
 }

@@ -148,7 +148,7 @@ namespace BDD1
             con.Close();
         }
 
-        public static void grupo_crear(int idEstado, int idPeriodo, string NombreCurso, int CodigoGrupo)
+        public static void grupo_crear(int idEstado, int idPeriodo, string NombreCurso, string CodigoGrupo)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupo_crear", con);
@@ -156,7 +156,7 @@ namespace BDD1
             cmd.Parameters.Add("@idEstado", SqlDbType.Int).Value = idEstado;
             cmd.Parameters.Add("@idPeriodo", SqlDbType.Int).Value = idPeriodo;
             cmd.Parameters.Add("@NombreCurso", SqlDbType.VarChar).Value = NombreCurso;
-            cmd.Parameters.Add("@CodigoGrupo", SqlDbType.Int).Value = CodigoGrupo;
+            cmd.Parameters.Add("@CodigoGrupo", SqlDbType.VarChar).Value = CodigoGrupo;
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();

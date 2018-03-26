@@ -6,9 +6,16 @@ namespace BDD1
 {
     public class Evaluacion
     {
-        int ID;
-        string nombre;
-        DateTime fecha;
-        int valorPorcentual;
+        public int ID;
+        public string nombre;
+        public DateTime fecha;
+        public int valorPorcentual;
+
+        public Evaluacion( string Nombre, DateTime Fecha, int ValorPorcentual)
+        {
+            this.nombre = Nombre;
+            this.fecha = Fecha;
+            this.valorPorcentual = ValorPorcentual;
+        }
     }
 }

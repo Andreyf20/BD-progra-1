@@ -337,33 +337,6 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.TextBox TextBoxNombreGrupo;
         
         /// <summary>
-        /// Control TextBoxHoraInicio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxHoraInicio;
-        
-        /// <summary>
-        /// Control TextBoxHoraFin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxHoraFin;
-        
-        /// <summary>
-        /// Control TextBoxAula.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxAula;
-        
-        /// <summary>
         /// Control TextBoxCodigoGrupo.
         /// </summary>
         /// <remarks>
@@ -499,6 +472,15 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.TextBox TextBoxValorRubro;
         
         /// <summary>
+        /// Control CalendarEvaluacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar CalendarEvaluacion;
+        
+        /// <summary>
         /// Control ButtonAgregarRubroOK.
         /// </summary>
         /// <remarks>
@@ -551,33 +533,6 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxNombreGrupoNew;
-        
-        /// <summary>
-        /// Control TextBoxHoraInicioNew.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxHoraInicioNew;
-        
-        /// <summary>
-        /// Control TextBoxHoraFinNew.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxHoraFinNew;
-        
-        /// <summary>
-        /// Control TextBoxAulaNew.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxAulaNew;
         
         /// <summary>
         /// Control TextBoxCodigoGrupoNew.

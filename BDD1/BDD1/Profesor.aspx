@@ -14,16 +14,13 @@
 <body>
     <form id="form1" runat="server">
         <div >
-            
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cargar Datos" />
-            
         </div>
         <asp:Panel ID="PanelMenu" runat="server" Visible="true">
             <asp:Button ID="ButtonInicio" runat="server" Text="Inicio" OnClick="ButtonInicio_Click" Width="24%" Height="50px"/>
             <asp:Button ID="ButtonPeriodos" runat="server" Text="Periodos" OnClick="ButtonPeriodos_Click" Width="24%" Height="50px"/>
             <asp:Button ID="ButtonGrupos" runat="server" Text="Grupos" OnClick="ButtonGrupos_Click" Width="24%" Height="50px"/>
             <asp:Button ID="ButtonRegistrarNotas" runat="server" Text="Registrar Notas" OnClick="ButtonRegistrarNotas_Click" Width="24%" Height="50px"/>
-
         </asp:Panel>
         <asp:Panel style="text-align:center" ID="PanelInicio" runat="server" Visible="true">
             <h1>Bienvenido Profesor</h1>
@@ -100,15 +97,6 @@
                             Nombre Curso:&nbsp;
                             <asp:TextBox ID="TextBoxNombreGrupo" runat="server"></asp:TextBox>
                             <br />
-                            Hora Inicio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="TextBoxHoraInicio" runat="server"></asp:TextBox>
-                            <br />
-                            Hora Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="TextBoxHoraFin" runat="server"></asp:TextBox>
-                            <br />
-                            Aula:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="TextBoxAula" runat="server"></asp:TextBox>
-                            <br />
                             Código Grupo :&nbsp;&nbsp;
                             <asp:TextBox ID="TextBoxCodigoGrupo" runat="server"></asp:TextBox>
                             <br />
@@ -147,6 +135,7 @@
                         <br />
                         Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBoxValorRubro" runat="server"></asp:TextBox>
                         <br />
+                        <asp:Calendar style=" margin: 0 auto;" ID="CalendarEvaluacion" runat="server"></asp:Calendar>
                         <asp:Button ID="ButtonAgregarRubroOK" runat="server" Text="Agregar Instancia" OnClick="ButtonAgregarRubroOK_Click" />
                         <asp:Button ID="ButtonInstanciasOK" runat="server" OnClick="ButtonInstanciasOK_Click" Text="Terminar" />
                     </asp:Panel>
@@ -163,15 +152,6 @@
                 </asp:RadioButtonList>
                 Nombre Grupo:&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TextBoxNombreGrupoNew" runat="server"></asp:TextBox>
-                <br />
-                Hora Inicio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxHoraInicioNew" runat="server"></asp:TextBox>
-                <br />
-                Hora Fin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxHoraFinNew" runat="server"></asp:TextBox>
-                <br />
-                Aula:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBoxAulaNew" runat="server"></asp:TextBox>
                 <br />
                 Código Grupo :&nbsp;&nbsp;
                 <asp:TextBox ID="TextBoxCodigoGrupoNew" runat="server"></asp:TextBox>
