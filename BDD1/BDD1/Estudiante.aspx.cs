@@ -16,18 +16,14 @@ namespace BDD1
             
         }
 
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         protected void buscar_estudiante_Click(object sender, EventArgs e)
         {
+            string correo = correo_Estudiante.Text;
+            string contraseña = contraseña_Estudiante.Text;
+            int respuesta = Procedures.validar_login_estudiante(correo, contraseña);
+
         }
     }
 }

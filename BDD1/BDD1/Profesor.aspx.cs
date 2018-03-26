@@ -12,32 +12,61 @@ namespace BDD1
     public partial class Profesor : System.Web.UI.Page
     {
         public static int profesorID;
+        public static Grupo grupoActivo;
         public static List<Periodo> periodos = new List<Periodo>(); 
-        public static List<string> evaluaciones = new List<string>();
-        public static List<int> estudiantes = new List<int>();
+        public static List<BDD1.Clases.Estudiante> estudiantes = new List<BDD1.Clases.Estudiante>();
         public static List<Rubro> rubros = new List<Rubro>();
         protected void Page_Load(object sender, EventArgs e){}
 
         //Cargar Datos
         protected void Button1_Click(object sender, EventArgs e)
         {
+            llenarDatos();
 
-            evaluaciones.Add("Examen 1");
-            evaluaciones.Add("Quiz 1");
-            evaluaciones.Add("Examen 2");
-            evaluaciones.Add("Proyecto");
+        }
+        public void llenarDatos()
+        {
+            Evaluacion e1 = new Evaluacion("Examen 1", DateTime.Now, 30);
+            Evaluacion e2 = new Evaluacion("Quiz1", DateTime.Now, 30);
+            Evaluacion e3 = new Evaluacion("Examen 2", DateTime.Now, 30);
+            Evaluacion e4 = new Evaluacion("Proyecto", DateTime.Now, 30);
 
 
-            estudiantes.Add(0);
-            estudiantes.Add(1);
-            estudiantes.Add(2);
-            estudiantes.Add(3);
-            estudiantes.Add(4);
+            estudiantes.Add(new Clases.Estudiante(10));
+            estudiantes.Add(new Clases.Estudiante(20));
+            estudiantes.Add(new Clases.Estudiante(30));
+            estudiantes.Add(new Clases.Estudiante(40));
 
             rubros.Add(new Rubro("Examen"));
             rubros.Add(new Rubro("Proyecto"));
             rubros.Add(new Rubro("Tarea"));
             rubros.Add(new Rubro("Quiz"));
+
+            List<GrupoxRubro> g = grupoActivo.grupoxRubros;
+            List<GrupoxEstudiante> ge = grupoActivo.grupoxEstudiantes;
+
+            GrupoxRubro g1 = new GrupoxRubro(rubros[0], 40, true, 3);
+            g1.evaluaciones.Add(e1);
+            g1.evaluaciones.Add(e3);
+            GrupoxRubro g3 = new GrupoxRubro(rubros[1], 40, true, 3);
+            g3.evaluaciones.Add(e2);
+            GrupoxRubro g2 = new GrupoxRubro(rubros[3], 40, true, 3);
+            g2.evaluaciones.Add(e4);
+            
+
+            GrupoxEstudiante ge1 = new GrupoxEstudiante(20, estudiantes[0]);
+            GrupoxEstudiante ge2 = new GrupoxEstudiante(20, estudiantes[1]);
+            GrupoxEstudiante ge3 = new GrupoxEstudiante(20, estudiantes[2]);
+            GrupoxEstudiante ge4 = new GrupoxEstudiante(20, estudiantes[3]);
+
+            g.Add(g1);
+            g.Add(g3);
+            g.Add(g2);
+
+            ge.Add(ge1);
+            ge.Add(ge2);
+            ge.Add(ge3);
+            ge.Add(ge4);
         }
 
 
@@ -282,9 +311,6 @@ namespace BDD1
         protected void ButtonGrupoOK_Click(object sender, EventArgs e)
         {
             TextBoxNombreGrupo.Text = "";
-            TextBoxAula.Text = "";
-            TextBoxHoraInicio.Text = "";
-            TextBoxHoraFin.Text = "";
             TextBoxCodigoGrupo.Text = "";
             Inicio();
             Label1.Text = "Grupo Creado Correctamente";
@@ -306,20 +332,16 @@ namespace BDD1
             }
         }
 
-        protected void SelectedIndexChangedPeriodo(object sender, EventArgs e)
+        protected void SelectedIndexChangedPeriodo1(object sender, EventArgs e)
         {
             int indexPeriodo = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
-            Periodo periodo = periodos[indexPeriodo];
+            Periodo periodo = periodos[indexPeriodo-1];
             RadioButtonListGrupos1.Items.Clear();
-            RadioButtonListGrupos2.Items.Clear();
-            RadioButtonListGrupos3.Items.Clear();
             if (periodo.grupos.Count != 0)
             {
                 for (int i = 0; i < periodo.grupos.Count; i++)
                 {
                     RadioButtonListGrupos1.Items.Add(new ListItem(periodo.grupos[i].nombreCurso));
-                    RadioButtonListGrupos2.Items.Add(new ListItem(periodo.grupos[i].nombreCurso));
-                    RadioButtonListGrupos3.Items.Add(new ListItem(periodo.grupos[i].nombreCurso));
                 }
             }
         }
@@ -332,9 +354,6 @@ namespace BDD1
         protected void ButtonModificarGrupoOK_Click(object sender, EventArgs e)
         {
             TextBoxNombreGrupoNew.Text = "";
-            TextBoxAulaNew.Text = "";
-            TextBoxHoraInicioNew.Text = "";
-            TextBoxHoraFinNew.Text = "";
             TextBoxCodigoGrupoNew.Text = "";
             Inicio();
             Label1.Text = "Grupo Modificado Correctamente";
@@ -352,6 +371,20 @@ namespace BDD1
                 for (int i = 0; i < periodos.Count; i++)
                 {
                     RadioButtonListPeriodos6.Items.Add(new ListItem(periodos[i].ID.ToString()));
+                }
+            }
+        }
+
+        protected void SelectedIndexChangedPeriodo2(object sender, EventArgs e)
+        {
+            int indexPeriodo = int.Parse(RadioButtonListPeriodos6.SelectedItem.Text);
+            Periodo periodo = periodos[indexPeriodo-1];
+            RadioButtonListGrupos2.Items.Clear();
+            if (periodo.grupos.Count != 0)
+            {
+                for (int i = 0; i < periodo.grupos.Count; i++)
+                {
+                    RadioButtonListGrupos2.Items.Add(new ListItem(periodo.grupos[i].nombreCurso));
                 }
             }
         }
@@ -382,6 +415,20 @@ namespace BDD1
             }
         }
 
+        protected void SelectedIndexChangedPeriodo3(object sender, EventArgs e)
+        {
+            int indexPeriodo = int.Parse(RadioButtonListPeriodos7.SelectedItem.Text);
+            Periodo periodo = periodos[indexPeriodo-1];
+            RadioButtonListGrupos3.Items.Clear();
+            if (periodo.grupos.Count != 0)
+            {
+                for (int i = 0; i < periodo.grupos.Count; i++)
+                {
+                    RadioButtonListGrupos3.Items.Add(new ListItem(periodo.grupos[i].nombreCurso));
+                }
+            }
+        }
+
         protected void ButtonTerminarGrupoOK_Click(object sender, EventArgs e)
         {
             Inicio();
@@ -406,10 +453,28 @@ namespace BDD1
             PanelRegistrarNotas.Visible = true;
         }
 
+        protected void SelectedIndexChangedPeriodo4(object sender, EventArgs e)
+        {
+            int indexPeriodo = int.Parse(RadioButtonListPeriodos8.SelectedItem.Text);
+            Periodo periodo = periodos[indexPeriodo-1];
+            RadioButtonListGrupos4.Items.Clear();
+            if (periodo.grupos.Count != 0)
+            {
+                for (int i = 0; i < periodo.grupos.Count; i++)
+                {
+                    RadioButtonListGrupos4.Items.Add(new ListItem(periodo.grupos[i].nombreCurso));
+                }
+            }
+        }
+
         protected void ButtonOKGrupo_Click(object sender, EventArgs e)
         {
-            string grupo = RadioButtonListGrupos4.SelectedItem.Text;
+            int periodoID = int.Parse(RadioButtonListPeriodos8.SelectedItem.Text);
+            int indexGrupo = RadioButtonListGrupos4.SelectedIndex;
+            grupoActivo = periodos[periodoID - 1].grupos[indexGrupo];
+            llenarDatos();
             Server.Transfer("RegistrarNotas.aspx");
         }
+        
     }
 }

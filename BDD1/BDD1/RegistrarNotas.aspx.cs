@@ -11,25 +11,44 @@ namespace BDD1
 {
     public partial class RegistrarNotas : System.Web.UI.Page
     {
-        List<string> evaluaciones = new List<string>();
-        List<int> estudiantes = new List<int>();
+        Grupo grupo;
+        List<Evaluacion> evaluaciones = new List<Evaluacion>();
+        List<Clases.Estudiante> estudiantes = new List<Clases.Estudiante>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            evaluaciones = Profesor.evaluaciones;
-            estudiantes = Profesor.estudiantes;
+            grupo = Profesor.grupoActivo;
+            for (int i = 0;i <grupo.grupoxRubros.Count;i++)
+            {
+                GrupoxRubro gr = grupo.grupoxRubros[i];
+                for (int j=0;j<gr.evaluaciones.Count;j++)
+                {
+                    evaluaciones.Add(gr.evaluaciones[j]);
+                }
+            }
+            for (int i = 0; i < grupo.grupoxEstudiantes.Count; i++)
+            {
+                GrupoxEstudiante gr = grupo.grupoxEstudiantes[i];
+                estudiantes.Add(gr.estudiante);
+            }
 
            registrarNotas(evaluaciones, estudiantes);
-       
-            
-
         }
 
+        public int buscarIndiceEvaluacion(string nombre)
+        {
+            for (int i = 0; i < evaluaciones.Count; i++)
+            {
+                if (evaluaciones[i].nombre.Equals(nombre))
+                    return i;
+            }
+            return -1;
+        }
        
         void test(Object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            int index = evaluaciones.IndexOf(btn.ID);
+            int index = buscarIndiceEvaluacion( btn.ID);
             TableRow row = Table1.Rows[index+1];
             List<int> notas = new List<int>();
             for (int i=1; i<row.Cells.Count-1;i++ )
@@ -47,9 +66,9 @@ namespace BDD1
             
         }
         
-        public void registrarNotas(List<string> evaluaciones, List<int> estudiantes)
+        public void registrarNotas(List<Evaluacion> evaluaciones, List<Clases.Estudiante> estudiantes)
         {
-            for (int rowCtr = 0; rowCtr < estudiantes.Count; rowCtr++)
+            for (int rowCtr = 0; rowCtr < evaluaciones.Count+1; rowCtr++)
             {
                 // Create new row and add it to the table.
                 TableRow tRow = new TableRow();
@@ -62,7 +81,7 @@ namespace BDD1
                     for (int i = 0; i < estudiantes.Count; i++)
                     {
                         tCell = new TableCell();
-                        tCell.Text = "Estudiante: "+estudiantes[i].ToString();
+                        tCell.Text = "Estudiante: "+estudiantes[i].ID;
                         tRow.Cells.Add(tCell);
                     }
                     TableCell Cell = new TableCell();
@@ -72,7 +91,7 @@ namespace BDD1
                 else
                 {
                     TableCell tCell = new TableCell();
-                    tCell.Text = evaluaciones[rowCtr - 1];
+                    tCell.Text = evaluaciones[rowCtr - 1].nombre;
                     tRow.Cells.Add(tCell);
                     for (int cellCtr = 0; cellCtr < estudiantes.Count; cellCtr++)
                     {
@@ -84,8 +103,8 @@ namespace BDD1
                     }
                     TableCell Cell = new TableCell();
                     Button Btn = new Button();
-                    Btn.Text = "Agregar " + evaluaciones[rowCtr - 1];
-                    Btn.ID= evaluaciones[rowCtr - 1];
+                    Btn.Text = "Agregar " + evaluaciones[rowCtr - 1].nombre;
+                    Btn.ID= evaluaciones[rowCtr - 1].nombre;
                     Btn.Click += new EventHandler(test);
                     Cell.Controls.Add(Btn);
                     tRow.Cells.Add(Cell);

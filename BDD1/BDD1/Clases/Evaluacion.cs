@@ -10,12 +10,14 @@ namespace BDD1
         public string nombre;
         public DateTime fecha;
         public int valorPorcentual;
+        public static int cantEvaluaciones = 0;
 
         public Evaluacion( string Nombre, DateTime Fecha, int ValorPorcentual)
         {
             this.nombre = Nombre;
             this.fecha = Fecha;
             this.valorPorcentual = ValorPorcentual;
+            cantEvaluaciones++;
         }
     }
 }

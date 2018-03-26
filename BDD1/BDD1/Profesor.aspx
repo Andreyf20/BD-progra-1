@@ -146,7 +146,7 @@
             <asp:Panel ID="PanelModificarGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2>Modificar Grupo</h2>
                 Seleccione el ID del Periodo:
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos5" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo" AutoPostBack="True">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos5" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo1" AutoPostBack="True">
                 </asp:RadioButtonList>
                 <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos1" runat="server" OnSelectedIndexChanged="SelectedIndexChangedGrupo" AutoPostBack="True">
                 </asp:RadioButtonList>
@@ -161,7 +161,7 @@
             <asp:Panel ID="PanelAnularGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2 >Anular Grupo</h2>
                 Seleccione el ID del Periodo:
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos6" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo" AutoPostBack="True">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos6" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo2" AutoPostBack="True">
                 </asp:RadioButtonList>
                 <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos2" runat="server" AutoPostBack="True">
                 </asp:RadioButtonList>
@@ -171,7 +171,7 @@
             <asp:Panel ID="PanelTerminarGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2 >Terminar Grupo</h2>
                 Seleccione el ID del Periodo:
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos7" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo" AutoPostBack="True">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos7" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo3" AutoPostBack="True">
                 </asp:RadioButtonList>
                 <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos3" runat="server" AutoPostBack="True">
                 </asp:RadioButtonList>
@@ -182,7 +182,7 @@
         <asp:Panel style="text-align:center" ID="PanelRegistrarNotas" runat="server" Visible="false">
             <h1>Registrar Notas</h1>
             Seleccione el ID del Periodo:
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos8" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo" AutoPostBack="True">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos8" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo4" AutoPostBack="True">
                 </asp:RadioButtonList>
                 <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos4" runat="server" OnSelectedIndexChanged="SelectedIndexChangedGrupo" AutoPostBack="True">
                 </asp:RadioButtonList>

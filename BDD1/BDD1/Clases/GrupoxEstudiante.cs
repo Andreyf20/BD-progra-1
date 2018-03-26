@@ -6,10 +6,17 @@ namespace BDD1
 {
     public class GrupoxEstudiante
     {
-        int ID;
-        EstadoGrupoxEstudiante estado;
-        int notaAcumulada;
-        Estudiante estudiante;
-        List<EvaluacionxEstudiante> evaluacionxEstudiantes;
+        public int ID;
+        public EstadoGrupoxEstudiante estado;
+        public float notaAcumulada;
+        public Clases.Estudiante estudiante;
+        public List<EvaluacionxEstudiante> evaluacionxEstudiantes;
+
+        public GrupoxEstudiante(float notaAcumulada, Clases.Estudiante estudiante)
+        {
+            this.notaAcumulada = notaAcumulada;
+            this.estudiante = estudiante;
+
+        }
     }
 }
