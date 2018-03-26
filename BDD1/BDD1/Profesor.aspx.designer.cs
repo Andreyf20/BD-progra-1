@@ -679,13 +679,22 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelRegistrarNotas;
         
         /// <summary>
-        /// Control RadioButtonList3.
+        /// Control RadioButtonListPeriodos8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList3;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos8;
+        
+        /// <summary>
+        /// Control RadioButtonListGrupos4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos4;
         
         /// <summary>
         /// Control ButtonOKGrupo.

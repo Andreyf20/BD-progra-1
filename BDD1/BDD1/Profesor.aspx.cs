@@ -107,12 +107,12 @@ namespace BDD1
             if (RadioButtonList2.SelectedItem.Text.Equals("Activo"))
             {
                 //Procedures.periodo_CambiarActivo(periodoID, 1);
-                periodos[0].activo = 1;
+                periodos[periodoID-1].activo = 1;
             }
             else
             {
                 //Procedures.periodo_CambiarActivo(periodoID, 0);
-                periodos[0].activo = 0;
+                periodos[periodoID-1].activo = 0;
             }
             Inicio();
             Label1.Text = "Periodo Modificado Correctamente";
@@ -135,7 +135,7 @@ namespace BDD1
         protected void ButtonAnularPeriodoOK_Click(object sender, EventArgs e)
         {
             int periodoID = int.Parse(RadioButtonListPeriodos2.SelectedItem.Text);
-            periodos[periodoID] = null;
+            periodos[periodoID-1] = null;
             //Procedures.periodo_borrar(periodoID);
             Inicio();
             Label1.Text = "Periodo Anulado Correctamente";
@@ -195,7 +195,7 @@ namespace BDD1
             string horaFinal = TextBoxHoraFin.Text;
             string codigoGrupo = TextBoxCodigoGrupo.Text;
             Grupo nuevo = new Grupo(nombre, horaInicio, horaFinal, aula, codigoGrupo);
-            periodos[periodoID].agregarGrupo(nuevo);
+            periodos[periodoID-1].agregarGrupo(nuevo);
             PanelCrearRubros.Visible = true;
             DropDownListTipoRubro.Items.Clear();
             for(int i=0; i<rubros.Count;i++)
@@ -224,7 +224,7 @@ namespace BDD1
                 int cantidad = int.Parse(TextBoxCantidadRubro.Text);
                 int valorPorcentual = int.Parse(TextBoxPorcentajeRubro.Text);
                 PanelAregarRubro.Visible = true;
-                Procedures.grupoxrubro_crear(,idRubro, valorPorcentual, 1, cantidad);
+                //Procedures.grupoxrubro_crear(,idRubro, valorPorcentual, 1, cantidad);
             }
             else
             {
@@ -355,12 +355,12 @@ namespace BDD1
         {
             Inicio();
             PanelRegistrarNotas.Visible = true;
-            RadioButtonList3.Items.Clear();
+            RadioButtonListPeriodos8.Items.Clear();
             if (periodos.Count!=0)
             {
-                for (int i = 0; i < periodos[0].grupos.Count; i++)
+                for (int i = 0; i < periodos.Count; i++)
                 {
-                    RadioButtonList3.Items.Add(new ListItem(periodos[0].grupos[i].nombreCurso));
+                    RadioButtonListPeriodos8.Items.Add(new ListItem(periodos[i].ID.ToString()));
                 }
                 ButtonOKGrupo.Visible = true;
             }
@@ -368,7 +368,7 @@ namespace BDD1
         }
         protected void ButtonOKGrupo_Click(object sender, EventArgs e)
         {
-            string grupo = RadioButtonList3.SelectedItem.Text;
+            string grupo = RadioButtonListGrupos4.SelectedItem.Text;
             Server.Transfer("RegistrarNotas.aspx");
         }
     }

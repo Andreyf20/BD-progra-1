@@ -119,7 +119,7 @@
                         <asp:Panel style="text-align:center" ID="PanelCrearRubros" runat="server" Visible="false">
                     <h2 >Crear Rubros</h2>
                     Tipo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="DropDownListTipoRubro" runat="server" Width="121px">
-                        <asp:ListItem>
+                        
                     </asp:DropDownList>
                     <br />
                     Porcentaje: <asp:TextBox ID="TextBoxPorcentajeRubro"   runat="server" Width="110px"></asp:TextBox>
@@ -201,8 +201,11 @@
         </asp:Panel>
         <asp:Panel style="text-align:center" ID="PanelRegistrarNotas" runat="server" Visible="false">
             <h1>Registrar Notas</h1>
-            <asp:RadioButtonList ID="RadioButtonList3" runat="server">
-            </asp:RadioButtonList>
+            Seleccione el ID del Periodo:
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos8" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo" AutoPostBack="True">
+                </asp:RadioButtonList>
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos4" runat="server" OnSelectedIndexChanged="SelectedIndexChangedGrupo" AutoPostBack="True">
+                </asp:RadioButtonList>
             <asp:Button ID="ButtonOKGrupo" runat="server" Visible="false" OnClick="ButtonOKGrupo_Click" Text="Aceptar" />
         </asp:Panel>
     </form>    
