@@ -13,7 +13,7 @@ namespace BDD1
     {
         Grupo grupo;
         List<Evaluacion> evaluaciones = new List<Evaluacion>();
-        List<Clases.Estudiante> estudiantes = new List<Clases.Estudiante>();
+        List<Estudiante> estudiantes = new List<Estudiante>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -66,7 +66,7 @@ namespace BDD1
             
         }
         
-        public void registrarNotas(List<Evaluacion> evaluaciones, List<Clases.Estudiante> estudiantes)
+        public void registrarNotas(List<Evaluacion> evaluaciones, List<Estudiante> estudiantes)
         {
             for (int rowCtr = 0; rowCtr < evaluaciones.Count+1; rowCtr++)
             {

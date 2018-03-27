@@ -14,6 +14,14 @@
                 Notas del Estudiante
             </h1>          
         </div>
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+        </asp:RadioButtonList>
+        <asp:Button ID="ButtonOK" runat="server" Text="Escoger Grupo" OnClick="ButtonOK_Click" />
+        <asp:Table id="Table1" runat="server" style="text-align: center" 
+            CellPadding="10" 
+            GridLines="Both"
+            HorizontalAlign="Center">
+        </asp:Table>
     </form>
 </body>
 </html>

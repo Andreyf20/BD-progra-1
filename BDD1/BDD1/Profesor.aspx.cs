@@ -14,7 +14,7 @@ namespace BDD1
         public static int profesorID;
         public static Grupo grupoActivo;
         public static List<Periodo> periodos = new List<Periodo>(); 
-        public static List<BDD1.Clases.Estudiante> estudiantes = new List<BDD1.Clases.Estudiante>();
+        public static List<Estudiante> estudiantes = new List<Estudiante>();
         public static List<Rubro> rubros = new List<Rubro>();
         protected void Page_Load(object sender, EventArgs e){}
 
@@ -32,10 +32,10 @@ namespace BDD1
             Evaluacion e4 = new Evaluacion("Proyecto", DateTime.Now, 30);
 
 
-            estudiantes.Add(new Clases.Estudiante(10));
-            estudiantes.Add(new Clases.Estudiante(20));
-            estudiantes.Add(new Clases.Estudiante(30));
-            estudiantes.Add(new Clases.Estudiante(40));
+            estudiantes.Add(new Estudiante(10));
+            estudiantes.Add(new Estudiante(20));
+            estudiantes.Add(new Estudiante(30));
+            estudiantes.Add(new Estudiante(40));
 
             rubros.Add(new Rubro("Examen"));
             rubros.Add(new Rubro("Proyecto"));

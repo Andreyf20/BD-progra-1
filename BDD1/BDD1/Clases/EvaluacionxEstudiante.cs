@@ -2,8 +2,14 @@
 {
     public class EvaluacionxEstudiante
     {
-        int ID;
-        int nota;
-        Evaluacion evaluacion;
+        public int ID;
+        public int nota;
+        public Evaluacion evaluacion;
+
+        public EvaluacionxEstudiante(int nota, Evaluacion evaluacion)
+        {
+            this.nota = nota;
+            this.evaluacion = evaluacion;
+        }
     }
 }

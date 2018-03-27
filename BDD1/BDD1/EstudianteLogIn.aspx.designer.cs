@@ -10,7 +10,7 @@
 namespace BDD1 {
     
     
-    public partial class Estudiante {
+    public partial class EstudianteLogIn {
         
         /// <summary>
         /// Control form1.

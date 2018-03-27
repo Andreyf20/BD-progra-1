@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BDD1.Clases
+namespace BDD1
 {
     public class Estudiante
     {

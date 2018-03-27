@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConsultaEstudiante.aspx" />
-    <Content Include="Estudiante.aspx" />
+    <Content Include="EstudianteLogIn.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Profesor.aspx" />
     <Content Include="ProfesorLogIn.aspx" />
@@ -100,12 +100,12 @@
       <DependentUpon>ConsultaEstudiante.aspx</DependentUpon>
     </Compile>
     <Compile Include="Clases\EstadoGrupo.cs" />
-    <Compile Include="Estudiante.aspx.cs">
-      <DependentUpon>Estudiante.aspx</DependentUpon>
+    <Compile Include="EstudianteLogIn.aspx.cs">
+      <DependentUpon>EstudianteLogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Estudiante.aspx.designer.cs">
-      <DependentUpon>Estudiante.aspx</DependentUpon>
+    <Compile Include="EstudianteLogIn.aspx.designer.cs">
+      <DependentUpon>EstudianteLogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Clases\Grupo.cs" />
     <Compile Include="Clases\GrupoxEstudiante.cs" />
