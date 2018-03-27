@@ -1,7 +1,6 @@
 use BBD1;
 GO
 
-
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
