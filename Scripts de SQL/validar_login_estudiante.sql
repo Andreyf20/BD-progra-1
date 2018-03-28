@@ -7,7 +7,8 @@ Declare @result int
 	IF (SELECT COUNT(*) FROM dbo.Estudiante as E WHERE @email = E.Correo AND @password = E.Contraseña) = 0
 		SET @result=-1  --NO EXISTE
 	ELSE
-		SET @result=0  -- --SI EXISTE UNA PERSONA CON ESTA CONFIGURACION
+		SELECT @result = e.ID FROM dbo.Estudiante as e WHERE  @email = E.Correo AND @password = E.Contraseña;
+		-- SI EXISTE Y SE DEVUELVE EL ID COMO RESULTADO
 	RETURN @result
 END
 go
