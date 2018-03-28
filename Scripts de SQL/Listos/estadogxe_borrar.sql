@@ -3,7 +3,7 @@ go
 CREATE PROCEDURE estadogxe_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.EstadoGxE as ege 
-	WHERE ege.id = @id
+	DELETE FROM dbo.EstadoGxE
+	WHERE ID = @id
 END
 go

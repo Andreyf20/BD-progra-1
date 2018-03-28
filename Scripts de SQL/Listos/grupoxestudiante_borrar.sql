@@ -3,7 +3,7 @@ go
 CREATE PROCEDURE grupoxestudiante_borrar @id
 AS
 BEGIN
-	DELETE FROM dbo.GrupoxEstudiante as ge
-	WHERE ge.id = @id
+	DELETE FROM dbo.GrupoxEstudiante
+	WHERE id = @id
 END
 go

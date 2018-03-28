@@ -1,8 +1,8 @@
 use BBD1;
 go
-CREATE PROCEDURE grupoxrubro_borrar @id
+CREATE PROCEDURE grupoxrubro_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.GrupoxRubro as gr WHERE gr.id = @id;
+	DELETE FROM dbo.GrupoxRubro WHERE id = @id;
 END
 go
