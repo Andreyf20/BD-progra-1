@@ -1,0 +1,2 @@
+1. Crea un grupo, para eso tiene que ver las tablas de periodos_disponibles y estadogrupo_disppnibles
+2. Se agrega a GrupoxRubro para eso se necesita el ver_grupos_profesor y rubros_disponibles
