@@ -1,6 +1,6 @@
 use BBD1;
 go
-CREATE PROCEDURE ver_grupos_profesor @id int
+CREATE PROCEDURE ver_grupos_profesor @idProfesor int
 AS
 BEGIN
 	DECLARE @grupos_profesor Table (idGrupo int, FechaInicio Date, FechaFinal Date, NombreCurso varchar(50),
@@ -9,7 +9,7 @@ BEGIN
 	INSERT INTO @grupos_profesor SELECT G.ID, P.FechaInicio, P.FechaFinal, G.NombreCurso, G.CodigoGrupo, P.Activo
 	FROM dbo.Grupo AS G INNER JOIN
 	dbo.Periodo AS P ON G.IdPeriodo = P.ID
-	WHERE G.idProfesor = @id;
+	WHERE G.idProfesor = @idProfesor;
 
 	SELECT * FROM @grupos_profesor;
 END
