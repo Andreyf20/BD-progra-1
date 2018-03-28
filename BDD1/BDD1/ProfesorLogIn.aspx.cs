@@ -7,16 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace BDD1
 {
-    public partial class ProfesorLogIn : System.Web.UI.Page
+    public partial class ProfesorWindowLogIn : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void buscar_Profesor_Click(object sender, EventArgs e)
+        protected void buscar_ProfesorWindow_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Profesor.aspx");
+            Server.Transfer("ProfesorWindow.aspx");
         }
     }
 }

@@ -4,11 +4,10 @@
     {
         int ID;
         public string nombre;
-        static int cantidadRubros=0;
 
-        public Rubro(string nombre)
+        public Rubro(int ID, string nombre)
         {
-            this.ID = cantidadRubros++;
+            this.ID = ID;
             this.nombre = nombre;
         }
     }

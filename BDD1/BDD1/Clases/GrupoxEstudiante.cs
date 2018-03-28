@@ -8,15 +8,23 @@ namespace BDD1
     {
         public int ID;
         public EstadoGrupoxEstudiante estado;
-        public float notaAcumulada;
+        public decimal notaAcumulada;
         public Estudiante estudiante;
         public List<EvaluacionxEstudiante> evaluacionxEstudiantes;
 
-        public GrupoxEstudiante(float notaAcumulada, Estudiante estudiante)
+        int IdGrupo;
+        int IdEstadoGxE;
+        int IdEstudiante;
+
+        public GrupoxEstudiante(int ID, EstadoGrupoxEstudiante estado, decimal notaAcumulada, Estudiante estudiante, int IdGrupo, int idEstadoGxE, int IdEstudiante)
         {
+            this.ID = ID;
+            this.estado = estado;
             this.notaAcumulada = notaAcumulada;
             this.estudiante = estudiante;
-
+            this.IdGrupo = IdGrupo;
+            this.IdEstadoGxE = idEstadoGxE;
+            this.IdEstudiante = IdEstudiante;
         }
     }
 }

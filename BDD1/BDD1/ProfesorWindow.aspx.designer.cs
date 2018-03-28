@@ -10,7 +10,7 @@
 namespace BDD1 {
     
     
-    public partial class Profesor {
+    public partial class ProfesorWindow {
         
         /// <summary>
         /// Control form1.

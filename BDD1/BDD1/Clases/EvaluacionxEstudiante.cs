@@ -3,13 +3,19 @@
     public class EvaluacionxEstudiante
     {
         public int ID;
-        public int nota;
+        public decimal nota;
         public Evaluacion evaluacion;
 
-        public EvaluacionxEstudiante(int nota, Evaluacion evaluacion)
+        public int idEvaluacion;
+        public int IdGrupoxEstudiante;
+
+        public EvaluacionxEstudiante(int ID, decimal nota, Evaluacion evaluacion, int idEvaluacion, int IdGrupoxEstudiante)
         {
+            this.ID = ID;
+            this.idEvaluacion = idEvaluacion;
             this.nota = nota;
             this.evaluacion = evaluacion;
+            this.IdGrupoxEstudiante = IdGrupoxEstudiante;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BDD1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            grupo = Profesor.grupoActivo;
+            grupo = ProfesorWindow.grupoActivo;
             for (int i = 0;i <grupo.grupoxRubros.Count;i++)
             {
                 GrupoxRubro gr = grupo.grupoxRubros[i];

@@ -13,14 +13,32 @@ namespace BDD1
         public string codigoGrupo;
         public List<GrupoxEstudiante> grupoxEstudiantes = new List<GrupoxEstudiante>();
         public List<GrupoxRubro> grupoxRubros= new List<GrupoxRubro>();
-        public static int cantidadGrupos = 0;
+        public static int cant = 0;
 
-        public Grupo(string nombre , string codigoGrupo)
+        public int idEstado;
+        public int idPeriodo;
+        public int idProfesor;
+
+        public Grupo(int ID,string nombre , string codigoGrupo, EstadoGrupo estado, int idEstado, int idPeriodo, int idProfesor)
         {
             this.codigoGrupo = codigoGrupo;
             this.nombreCurso = nombre;
-            this.ID = ++cantidadGrupos;
-
+            this.ID = ID;
+            this.estado = estado;
+            this.idEstado = idEstado;
+            this.idPeriodo = idPeriodo;
+            this.idProfesor = idProfesor;
+            cant++;
+        }
+        public Grupo(int idEstado, int idPeriodo, int idPforesor, string NombreCurso, string CodigoGrupo)
+        {
+            this.ID = cant++;
+            this.idEstado = idEstado;
+            this.idPeriodo = idPeriodo;
+            this.idProfesor = idPforesor;
+            this.nombreCurso = NombreCurso;
+            this.codigoGrupo = CodigoGrupo;
+            this.estado = BD.getEstadoGrupo(idEstado);
         }
 
     }

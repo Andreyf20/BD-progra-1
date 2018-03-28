@@ -26,8 +26,6 @@ namespace BDD1
             string correo = correo_Estudiante.Text;
             string contraseña = contraseña_Estudiante.Text;
             //int respuesta = Procedures.validar_login_estudiante(correo, contraseña);
-            Estudiante estudiante = new Estudiante("Ruben", "Gonzalez", correo, contraseña, "2017118764");
-            ConsultaEstudiante.estudiante = estudiante;
             Server.Transfer("ConsultaEstudiante.aspx");
 
         }

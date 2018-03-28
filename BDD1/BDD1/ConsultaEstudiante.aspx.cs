@@ -50,10 +50,10 @@ namespace BDD1
 
         private void escogerGrupos()
         {
-            for (int i = 0; i < Profesor.periodos.Count; i++)
+            for (int i = 0; i < BD.periodos.Count; i++)
             {
-                for (int j = 0; j < Profesor.periodos[i].grupos.Count; j++)
-                    grupos.Add(Profesor.periodos[i].grupos[j]);
+                for (int j = 0; j < BD.periodos[i].grupos.Count; j++)
+                    grupos.Add(BD.periodos[i].grupos[j]);
             }
             List<Grupo> gruposNew = new List<Grupo>();
             for (int x = 0; x < grupos.Count; x++)

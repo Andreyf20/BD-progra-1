@@ -10,28 +10,27 @@ namespace BDD1
         public int ID;
         public DateTime fechaInicio;
         public DateTime fechaFinal;
-        public int activo;
+        public string activo;
         public List<Grupo> grupos;
-        public static int cantPeriodos=0;
+        public static int cant = 0;
 
-        public Periodo(DateTime fechaInicio, DateTime fechaFinal)
+        public Periodo(int ID, DateTime fechaInicio, DateTime fechaFinal, string activo)
         {
-            this.ID = ++cantPeriodos;
+            this.ID = ID;
             this.fechaFinal = fechaFinal;
             this.fechaInicio = fechaInicio;
-            this.activo = 1;
+            this.activo = activo;
             this.grupos = new List<Grupo>();
+            cant++;
         }
-        public void agregarGrupo(Grupo grupo)
-        {
-            grupos.Add(grupo);
-        }
-        public string toString()
-        {
-            string msg = "";
-            msg += fechaInicio + ", " + fechaFinal;
-            return msg;
 
+        public Periodo( DateTime fechaInicio, DateTime fechaFinal)
+        {
+            this.ID = cant++;
+            this.fechaFinal = fechaFinal;
+            this.fechaInicio = fechaInicio;
+            this.activo = "True";
+            this.grupos = new List<Grupo>();
         }
     }
 }

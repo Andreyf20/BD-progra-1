@@ -9,15 +9,32 @@ namespace BDD1
         public int ID;
         public string nombre;
         public DateTime fecha;
-        public int valorPorcentual;
-        public static int cantEvaluaciones = 0;
+        public decimal valorPorcentual;
+        public string descripcion;
 
-        public Evaluacion( string Nombre, DateTime Fecha, int ValorPorcentual)
+        public static int cant = 0;
+
+        public int idGrupoxRubro;
+
+        public Evaluacion(int id, int idGrupoxRubro, string Nombre, DateTime Fecha, decimal ValorPorcentual, string descripcion)
         {
+            this.ID = id;
+            this.idGrupoxRubro = idGrupoxRubro;
             this.nombre = Nombre;
             this.fecha = Fecha;
             this.valorPorcentual = ValorPorcentual;
-            cantEvaluaciones++;
+            this.descripcion = descripcion;
+            cant++;
+        }
+        public Evaluacion( int idGrupoxRubro, string Nombre, DateTime Fecha, decimal ValorPorcentual, string descripcion)
+        {
+            this.ID = cant++; 
+            this.idGrupoxRubro = idGrupoxRubro;
+            this.nombre = Nombre;
+            this.fecha = Fecha;
+            this.valorPorcentual = ValorPorcentual;
+            this.descripcion = descripcion;
+            
         }
     }
 }

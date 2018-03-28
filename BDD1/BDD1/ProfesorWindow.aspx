@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profesor.aspx.cs" Inherits="BDD1.Profesor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProfesorWindow.aspx.cs" Inherits="BDD1.ProfesorWindow" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

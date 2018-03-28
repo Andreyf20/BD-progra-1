@@ -10,7 +10,7 @@
 namespace BDD1 {
     
     
-    public partial class ProfesorLogIn {
+    public partial class ProfesorWindowLogIn {
         
         /// <summary>
         /// Control form1.
@@ -22,30 +22,30 @@ namespace BDD1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control correo_Profesor.
+        /// Control correo_ProfesorWindow.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox correo_Profesor;
+        protected global::System.Web.UI.WebControls.TextBox correo_ProfesorWindow;
         
         /// <summary>
-        /// Control contraseña_Profesor.
+        /// Control contraseña_ProfesorWindow.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contraseña_Profesor;
+        protected global::System.Web.UI.WebControls.TextBox contraseña_ProfesorWindow;
         
         /// <summary>
-        /// Control buscar_Profesor.
+        /// Control buscar_ProfesorWindow.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buscar_Profesor;
+        protected global::System.Web.UI.WebControls.Button buscar_ProfesorWindow;
     }
 }
