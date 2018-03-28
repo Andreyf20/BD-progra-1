@@ -13,6 +13,6 @@ BEGIN
 	INNER JOIN dbo.Evaluacion AS EVAL ON EVAL.ID = EE.IdEvaluacion
 	WHERE GE.IdGrupo = @idGrupo;
 
-	SELECT * FROM @evaluacion_estudiante_grupo;
+	SELECT * FROM @evaluacion_estudiante_grupo ORDER BY idEstudiante ASC;
 END
 go
