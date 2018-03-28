@@ -21,7 +21,7 @@ namespace BDD1
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        
+
         public static void estadogrupo_crear(string nombre)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -45,7 +45,7 @@ namespace BDD1
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        
+
         public static void estadogxe_crear(string nombre)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -70,7 +70,7 @@ namespace BDD1
             con.Close();
         }
 
-        public static void estudiante_crear(string Nombre, string Apellido,  string Telefono, string Correo, string Contraseña)
+        public static void estudiante_crear(string Nombre, string Apellido, string Telefono, string Correo, string Contraseña)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("estudiante_crear", con);
@@ -180,8 +180,8 @@ namespace BDD1
         }
 
         //Grupo x Estudiante
-        
-        public static void grupoxestudiante_actualizar_nota_acumulada(int id, decimal nota )
+
+        public static void grupoxestudiante_actualizar_nota_acumulada(int id, decimal nota)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupoxestudiante_actualizar_nota_acumulada", con);
@@ -203,7 +203,7 @@ namespace BDD1
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        
+
         public static void grupoxestudiante_crear(int idgrupo, int idestadogxe, int idestudiante, decimal NotaAcumulada)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -242,7 +242,7 @@ namespace BDD1
             con.Close();
         }
 
-        public static void grupoxrubro_crear(int idgrupo, int idRubro, int valorPorcentual, int esFijo, int cantidad)
+        public static void grupoxrubro_crear(int idgrupo, int idRubro, int valorPorcentual, string esFijo, int cantidad)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupoxrubro_crear", con);
@@ -250,7 +250,7 @@ namespace BDD1
             cmd.Parameters.Add("@idgrupo", SqlDbType.Int).Value = idgrupo;
             cmd.Parameters.Add("@idRubro", SqlDbType.Int).Value = idRubro;
             cmd.Parameters.Add("@valorPorcentual", SqlDbType.Int).Value = valorPorcentual;
-            cmd.Parameters.Add("@esFijo", SqlDbType.Int).Value = esFijo;
+            cmd.Parameters.Add("@esFijo", SqlDbType.VarChar).Value = esFijo;
             cmd.Parameters.Add("@cantidad", SqlDbType.Int).Value = cantidad;
             con.Open();
             cmd.ExecuteNonQuery();
@@ -270,13 +270,13 @@ namespace BDD1
             con.Close();
         }
 
-        public static void periodo_CambiarActivo(int id, int activo)
+        public static void periodo_CambiarActivo(int id, string activo)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("periodo_CambiarActivo", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
-            cmd.Parameters.Add("@activo", SqlDbType.Int).Value = activo;
+            cmd.Parameters.Add("@activo", SqlDbType.VarChar).Value = activo;
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
@@ -335,5 +335,30 @@ namespace BDD1
             return ret;
         }
 
+        public static List<Estudiante> xmlEstudiantes()
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand com = new SqlCommand("prueba_tabla", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapt = new SqlDataAdapter(com);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<Estudiante> estudiantes = new List<Estudiante>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                int ID = int.Parse(row["ID"].ToString());
+                string Nombre = row["Nombre"].ToString();
+                string Apellido = row["Apellido"].ToString();
+                string Correo = row["Correo"].ToString();
+                string Carnet = row["Carnet"].ToString();
+                string Telefono = row["Telefono"].ToString();
+                string Contraseña = row["Contraseña"].ToString();
+                Estudiante estudiante = new Estudiante(ID, Nombre, Apellido, Correo, Contraseña, Carnet);
+                estudiantes.Add(estudiante);
+            }
+            return estudiantes;
+        }
+            
+        
     }
 }

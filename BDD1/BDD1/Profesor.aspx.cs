@@ -198,7 +198,7 @@ namespace BDD1
         {
             int periodoID = int.Parse(RadioButtonListPeriodos3.SelectedItem.Text);
             periodos[periodoID-1].activo = 0;
-            Procedures.periodo_CambiarActivo(periodoID, 0);
+            //Procedures.periodo_CambiarActivo(periodoID, 0);
             Inicio();
             Label1.Text = "Periodo Terminado Correctamente";
         }

@@ -24,7 +24,7 @@ namespace BDD1
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Estudiante.aspx");
+            Server.Transfer("EstudianteLogIn.aspx");
         }
     }
 }
