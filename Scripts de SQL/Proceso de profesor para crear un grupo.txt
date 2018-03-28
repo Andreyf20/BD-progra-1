@@ -1,2 +1,5 @@
 1. Crea un grupo, para eso tiene que ver las tablas de periodos_disponibles y estadogrupo_disppnibles
-2. Se agrega a GrupoxRubro para eso se necesita el ver_grupos_profesor y rubros_disponibles
+2. Se agrega a GrupoxRubro, para eso se necesita el ver_grupos_profesor y rubros_disponibles
+3. Se agrega a Evaluacion, para eso se necesita el ver_grupoxrubro_profesor
+4. Para poder evaluar a un estudiante se necesita ver_evaluacion_estudiante_grupo y esto da una tabla con cada evaluacion de cada
+estudiante para poder cambiar la nota
