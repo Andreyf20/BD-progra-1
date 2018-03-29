@@ -12,8 +12,6 @@ namespace BDD1
         public decimal valorPorcentual;
         public string descripcion;
 
-        public static int cant = 0;
-
         public int idGrupoxRubro;
 
         public Evaluacion(int id, int idGrupoxRubro, string Nombre, DateTime Fecha, decimal ValorPorcentual, string descripcion)
@@ -24,17 +22,7 @@ namespace BDD1
             this.fecha = Fecha;
             this.valorPorcentual = ValorPorcentual;
             this.descripcion = descripcion;
-            cant++;
         }
-        public Evaluacion( int idGrupoxRubro, string Nombre, DateTime Fecha, decimal ValorPorcentual, string descripcion)
-        {
-            this.ID = cant++; 
-            this.idGrupoxRubro = idGrupoxRubro;
-            this.nombre = Nombre;
-            this.fecha = Fecha;
-            this.valorPorcentual = ValorPorcentual;
-            this.descripcion = descripcion;
-            
-        }
+        
     }
 }

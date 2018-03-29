@@ -14,6 +14,7 @@ namespace BDD1
         public static int ProfesorID;
         public static int GrupoID;
         public static int GrupoxRubroID;
+        public static Grupo notas;
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -428,7 +429,8 @@ namespace BDD1
             int periodoID = int.Parse(RadioButtonListPeriodos8.SelectedItem.Text);
             int indexGrupo = RadioButtonListGrupos4.SelectedIndex;
             List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
-            GrupoID = grupos[indexGrupo].ID;
+            
+            notas = grupos[indexGrupo];
             Server.Transfer("RegistrarNotas.aspx");
         }
         

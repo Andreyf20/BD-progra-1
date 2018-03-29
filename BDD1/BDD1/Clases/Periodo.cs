@@ -11,8 +11,6 @@ namespace BDD1
         public DateTime fechaInicio;
         public DateTime fechaFinal;
         public string activo;
-        public List<Grupo> grupos;
-        public static int cant = 0;
 
         public Periodo(int ID, DateTime fechaInicio, DateTime fechaFinal, string activo)
         {
@@ -20,17 +18,6 @@ namespace BDD1
             this.fechaFinal = fechaFinal;
             this.fechaInicio = fechaInicio;
             this.activo = activo;
-            this.grupos = new List<Grupo>();
-            cant++;
-        }
-
-        public Periodo( DateTime fechaInicio, DateTime fechaFinal, string activo)
-        {
-            this.ID = cant++;
-            this.fechaFinal = fechaFinal;
-            this.fechaInicio = fechaInicio;
-            this.activo = activo;
-            this.grupos = new List<Grupo>();
         }
     }
 }

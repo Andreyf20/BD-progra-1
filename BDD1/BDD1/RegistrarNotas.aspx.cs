@@ -12,27 +12,31 @@ namespace BDD1
     public partial class RegistrarNotas : System.Web.UI.Page
     {
         Grupo grupo;
-        List<Evaluacion> evaluaciones = new List<Evaluacion>();
-        List<Estudiante> estudiantes = new List<Estudiante>();
+        List<Evaluacion> evaluaciones;
+        List<GrupoxEstudiante> grupoxestudiantes;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            grupo = ProfesorWindow.grupoActivo;
-            for (int i = 0;i <grupo.grupoxRubros.Count;i++)
+            grupo = ProfesorWindow.notas;
+            evaluaciones = new List<Evaluacion>();
+            grupoxestudiantes = Procedures.ver_grupoxestudiante_grupo(grupo.ID);
+
+            
+
+            List<GrupoxRubro> grupoxRubros = Procedures.ver_grupoxrubro_grupo(grupo.ID);
+
+            for (int i = 0;i <grupoxRubros.Count;i++)
             {
-                GrupoxRubro gr = grupo.grupoxRubros[i];
-                for (int j=0;j<gr.evaluaciones.Count;j++)
+                GrupoxRubro gr = grupoxRubros[i];
+                List<Evaluacion> ev = Procedures.ver_evaluacion_grupoxrubro(gr.ID);
+                for (int j=0;j<ev.Count;j++)
                 {
-                    evaluaciones.Add(gr.evaluaciones[j]);
+                    evaluaciones.Add(ev[j]);
                 }
             }
-            for (int i = 0; i < grupo.grupoxEstudiantes.Count; i++)
-            {
-                GrupoxEstudiante gr = grupo.grupoxEstudiantes[i];
-                estudiantes.Add(gr.estudiante);
-            }
+            
 
-           registrarNotas(evaluaciones, estudiantes);
+           registrarNotas(evaluaciones, grupoxestudiantes);
         }
 
         public int buscarIndiceEvaluacion(string nombre)
@@ -50,27 +54,22 @@ namespace BDD1
             Button btn = (Button)sender;
             int index = buscarIndiceEvaluacion( btn.ID);
             TableRow row = Table1.Rows[index+1];
-            List<int> notas = new List<int>();
             for (int i=1; i<row.Cells.Count-1;i++ )
             {
                 TableCell cell = row.Cells[i];
                 TextBox txt = (TextBox)cell.Controls[0];
                 string[] partes = txt.ID.Split('-');
-                string indexEvaluacion = partes[0];
-                string indexEstudiante = partes[1];
-                notas.Add(int.Parse(txt.Text));
+                int indexEvaluacion = int.Parse(partes[0]);
+                int indexGrupoXEstudiante = int.Parse(partes[1]);
+                Procedures.evaluacionxestudiante_crear(indexGrupoXEstudiante,indexEvaluacion,decimal.Parse(txt.Text));
                 txt.Text = "";
             }
-            
-            
-            
         }
         
-        public void registrarNotas(List<Evaluacion> evaluaciones, List<Estudiante> estudiantes)
+        public void registrarNotas(List<Evaluacion> evaluaciones, List<GrupoxEstudiante> grupoxestudiantes)
         {
             for (int rowCtr = 0; rowCtr < evaluaciones.Count+1; rowCtr++)
             {
-                // Create new row and add it to the table.
                 TableRow tRow = new TableRow();
                 Table1.Rows.Add(tRow);
                 if (rowCtr == 0)
@@ -78,10 +77,10 @@ namespace BDD1
                     TableCell tCell = new TableCell();
                     tCell.Text = "Evaluaciones/Estudiante";
                     tRow.Cells.Add(tCell);
-                    for (int i = 0; i < estudiantes.Count; i++)
+                    for (int i = 0; i < grupoxestudiantes.Count; i++)
                     {
                         tCell = new TableCell();
-                        tCell.Text = "Estudiante: "+estudiantes[i].ID;
+                        tCell.Text = "Estudiante: "+ grupoxestudiantes[i].IdEstudiante;
                         tRow.Cells.Add(tCell);
                     }
                     TableCell Cell = new TableCell();
@@ -93,11 +92,12 @@ namespace BDD1
                     TableCell tCell = new TableCell();
                     tCell.Text = evaluaciones[rowCtr - 1].nombre;
                     tRow.Cells.Add(tCell);
-                    for (int cellCtr = 0; cellCtr < estudiantes.Count; cellCtr++)
+                    for (int cellCtr = 0; cellCtr < grupoxestudiantes.Count; cellCtr++)
                     {
                         tCell = new TableCell();
                         TextBox txt = new TextBox();
-                        txt.ID = (rowCtr - 1) + "-" + (cellCtr);
+                        txt.ID = evaluaciones[rowCtr - 1].ID + "-" + grupoxestudiantes[cellCtr].ID;
+                        txt.Text = txt.ID;
                         tCell.Controls.Add(txt);
                         tRow.Cells.Add(tCell);
                     }
