@@ -2,8 +2,8 @@
 {
     public class EstadoGrupo
     {
-        int ID;
-        string nombre;
+        public int ID;
+        public string nombre;
 
         public EstadoGrupo(int id, string nombre)
         {

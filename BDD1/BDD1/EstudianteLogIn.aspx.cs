@@ -22,12 +22,19 @@ namespace BDD1
 
         protected void buscar_estudiante_Click(object sender, EventArgs e)
         {
-            
             string correo = correo_Estudiante.Text;
             string contraseña = contraseña_Estudiante.Text;
-            //int respuesta = Procedures.validar_login_estudiante(correo, contraseña);
-            Server.Transfer("ConsultaEstudiante.aspx");
 
+            int ID = Procedures.validar_login_estudiante(correo, contraseña);
+            if (ID == -1)
+            {
+
+            }
+            else
+            {
+                ConsultaEstudiante.estudianteID = ID;
+                Server.Transfer("ConsultaEstudiante.aspx");
+            }
         }
     }
 }

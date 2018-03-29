@@ -12,20 +12,24 @@ namespace BDD1
         List<Grupo> grupos = new List<Grupo>();
         List<GrupoxEstudiante> gruposxEstudiante = new List<GrupoxEstudiante>();
         List<EvaluacionxEstudiante> evaluacionesxEstudiante = new List<EvaluacionxEstudiante>();
-        public static Estudiante estudiante;
+        public static int estudianteID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            escogerGrupos();
-            RadioButtonList1.Items.Clear();
-            if (grupos.Count != 0)
-            {
-                for (int i = 0; i < grupos.Count; i++)
-                {
-                    RadioButtonList1.Items.Add(new ListItem(grupos[i].nombreCurso));
-                }
-            }
-            escogerEvaluaciones();
+            System.Data.DataTable dt = Procedures.verNotas(estudianteID);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+            //escogerGrupos();
+            //RadioButtonList1.Items.Clear();
+            //if (grupos.Count != 0)
+            //{
+            //    for (int i = 0; i < grupos.Count; i++)
+            //    {
+            //        RadioButtonList1.Items.Add(new ListItem(grupos[i].nombreCurso));
+            //    }
+            //}
+            //escogerEvaluaciones();
         }
 
         private void escogerEvaluaciones()
@@ -50,17 +54,17 @@ namespace BDD1
 
         private void escogerGrupos()
         {
-            for (int i = 0; i < BD.periodos.Count; i++)
+            for (int i = 0; i < BD.periodosActivos.Count; i++)
             {
-                for (int j = 0; j < BD.periodos[i].grupos.Count; j++)
-                    grupos.Add(BD.periodos[i].grupos[j]);
+                for (int j = 0; j < BD.periodosActivos[i].grupos.Count; j++)
+                    grupos.Add(BD.periodosActivos[i].grupos[j]);
             }
             List<Grupo> gruposNew = new List<Grupo>();
             for (int x = 0; x < grupos.Count; x++)
             {
                 for (int y = 0; y < grupos[x].grupoxEstudiantes.Count; y++)
                 {
-                    if (grupos[x].grupoxEstudiantes[y].estudiante.correo.Equals(estudiante.correo))
+                    if (grupos[x].grupoxEstudiantes[y].estudiante.ID==estudianteID)
                         gruposNew.Add(grupos[x]);
                 }
             }

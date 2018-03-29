@@ -578,5 +578,20 @@ namespace BDD1
             return evaluaciones;
         }
 
+        //VerNotas
+
+        public static DataTable verNotas(int idEstudiante)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand com = new SqlCommand("ver_notas_estudiante", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add("@idEstudiante", SqlDbType.Int).Value = idEstudiante;
+            SqlDataAdapter adapt = new SqlDataAdapter(com);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            return dataset;
+        }
+        
+
     }
 }

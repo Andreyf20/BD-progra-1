@@ -25,8 +25,6 @@ namespace BDD1
 
         }
         
-
-
         //Inicio
         protected void ButtonInicio_Click(object sender, EventArgs e)
         {
@@ -71,7 +69,7 @@ namespace BDD1
         protected void ButtonCrearPeriodoOK_Click(object sender, EventArgs e)
         {
             Periodo periodoActual = new Periodo(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
-            BD.periodos.Add(periodoActual);
+            BD.periodosActivos.Add(periodoActual);
             Procedures.periodo_crear(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
             Inicio();
             Label1.Text = "Periodo Creado Correctamente";
@@ -84,11 +82,11 @@ namespace BDD1
             PanelAnularPeriodo.Visible = false;
             PanelTerminarPeriodo.Visible = false;
             RadioButtonListPeriodos1.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos1.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos1.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
             }
         }
@@ -98,13 +96,13 @@ namespace BDD1
             int periodoID = int.Parse(RadioButtonListPeriodos1.SelectedItem.Text);
             if (RadioButtonList2.SelectedItem.Text.Equals("Activo"))
             {
-                //Procedures.periodo_CambiarActivo(periodoID, 1);
-                BD.periodos[periodoID-1].activo = "True";
+                Procedures.periodo_CambiarActivo(periodoID, "True");
+                BD.periodosActivos[periodoID].activo = "True";
             }
             else
             {
-                //Procedures.periodo_CambiarActivo(periodoID, 0);
-                BD.periodos[periodoID-1].activo = "False";
+                Procedures.periodo_CambiarActivo(periodoID, "False");
+                BD.periodosActivos[periodoID].activo = "False";
             }
             Inicio();
             Label1.Text = "Periodo Modificado Correctamente";
@@ -117,11 +115,11 @@ namespace BDD1
             PanelAnularPeriodo.Visible = true;
             PanelTerminarPeriodo.Visible = false;
             RadioButtonListPeriodos2.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos2.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos2.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
             }
         }
@@ -129,8 +127,8 @@ namespace BDD1
         protected void ButtonAnularPeriodoOK_Click(object sender, EventArgs e)
         {
             int periodoID = int.Parse(RadioButtonListPeriodos2.SelectedItem.Text);
-            BD.periodos[periodoID-1] = null;
-            //Procedures.periodo_borrar(periodoID);
+            BD.periodosActivos[periodoID] = null;
+            Procedures.periodo_borrar(periodoID);
             Inicio();
             Label1.Text = "Periodo Anulado Correctamente";
         }
@@ -142,11 +140,11 @@ namespace BDD1
             PanelAnularPeriodo.Visible = false;
             PanelTerminarPeriodo.Visible = true;
             RadioButtonListPeriodos3.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos3.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos3.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
             }
         }
@@ -154,8 +152,8 @@ namespace BDD1
         protected void ButtonTerminarPeriodoOK_Click(object sender, EventArgs e)
         {
             int periodoID = int.Parse(RadioButtonListPeriodos3.SelectedItem.Text);
-            BD.periodos[periodoID-1].activo = "False";
-            //Procedures.periodo_CambiarActivo(periodoID, 0);
+            BD.periodosActivos[periodoID].activo = "False";
+            Procedures.periodo_CambiarActivo(periodoID, "False");
             Inicio();
             Label1.Text = "Periodo Terminado Correctamente";
         }
@@ -175,11 +173,18 @@ namespace BDD1
             PanelAnularGrupo.Visible = false;
             PanelTerminarGrupo.Visible = false;
             RadioButtonListPeriodos4.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos4.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos4.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
+                }
+            }
+            if (BD.estadosGrupo.Count != 0 )
+            {
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
+                {
+                    RadioButtonListEstadoGrupo.Items.Add(new ListItem(BD.estadosGrupo[i].nombre));
                 }
             }
         }
@@ -187,11 +192,14 @@ namespace BDD1
         protected void ButtonCrearGrupoOK_Click(object sender, EventArgs e)
         {
             int periodoID = int.Parse(RadioButtonListPeriodos4.SelectedItem.Text);
+            int estadoID = RadioButtonListEstadoGrupo.SelectedIndex;
             string nombre = TextBoxNombreGrupo.Text;
             string codigoGrupo = TextBoxCodigoGrupo.Text;
-            //Grupo nuevo = new Grupo(, periodoID, ProfesorID, nombre, codigoGrupo);
-            //periodos[periodoID-1].grupos.Add(nuevo);
-            //Procedures.grupo_crear(,ProfesorID, periodoID, nombre, codigoGrupo);
+
+            Grupo nuevo = new Grupo(estadoID, periodoID, ProfesorID, nombre, codigoGrupo);
+            BD.periodosActivos[periodoID].grupos.Add(nuevo);
+            Procedures.grupo_crear(estadoID, ProfesorID, periodoID, nombre, codigoGrupo);
+
             PanelCrearRubros.Visible = true;
             DropDownListTipoRubro.Items.Clear();
             for(int i=0; i<BD.rubros.Count;i++)
@@ -216,21 +224,22 @@ namespace BDD1
 
         protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
         {
+
             int periodoID = int.Parse(RadioButtonListPeriodos4.SelectedItem.Text);
-            int idGrupo = BD.periodos[periodoID - 1].grupos.Count;
+            int idGrupo = BD.periodosActivos[periodoID].grupos.Count;
             int idRubro = DropDownListTipoRubro.SelectedIndex;
             decimal valorPorcentual = decimal.Parse(TextBoxPorcentajeRubro.Text);
             if (RadioButtonList1.SelectedItem.Text.Equals("Fijo"))
             {
                 int cantidad = int.Parse(TextBoxCantidadRubro.Text);
-                BD.periodos[periodoID - 1].grupos.Last().grupoxRubros.Add(new GrupoxRubro(valorPorcentual, "True", cantidad, idGrupo, idRubro));
+                BD.periodosActivos[periodoID].grupos.Last().grupoxRubros.Add(new GrupoxRubro(valorPorcentual, "True", cantidad, idGrupo, idRubro));
                 PanelAregarRubro.Visible = true;
-                //Procedures.grupoxrubro_crear(idGrupo,idRubro, valorPorcentual, "True", cantidad);
+                Procedures.grupoxrubro_crear(idGrupo,idRubro, valorPorcentual, "True", cantidad);
             }
             else
             {
-                BD.periodos[periodoID - 1].grupos.Last().grupoxRubros.Add(new GrupoxRubro( valorPorcentual, "False", 0,idGrupo,idRubro));
-                //Procedures.grupoxrubro_crear(idGrupo,idRubro, valorPorcentual, "False",0);
+                BD.periodosActivos[periodoID].grupos.Last().grupoxRubros.Add(new GrupoxRubro( valorPorcentual, "False", 0,idGrupo,idRubro));
+                Procedures.grupoxrubro_crear(idGrupo,idRubro, valorPorcentual, "False",0);
                 TextBoxPorcentajeRubro.Text = "";
             }
         }
@@ -238,16 +247,17 @@ namespace BDD1
         protected void ButtonAgregarRubroOK_Click(object sender, EventArgs e)
         {
             int periodoID = int.Parse(RadioButtonListPeriodos4.SelectedItem.Text);
-            GrupoxRubro grupoxRubro = BD.periodos[periodoID - 1].grupos.Last().grupoxRubros.Last();
-            int idGrupoxRubro = BD.periodos[periodoID - 1].grupos.Last().grupoxRubros.Count;
+            GrupoxRubro grupoxRubro = BD.periodosActivos[periodoID].grupos.Last().grupoxRubros.Last();
+            int idGrupoxRubro = grupoxRubro.ID;
 
             DateTime date = CalendarEvaluacion.SelectedDate;
             string nombre = TextBoxNombreRubro.Text;
             string descripción = TextBoxDescripcionRubro.Text;
             decimal valor = decimal.Parse(TextBoxValorRubro.Text);
 
-            //Procedures.evaluacion_crear(idGrupoxRubro, nombre, date, valor, descripción);
+            Procedures.evaluacion_crear(idGrupoxRubro, nombre, date, valor, descripción);
             grupoxRubro.evaluaciones.Add(new Evaluacion(idGrupoxRubro, nombre, date, valor, descripción));
+
             string instancia = "Nombre: " + TextBoxNombreRubro.Text + "Descripción: " + TextBoxDescripcionRubro.Text + "Valor: " + TextBoxValorRubro.Text + "\n";
             TextAreaInstancias.Value += instancia;
             TextBoxNombreRubro.Text = "";
@@ -280,11 +290,11 @@ namespace BDD1
             PanelAnularGrupo.Visible = false;
             PanelTerminarGrupo.Visible = false;
             RadioButtonListPeriodos5.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos5.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos5.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
             }
         }
@@ -292,7 +302,7 @@ namespace BDD1
         protected void SelectedIndexChangedPeriodo1(object sender, EventArgs e)
         {
             int indexPeriodo = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
-            Periodo periodo = BD.periodos[indexPeriodo-1];
+            Periodo periodo = BD.periodosActivos[indexPeriodo];
             RadioButtonListGrupos1.Items.Clear();
             if (periodo.grupos.Count != 0)
             {
@@ -323,11 +333,11 @@ namespace BDD1
             PanelAnularGrupo.Visible = true;
             PanelTerminarGrupo.Visible = false;
             RadioButtonListPeriodos6.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos6.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos6.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
             }
         }
@@ -335,7 +345,7 @@ namespace BDD1
         protected void SelectedIndexChangedPeriodo2(object sender, EventArgs e)
         {
             int indexPeriodo = int.Parse(RadioButtonListPeriodos6.SelectedItem.Text);
-            Periodo periodo = BD.periodos[indexPeriodo-1];
+            Periodo periodo = BD.periodosActivos[indexPeriodo];
             RadioButtonListGrupos2.Items.Clear();
             if (periodo.grupos.Count != 0)
             {
@@ -350,8 +360,8 @@ namespace BDD1
         {
             int periodo = int.Parse(RadioButtonListPeriodos6.SelectedItem.Text);
             int indexGrupo = RadioButtonListGrupos2.SelectedIndex;
-            BD.periodos[periodo - 1].grupos[indexGrupo - 1] = null;
-            //Procedures.grupo_borrar(periodos[periodo - 1].grupos[indexGrupo - 1].ID);
+            BD.periodosActivos[periodo - 1].grupos[indexGrupo - 1] = null;
+            Procedures.grupo_borrar(BD.periodosActivos[periodo].grupos[indexGrupo].ID);
             Inicio();
             Label1.Text = "Grupo Anulado Correctamente";
         }
@@ -363,11 +373,11 @@ namespace BDD1
             PanelAnularGrupo.Visible = false;
             PanelTerminarGrupo.Visible = true;
             RadioButtonListPeriodos7.Items.Clear();
-            if (BD.periodos.Count != 0)
+            if (BD.periodosActivos.Count != 0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos7.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos7.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
             }
         }
@@ -375,7 +385,7 @@ namespace BDD1
         protected void SelectedIndexChangedPeriodo3(object sender, EventArgs e)
         {
             int indexPeriodo = int.Parse(RadioButtonListPeriodos7.SelectedItem.Text);
-            Periodo periodo = BD.periodos[indexPeriodo-1];
+            Periodo periodo = BD.periodosActivos[indexPeriodo-1];
             RadioButtonListGrupos3.Items.Clear();
             if (periodo.grupos.Count != 0)
             {
@@ -399,11 +409,11 @@ namespace BDD1
             Inicio();
             PanelRegistrarNotas.Visible = true;
             RadioButtonListPeriodos8.Items.Clear();
-            if (BD.periodos.Count!=0)
+            if (BD.periodosActivos.Count!=0)
             {
-                for (int i = 0; i < BD.periodos.Count; i++)
+                for (int i = 0; i < BD.periodosActivos.Count; i++)
                 {
-                    RadioButtonListPeriodos8.Items.Add(new ListItem(BD.periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos8.Items.Add(new ListItem(BD.periodosActivos[i].ID.ToString()));
                 }
                 ButtonOKGrupo.Visible = true;
             }
@@ -413,7 +423,7 @@ namespace BDD1
         protected void SelectedIndexChangedPeriodo4(object sender, EventArgs e)
         {
             int indexPeriodo = int.Parse(RadioButtonListPeriodos8.SelectedItem.Text);
-            Periodo periodo = BD.periodos[indexPeriodo-1];
+            Periodo periodo = BD.periodosActivos[indexPeriodo];
             RadioButtonListGrupos4.Items.Clear();
             if (periodo.grupos.Count != 0)
             {
@@ -428,7 +438,7 @@ namespace BDD1
         {
             int periodoID = int.Parse(RadioButtonListPeriodos8.SelectedItem.Text);
             int indexGrupo = RadioButtonListGrupos4.SelectedIndex;
-            grupoActivo = BD.periodos[periodoID - 1].grupos[indexGrupo];
+            grupoActivo = BD.periodosActivos[periodoID].grupos[indexGrupo];
             Server.Transfer("RegistrarNotas.aspx");
         }
         

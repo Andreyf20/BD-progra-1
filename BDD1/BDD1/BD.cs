@@ -7,11 +7,14 @@ namespace BDD1
 {
     public  class BD
     {
-        public static List<Estudiante> estudiantes = new List<Estudiante>();
-        public static List<Profesor> profesores = new List<Profesor>();
-        public static List<Periodo> periodos = new List<Periodo>();
+
+        public static List<Periodo> periodosActivos = new List<Periodo>();
         public static List<Rubro> rubros = new List<Rubro>();
         public static List<EstadoGrupo> estadosGrupo = new List<EstadoGrupo>();
+
+
+        public static List<Estudiante> estudiantes = new List<Estudiante>();
+        public static List<Profesor> profesores = new List<Profesor>();
         public static List<EstadoGrupoxEstudiante> estadoGruposxEstudiante = new List<EstadoGrupoxEstudiante>();
         public static List<GrupoxRubro> gruposxRubro = new List<GrupoxRubro>();
         public static List<GrupoxEstudiante> gruposxEstudiante = new List<GrupoxEstudiante>();
@@ -20,16 +23,16 @@ namespace BDD1
 
         public BD()
         {
-            //estudiantes = Procedures.xmlEstudiantes();
-            //profesores = Procedures.xmlProfesores();
-            periodos = Procedures.xmlPeriodosActivos();
-            //rubros = Procedures.xmlRubros();
-            //estadosGrupo = Procedures.xmlEstadoGrupo();
-            //estadoGruposxEstudiante = Procedures.xmlEstadoGXE();
-            //gruposxRubro = Procedures.xmlGrupoxRubro();
-            //gruposxEstudiante = Procedures.xmlGrupoxEstudiante();
-            //evaluaciones = Procedures.xmlEvaluacion();
-            //evaluacionesxEstudiante = Procedures.xmlEvaluacionxEstudiante();
+            estudiantes = Procedures.xmlEstudiantes();
+            profesores = Procedures.xmlProfesores();
+            periodosActivos = Procedures.xmlPeriodosActivos();
+            rubros = Procedures.xmlRubros();
+            estadosGrupo = Procedures.xmlEstadoGrupo();
+            estadoGruposxEstudiante = Procedures.xmlEstadoGXE();
+            gruposxRubro = Procedures.xmlGrupoxRubro();
+            gruposxEstudiante = Procedures.xmlGrupoxEstudiante();
+            evaluaciones = Procedures.xmlEvaluacion();
+            evaluacionesxEstudiante = Procedures.xmlEvaluacionxEstudiante();
         }
 
         internal static EstadoGrupo getEstadoGrupo(int id)

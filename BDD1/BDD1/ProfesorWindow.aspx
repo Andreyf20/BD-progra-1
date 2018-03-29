@@ -94,6 +94,9 @@
                             Seleccione el ID del Periodo:
                             <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos4" runat="server">
                             </asp:RadioButtonList>
+                            Seleccione el estado del Grupo:
+                            <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListEstadoGrupo" runat="server">
+                            </asp:RadioButtonList>
                             Nombre Curso:&nbsp;
                             <asp:TextBox ID="TextBoxNombreGrupo" runat="server"></asp:TextBox>
                             <br />
