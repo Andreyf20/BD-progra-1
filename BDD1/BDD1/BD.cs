@@ -20,16 +20,16 @@ namespace BDD1
 
         public BD()
         {
-            estudiantes = Procedures.xmlEstudiantes();
-            profesores = Procedures.xmlProfesores();
-            periodos = Procedures.xmlPeriodo();
-            rubros = Procedures.xmlRubros();
-            estadosGrupo = Procedures.xmlEstadoGrupo();
-            estadoGruposxEstudiante = Procedures.xmlEstadoGXE();
-            gruposxRubro = Procedures.xmlGrupoxRubro();
-            gruposxEstudiante = Procedures.xmlGrupoxEstudiante();
-            evaluaciones = Procedures.xmlEvaluacion();
-            evaluacionesxEstudiante = Procedures.xmlEvaluacionxEstudiante();
+            //estudiantes = Procedures.xmlEstudiantes();
+            //profesores = Procedures.xmlProfesores();
+            periodos = Procedures.xmlPeriodosActivos();
+            //rubros = Procedures.xmlRubros();
+            //estadosGrupo = Procedures.xmlEstadoGrupo();
+            //estadoGruposxEstudiante = Procedures.xmlEstadoGXE();
+            //gruposxRubro = Procedures.xmlGrupoxRubro();
+            //gruposxEstudiante = Procedures.xmlGrupoxEstudiante();
+            //evaluaciones = Procedures.xmlEvaluacion();
+            //evaluacionesxEstudiante = Procedures.xmlEvaluacionxEstudiante();
         }
 
         internal static EstadoGrupo getEstadoGrupo(int id)

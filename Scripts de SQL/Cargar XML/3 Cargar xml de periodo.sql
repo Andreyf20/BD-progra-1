@@ -4,7 +4,8 @@ GO
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
-FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 --AQUI VA EL DIRECTORIO DEL XML
 
 

@@ -13,7 +13,10 @@ namespace BDD1
     {
         public static int ProfesorID;
         public static Grupo grupoActivo;
-        protected void Page_Load(object sender, EventArgs e){}
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            BD bd = new BD();
+        }
 
         //Cargar Datos
         protected void Button1_Click(object sender, EventArgs e)
@@ -69,7 +72,7 @@ namespace BDD1
         {
             Periodo periodoActual = new Periodo(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
             BD.periodos.Add(periodoActual);
-            //Procedures.periodo_crear(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
+            Procedures.periodo_crear(CalendarInicio.SelectedDate, CalendarFinal.SelectedDate);
             Inicio();
             Label1.Text = "Periodo Creado Correctamente";
         }

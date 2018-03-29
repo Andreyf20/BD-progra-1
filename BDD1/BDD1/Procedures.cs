@@ -219,7 +219,6 @@ namespace BDD1
         }
 
         //Grupo x Rubro
-
         public static void grupoxrubro_actualizar_cantidad(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -237,6 +236,18 @@ namespace BDD1
             SqlCommand cmd = new SqlCommand("grupoxrubro_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public static void grupoxrubro_cambiar_cantidad(int id, int cantidad)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("grupoxrubro_cambiar_cantidad", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@cantidad", SqlDbType.Int).Value = cantidad;
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
@@ -319,14 +330,13 @@ namespace BDD1
         }
 
         //Validar Log In
-
-        public static int validar_login_estudiante(string correo, string contraseña)
+        public static int validar_login_estudiante(string @email, string @password)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("validar_login_estudiante", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = correo;
-            cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = contraseña;
+            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = @email;
+            cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = @password;
             cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
@@ -335,6 +345,21 @@ namespace BDD1
             return ret;
         }
 
+        public static int validar_login_profesor(string @email, string @password)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("validar_login_profesor", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = @email;
+            cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = @password;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
+            con.Close();
+            return ret;
+        }
+        
         //XML
 
         public static List<Estudiante> xmlEstudiantes()
@@ -382,10 +407,10 @@ namespace BDD1
             return profesores;
         }
 
-        public static List<Periodo> xmlPeriodo()
+        public static List<Periodo> xmlPeriodosActivos()
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
+            SqlCommand com = new SqlCommand("ver_periodos_disponibles", con);
             com.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter adapt = new SqlDataAdapter(com);
             DataTable dataset = new DataTable();
@@ -406,7 +431,7 @@ namespace BDD1
         public static List<Rubro> xmlRubros()
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
+            SqlCommand com = new SqlCommand("ver_rubros_disponibles", con);
             com.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter adapt = new SqlDataAdapter(com);
             DataTable dataset = new DataTable();
@@ -425,7 +450,7 @@ namespace BDD1
         public static List<EstadoGrupo> xmlEstadoGrupo()
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
+            SqlCommand com = new SqlCommand("ver_estadogrupo_disponibles", con);
             com.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter adapt = new SqlDataAdapter(com);
             DataTable dataset = new DataTable();
