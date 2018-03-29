@@ -493,6 +493,31 @@ namespace BDD1
             return EGS;
         }
 
+        public static List<Grupo> ver_grupos_periodo_profesor(int @IDPeriodo, int @IDProfesor)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("ver_grupos_periodo_profesor", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@idPeriodo", SqlDbType.Int).Value = @IDPeriodo;
+            cmd.Parameters.Add("@idProfesor", SqlDbType.Int).Value = @IDProfesor;
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<Grupo> EGS = new List<Grupo>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                int ID = int.Parse(row["ID"].ToString());
+                int idEstado = int.Parse(row["IdEstado"].ToString());
+                int idPeriodo = int.Parse(row["IdPeriodo"].ToString());
+                int idProfesor = int.Parse(row["idProfesor"].ToString());
+                string NombreCurso = row["NombreCurso"].ToString();
+                string CodigoGrupo = row["CodigoGrupo"].ToString();
+                Grupo EG = new Grupo(idEstado, idPeriodo, idProfesor, NombreCurso, CodigoGrupo);
+                EGS.Add(EG);
+            }
+            return EGS;
+        }
+
         //public static List<EstadoGrupoxEstudiante> xmlEstadoGXE()
         //{
         //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");

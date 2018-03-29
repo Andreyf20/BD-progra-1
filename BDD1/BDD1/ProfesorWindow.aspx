@@ -14,7 +14,6 @@
 <body>
     <form id="form1" runat="server">
         <div >
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cargar Datos" />
         </div>
         <asp:Panel ID="PanelMenu" runat="server" Visible="true">
             <asp:Button ID="ButtonInicio" runat="server" Text="Inicio" OnClick="ButtonInicio_Click" Width="24%" Height="50px"/>
