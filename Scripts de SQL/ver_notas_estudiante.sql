@@ -8,12 +8,11 @@ BEGIN
 	INSERT INTO @tablaResultados SELECT e.ID, e.Carnet, g.ID, g.NombreCurso, eva.Nombre, ee.Nota, eva.ValorPorcentual
 	FROM dbo.Estudiante AS e INNER JOIN 
 	dbo.GrupoxEstudiante AS ge ON @idEstudiante = ge.IdEstudiante INNER JOIN
-	dbo.EvaluacionesxEstudiantes AS ee ON ee.IdGrupoxEstudiante = ge.ID INNER JOIN
 	dbo.Grupo AS g ON g.ID = ge.IdGrupo INNER JOIN
-	dbo.Evaluacion AS eva ON eva.ID = ee.IdEvaluacion;
+	dbo.EvaluacionesxEstudiantes AS ee ON ee.IdGrupoxEstudiante = ge.ID INNER JOIN
+	dbo.Evaluacion AS eva ON eva.ID = ee.IdEvaluacion
+	WHERE e.ID = @idEstudiante;
 
-	DELETE FROM @tablaResultados WHERE idEstudiante != @idEstudiante;
-
-	SELECT * FROM @tablaResultados;
+	SELECT * FROM @tablaResultados ORDER BY idGrupo ASC;
 END
 go

@@ -11,6 +11,6 @@ BEGIN
 	dbo.Periodo AS P ON G.IdPeriodo = P.ID
 	WHERE G.idProfesor = @idProfesor;
 
-	SELECT * FROM @grupos_profesor;
+	SELECT * FROM @grupos_profesor ORDER BY idGrupo ASC;
 END
 go
