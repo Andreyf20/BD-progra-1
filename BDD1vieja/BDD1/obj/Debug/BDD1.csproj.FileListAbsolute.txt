@@ -1,0 +1,173 @@
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\BDD1.dll.config
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\BDD1.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\BDD1.pdb
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\csc.exe
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\csc.exe.config
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\csc.rsp
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\csi.exe
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\csi.exe.config
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\csi.rsp
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.AppContext.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Console.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.IO.Compression.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.Claims.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Threading.Thread.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.ValueTuple.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\vbc.exe
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\vbc.exe.config
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\vbc.rsp
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\obj\Debug\BDD1.csprojResolveAssemblyReference.cache
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\obj\Debug\BDD1.csproj.CoreCompileInputs.cache
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\obj\Debug\BDD1.csproj.CopyComplete
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\obj\Debug\BDD1.dll
+C:\Users\Rubén González V\source\repos\BDD1\BDD1\obj\Debug\BDD1.pdb
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\BDD1.dll.config
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\BDD1.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\BDD1.pdb
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\csc.exe
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\csc.exe.config
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\csc.rsp
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\csi.exe
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\csi.exe.config
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\csi.rsp
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CSharp.Core.targets
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.Win32.Primitives.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.AppContext.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Collections.Immutable.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Console.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Diagnostics.Process.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Diagnostics.StackTrace.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.Compression.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.Primitives.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.Pipes.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Reflection.Metadata.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.AccessControl.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Claims.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Encoding.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Primitives.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Principal.Windows.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Text.Encoding.CodePages.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Threading.Thread.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.ValueTuple.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.ReaderWriter.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.XmlDocument.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.XPath.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.XPath.XDocument.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.exe
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.exe.config
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.rsp
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe.config
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csprojResolveAssemblyReference.cache
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csproj.CoreCompileInputs.cache
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.dll
+A:\GIT_ROOT\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.pdb
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\BDD1.dll.config
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\BDD1.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\BDD1.pdb
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\csc.exe
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\csc.exe.config
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\csc.rsp
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\csi.exe
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\csi.exe.config
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\csi.rsp
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.AppContext.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Console.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.Compression.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Claims.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Threading.Thread.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.ValueTuple.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.exe
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.exe.config
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\vbc.rsp
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csproj.CoreCompileInputs.cache
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csproj.CopyComplete
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.dll
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.pdb
+C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\BDD1\BDD1\obj\Debug\BDD1.csprojResolveAssemblyReference.cache

@@ -24,12 +24,12 @@ namespace BDD1
             cant++;
         }
 
-        public Periodo( DateTime fechaInicio, DateTime fechaFinal)
+        public Periodo( DateTime fechaInicio, DateTime fechaFinal, string activo)
         {
             this.ID = cant++;
             this.fechaFinal = fechaFinal;
             this.fechaInicio = fechaInicio;
-            this.activo = "True";
+            this.activo = activo;
             this.grupos = new List<Grupo>();
         }
     }

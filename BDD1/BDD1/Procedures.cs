@@ -164,7 +164,7 @@ namespace BDD1
             con.Close();
         }
 
-        public static void grupo_crear(int idEstado, int idPeriodo, int idPforesor, string NombreCurso, string CodigoGrupo)
+        public static int grupo_crear(int idEstado, int idPeriodo, int idPforesor, string NombreCurso, string CodigoGrupo)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupo_crear", con);
@@ -174,9 +174,12 @@ namespace BDD1
             cmd.Parameters.Add("@idPforesor", SqlDbType.Int).Value = idPforesor;
             cmd.Parameters.Add("@NombreCurso", SqlDbType.VarChar).Value = NombreCurso;
             cmd.Parameters.Add("@CodigoGrupo", SqlDbType.VarChar).Value = CodigoGrupo;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         //Grupo x Estudiante
@@ -293,16 +296,19 @@ namespace BDD1
             con.Close();
         }
 
-        public static void periodo_crear(DateTime inicio, DateTime fin)
+        public static int periodo_crear(DateTime inicio, DateTime fin)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("periodo_crear", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@inicio", SqlDbType.Date).Value = inicio;
             cmd.Parameters.Add("@final", SqlDbType.Date).Value = fin;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         //Rubro
@@ -359,53 +365,53 @@ namespace BDD1
             con.Close();
             return ret;
         }
-        
+
         //XML
 
-        public static List<Estudiante> xmlEstudiantes()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<Estudiante> estudiantes = new List<Estudiante>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["ID"].ToString());
-                string Nombre = row["Nombre"].ToString();
-                string Apellido = row["Apellido"].ToString();
-                string Correo = row["Correo"].ToString();
-                string Carnet = row["Carnet"].ToString();
-                string Telefono = row["Telefono"].ToString();
-                string Contraseña = row["Contraseña"].ToString();
-                Estudiante estudiante = new Estudiante(ID, Nombre, Apellido, Correo, Contraseña, Carnet);
-                estudiantes.Add(estudiante);
-            }
-            return estudiantes;
-        }
+        //public static List<Estudiante> xmlEstudiantes()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<Estudiante> estudiantes = new List<Estudiante>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["ID"].ToString());
+        //        string Nombre = row["Nombre"].ToString();
+        //        string Apellido = row["Apellido"].ToString();
+        //        string Correo = row["Correo"].ToString();
+        //        string Carnet = row["Carnet"].ToString();
+        //        string Telefono = row["Telefono"].ToString();
+        //        string Contraseña = row["Contraseña"].ToString();
+        //        Estudiante estudiante = new Estudiante(ID, Nombre, Apellido, Correo, Contraseña, Carnet);
+        //        estudiantes.Add(estudiante);
+        //    }
+        //    return estudiantes;
+        //}
 
-        public static List<Profesor> xmlProfesores()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<Profesor> profesores = new List<Profesor>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["id"].ToString());
-                string Nombre = row["Nombre"].ToString();
-                string Correo = row["Correo"].ToString();
-                string Contraseña = row["Contraseña"].ToString();
-                Profesor profesor = new Profesor(ID, Nombre, Correo, Contraseña);
-                profesores.Add(profesor);
-            }
-            return profesores;
-        }
+        //public static List<Profesor> xmlProfesores()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<Profesor> profesores = new List<Profesor>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["id"].ToString());
+        //        string Nombre = row["Nombre"].ToString();
+        //        string Correo = row["Correo"].ToString();
+        //        string Contraseña = row["Contraseña"].ToString();
+        //        Profesor profesor = new Profesor(ID, Nombre, Correo, Contraseña);
+        //        profesores.Add(profesor);
+        //    }
+        //    return profesores;
+        //}
 
         public static List<Periodo> xmlPeriodosActivos()
         {
@@ -419,7 +425,28 @@ namespace BDD1
             foreach (DataRow row in dataset.Rows)
             {
                 int ID = int.Parse(row["ID"].ToString());
-                DateTime FechaInicio = DateTime.Parse( row["FechaInicio"].ToString());
+                DateTime FechaInicio = DateTime.Parse(row["FechaInicio"].ToString());
+                DateTime FechaFinal = DateTime.Parse(row["FechaFinal"].ToString());
+                string Activo = row["Activo"].ToString();
+                Periodo periodo = new Periodo(ID, FechaInicio, FechaFinal, Activo);
+                periodos.Add(periodo);
+            }
+            return periodos;
+        }
+
+        public static List<Periodo> xmlPeriodos()
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand com = new SqlCommand("ver_periodos", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapt = new SqlDataAdapter(com);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<Periodo> periodos = new List<Periodo>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                int ID = int.Parse(row["ID"].ToString());
+                DateTime FechaInicio = DateTime.Parse(row["FechaInicio"].ToString());
                 DateTime FechaFinal = DateTime.Parse(row["FechaFinal"].ToString());
                 string Activo = row["Activo"].ToString();
                 Periodo periodo = new Periodo(ID, FechaInicio, FechaFinal, Activo);
@@ -466,117 +493,117 @@ namespace BDD1
             return EGS;
         }
 
-        public static List<EstadoGrupoxEstudiante> xmlEstadoGXE()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<EstadoGrupoxEstudiante> EGES = new List<EstadoGrupoxEstudiante>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["ID"].ToString());
-                string Nombre = row["Nombre"].ToString();
-                EstadoGrupoxEstudiante EGE = new EstadoGrupoxEstudiante(ID, Nombre);
-                EGES.Add(EGE);
-            }
-            return EGES;
-        }
+        //public static List<EstadoGrupoxEstudiante> xmlEstadoGXE()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<EstadoGrupoxEstudiante> EGES = new List<EstadoGrupoxEstudiante>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["ID"].ToString());
+        //        string Nombre = row["Nombre"].ToString();
+        //        EstadoGrupoxEstudiante EGE = new EstadoGrupoxEstudiante(ID, Nombre);
+        //        EGES.Add(EGE);
+        //    }
+        //    return EGES;
+        //}
 
-        public static List<GrupoxRubro> xmlGrupoxRubro()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<GrupoxRubro> grupos = new List<GrupoxRubro>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["ID"].ToString());
-                int IdGrupo = int.Parse(row["IdGrupo"].ToString());
-                int IdRubro = int.Parse(row["IdRubro"].ToString());
-                int Cantidad = int.Parse(row["Cantidad"].ToString());
-                decimal ValorPorcentual = decimal.Parse(row["ValorPorcentual"].ToString());
-                string EsFijo = row["EsFijo"].ToString();
-                Rubro rubro = BD.getRubro(IdRubro);
-                GrupoxRubro grupo = new GrupoxRubro(ID, rubro, ValorPorcentual, EsFijo, Cantidad, IdGrupo, IdRubro);
-                grupos.Add(grupo);
-            }
-            return grupos;
-        }
+        //public static List<GrupoxRubro> xmlGrupoxRubro()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<GrupoxRubro> grupos = new List<GrupoxRubro>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["ID"].ToString());
+        //        int IdGrupo = int.Parse(row["IdGrupo"].ToString());
+        //        int IdRubro = int.Parse(row["IdRubro"].ToString());
+        //        int Cantidad = int.Parse(row["Cantidad"].ToString());
+        //        decimal ValorPorcentual = decimal.Parse(row["ValorPorcentual"].ToString());
+        //        string EsFijo = row["EsFijo"].ToString();
+        //        Rubro rubro = BD.getRubro(IdRubro);
+        //        GrupoxRubro grupo = new GrupoxRubro(ID, rubro, ValorPorcentual, EsFijo, Cantidad, IdGrupo, IdRubro);
+        //        grupos.Add(grupo);
+        //    }
+        //    return grupos;
+        //}
 
-        public static List<GrupoxEstudiante> xmlGrupoxEstudiante()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<GrupoxEstudiante> grupos = new List<GrupoxEstudiante>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["ID"].ToString());
-                int IdGrupo = int.Parse(row["IdGrupo"].ToString());
-                int IdEstadoGxE = int.Parse(row["IdEstadoGxE"].ToString());
-                int IdEstudiante = int.Parse(row["IdEstudiante"].ToString());
-                decimal NotaAcumulada = decimal.Parse(row["NotaAcumulada"].ToString());
-                EstadoGrupoxEstudiante estado = BD.getEstadoGrupoxEstudiante(IdEstadoGxE);
-                Estudiante estudiante = BD.getEstudiante(IdEstudiante);
-                GrupoxEstudiante grupo = new GrupoxEstudiante(ID, estado, NotaAcumulada, estudiante, IdGrupo, IdEstadoGxE, IdEstudiante);
-                grupos.Add(grupo);
-            }
-            return grupos;
-        }
+        //public static List<GrupoxEstudiante> xmlGrupoxEstudiante()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<GrupoxEstudiante> grupos = new List<GrupoxEstudiante>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["ID"].ToString());
+        //        int IdGrupo = int.Parse(row["IdGrupo"].ToString());
+        //        int IdEstadoGxE = int.Parse(row["IdEstadoGxE"].ToString());
+        //        int IdEstudiante = int.Parse(row["IdEstudiante"].ToString());
+        //        decimal NotaAcumulada = decimal.Parse(row["NotaAcumulada"].ToString());
+        //        EstadoGrupoxEstudiante estado = BD.getEstadoGrupoxEstudiante(IdEstadoGxE);
+        //        Estudiante estudiante = BD.getEstudiante(IdEstudiante);
+        //        GrupoxEstudiante grupo = new GrupoxEstudiante(ID, estado, NotaAcumulada, estudiante, IdGrupo, IdEstadoGxE, IdEstudiante);
+        //        grupos.Add(grupo);
+        //    }
+        //    return grupos;
+        //}
 
-        public static List<Evaluacion> xmlEvaluacion()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<Evaluacion> evaluaciones = new List<Evaluacion>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["ID"].ToString());
-                int IdGrupoxRubro = int.Parse(row["IdGrupoxRubro"].ToString());
-                string Nombre = row["Nombre"].ToString();
-                DateTime Fecha = DateTime.Parse(row["Fecha"].ToString());
-                decimal valorPorcentual = decimal.Parse(row["ValorPorcentual"].ToString());
-                string Descripcion = row["Descripcion"].ToString();
-                Evaluacion evaluacion = new Evaluacion(ID, IdGrupoxRubro, Nombre, Fecha, valorPorcentual, Descripcion);
-                evaluaciones.Add(evaluacion);
-            }
-            return evaluaciones;
-        }
+        //public static List<Evaluacion> xmlEvaluacion()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<Evaluacion> evaluaciones = new List<Evaluacion>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["ID"].ToString());
+        //        int IdGrupoxRubro = int.Parse(row["IdGrupoxRubro"].ToString());
+        //        string Nombre = row["Nombre"].ToString();
+        //        DateTime Fecha = DateTime.Parse(row["Fecha"].ToString());
+        //        decimal valorPorcentual = decimal.Parse(row["ValorPorcentual"].ToString());
+        //        string Descripcion = row["Descripcion"].ToString();
+        //        Evaluacion evaluacion = new Evaluacion(ID, IdGrupoxRubro, Nombre, Fecha, valorPorcentual, Descripcion);
+        //        evaluaciones.Add(evaluacion);
+        //    }
+        //    return evaluaciones;
+        //}
 
-        public static List<EvaluacionxEstudiante> xmlEvaluacionxEstudiante()
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand com = new SqlCommand("prueba_tabla", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adapt = new SqlDataAdapter(com);
-            DataTable dataset = new DataTable();
-            adapt.Fill(dataset);
-            List<EvaluacionxEstudiante> evaluaciones = new List<EvaluacionxEstudiante>();
-            foreach (DataRow row in dataset.Rows)
-            {
-                int ID = int.Parse(row["ID"].ToString());
-                int IdGrupoxEstudiante = int.Parse(row["IdGrupoxEstudiante"].ToString());
-                int IdEvaluacion = int.Parse(row["IdEvaluacion"].ToString());
-                decimal Nota = decimal.Parse(row["ValorPorcentual"].ToString());
-                Evaluacion evaluacion = BD.getEvaluacion(IdEvaluacion);
-                EvaluacionxEstudiante evaluacionxEstudiante = new EvaluacionxEstudiante(ID, Nota, evaluacion, IdEvaluacion, IdGrupoxEstudiante);
-                evaluaciones.Add(evaluacionxEstudiante);
-            }
-            return evaluaciones;
-        }
+        //public static List<EvaluacionxEstudiante> xmlEvaluacionxEstudiante()
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand com = new SqlCommand("prueba_tabla", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter adapt = new SqlDataAdapter(com);
+        //    DataTable dataset = new DataTable();
+        //    adapt.Fill(dataset);
+        //    List<EvaluacionxEstudiante> evaluaciones = new List<EvaluacionxEstudiante>();
+        //    foreach (DataRow row in dataset.Rows)
+        //    {
+        //        int ID = int.Parse(row["ID"].ToString());
+        //        int IdGrupoxEstudiante = int.Parse(row["IdGrupoxEstudiante"].ToString());
+        //        int IdEvaluacion = int.Parse(row["IdEvaluacion"].ToString());
+        //        decimal Nota = decimal.Parse(row["ValorPorcentual"].ToString());
+        //        Evaluacion evaluacion = BD.getEvaluacion(IdEvaluacion);
+        //        EvaluacionxEstudiante evaluacionxEstudiante = new EvaluacionxEstudiante(ID, Nota, evaluacion, IdEvaluacion, IdGrupoxEstudiante);
+        //        evaluaciones.Add(evaluacionxEstudiante);
+        //    }
+        //    return evaluaciones;
+        //}
 
         //VerNotas
 

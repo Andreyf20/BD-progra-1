@@ -85,7 +85,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD.cs" />
     <Compile Include="Clases\EstadoGrupoxEstudiante.cs" />
     <Compile Include="Clases\Estudiante.cs" />
     <Compile Include="Clases\Evaluacion.cs" />
