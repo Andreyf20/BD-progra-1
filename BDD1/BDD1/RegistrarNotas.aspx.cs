@@ -96,8 +96,18 @@ namespace BDD1
                     {
                         tCell = new TableCell();
                         TextBox txt = new TextBox();
+                        List<decimal> evaluacionesxEstudiante = Procedures.ver_evaluacionesxestudiantes(grupoxestudiantes[cellCtr].ID, evaluaciones[rowCtr - 1].ID);
                         txt.ID = evaluaciones[rowCtr - 1].ID + "-" + grupoxestudiantes[cellCtr].ID;
-                        txt.Text = txt.ID;
+                        if (evaluacionesxEstudiante.Count==0)
+                        {
+                            txt.Text = "";
+                        }
+                        else
+                        {
+                            txt.Text = evaluacionesxEstudiante[0].ToString();
+                        }
+                        
+                        
                         tCell.Controls.Add(txt);
                         tRow.Cells.Add(tCell);
                     }

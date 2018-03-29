@@ -517,6 +517,24 @@ namespace BDD1
             }
             return EGS;
         }
+        public static List<decimal> ver_evaluacionesxestudiantes(int idGrupoxEstudiante, int idEvaluacion)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("ver_evaluacionesxestudiantes", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@idGrupoxEstudiante", SqlDbType.Int).Value = idGrupoxEstudiante;
+            cmd.Parameters.Add("@idEvaluacion", SqlDbType.Int).Value = idEvaluacion;
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<decimal> evaluaciones = new List<decimal>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                decimal Nota = decimal.Parse(row["Nota"].ToString());
+                evaluaciones.Add(Nota);
+            }
+            return evaluaciones;
+        }
 
         public static List<Evaluacion> ver_evaluacion_grupoxrubro(int @idGrupoxRubro)
         {
@@ -664,19 +682,7 @@ namespace BDD1
         //    SqlDataAdapter adapt = new SqlDataAdapter(com);
         //    DataTable dataset = new DataTable();
         //    adapt.Fill(dataset);
-        //    List<EvaluacionxEstudiante> evaluaciones = new List<EvaluacionxEstudiante>();
-        //    foreach (DataRow row in dataset.Rows)
-        //    {
-        //        int ID = int.Parse(row["ID"].ToString());
-        //        int IdGrupoxEstudiante = int.Parse(row["IdGrupoxEstudiante"].ToString());
-        //        int IdEvaluacion = int.Parse(row["IdEvaluacion"].ToString());
-        //        decimal Nota = decimal.Parse(row["ValorPorcentual"].ToString());
-        //        Evaluacion evaluacion = BD.getEvaluacion(IdEvaluacion);
-        //        EvaluacionxEstudiante evaluacionxEstudiante = new EvaluacionxEstudiante(ID, Nota, evaluacion, IdEvaluacion, IdGrupoxEstudiante);
-        //        evaluaciones.Add(evaluacionxEstudiante);
-        //    }
-        //    return evaluaciones;
-        //}
+        //    
 
         //VerNotas
 
