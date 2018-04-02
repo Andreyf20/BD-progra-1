@@ -9,6 +9,7 @@ BEGIN
 	DECLARE @tablaNotas Table (ID int, idGrupoxEstudiante int, idEvaluacion int, Nota Decimal(7, 4), idGrupoxRubro int);
 	DECLARE @tablaGrupoxRubro Table (ID int, idGrupo int, idRubro int, ValorPorcentual Decimal(7, 4), Esfijo varchar(6), Cantidad int);
 	DECLARE @tablaDeSuma Table (idRubro int, Nota Decimal(7, 4), Cantidad int);
+	DECLARE @result Table (NotaAcumulada Decimal(7, 4));
 
 	-- SE BUSCA EL idGrupoxEstudiante
 	SET @idGrupoxEstudiante = (SELECT ge.ID FROM dbo.GrupoxEstudiante AS ge WHERE ge.IdEstudiante = @idEstudiante
@@ -39,6 +40,13 @@ BEGIN
 	AND IdEstudiante = @idEstudiante
 	AND IdEstadoGxE != 3
 	AND	IdEstadoGxE != 4;
+
+	INSERT INTO @result SELECT NotaAcumulada FROM dbo.GrupoxEstudiante WHERE IdGrupo = @idGrupo 
+	AND IdEstudiante = @idEstudiante
+	AND IdEstadoGxE != 3
+	AND	IdEstadoGxE != 4;
+
+	SELECT * FROM @result;
 
 END
 go
