@@ -11,6 +11,8 @@ namespace BDD1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label1.Text = Procedures.actualizar_nota_acumulada_estudiante(1, 1).ToString();
+            
 
         }
     }

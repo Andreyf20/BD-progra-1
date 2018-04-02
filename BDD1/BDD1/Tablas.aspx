@@ -10,17 +10,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <table style="width:100%;">
-                <tr>
-                    <td>
-                        <asp:Panel ID="Panel1" runat="server">
-                        </asp:Panel>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
         </div>
+        
+        
+        
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        
+        
         
     </form>
 </body>
