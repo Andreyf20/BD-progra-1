@@ -28,7 +28,6 @@ BEGIN
 	@tablaGrupoxRubro AS gr 
 	ON tb.idGrupoxRubro = gr.ID;
 
-	SELECT * FROM @tablaDeSuma;
 	SET @sumaNota = (SELECT SUM(Nota) FROM @tablaDeSuma);
 	SET @filas = (SELECT COUNT(*) FROM @tablaDeSuma);
 	SET @sumaNota = @sumaNota / @filas;
