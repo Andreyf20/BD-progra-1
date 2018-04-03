@@ -34,7 +34,6 @@ namespace BDD1
             PanelCrearPeriodo.Visible = false;
             PanelCrearRubros.Visible = false;
             PanelModificarGrupo.Visible = false;
-            PanelModificarPeriodo.Visible = false;
             PanelPeriodo.Visible = false;
             PanelGrupos.Visible = false;
             PanelInicio.Visible = true;
@@ -57,7 +56,6 @@ namespace BDD1
         protected void ButtonCrearPeriodo_Click(object sender, EventArgs e)
         {
             PanelCrearPeriodo.Visible = true;
-            PanelModificarPeriodo.Visible = false;
             PanelAnularPeriodo.Visible = false;
             PanelTerminarPeriodo.Visible = false;
         }
@@ -68,43 +66,10 @@ namespace BDD1
             Inicio();
             Label1.Text = "Periodo Creado Correctamente";
         }
-
-        protected void ButtonModificarPeriodo_Click(object sender, EventArgs e)
-        {
-            PanelCrearPeriodo.Visible = false;
-            PanelModificarPeriodo.Visible = true;
-            PanelAnularPeriodo.Visible = false;
-            PanelTerminarPeriodo.Visible = false;
-            RadioButtonListPeriodos1.Items.Clear();
-            List<Periodo> periodos = Procedures.xmlPeriodos();
-            if (periodos.Count != 0)
-            {
-                for (int i = 0; i < periodos.Count; i++)
-                {
-                    RadioButtonListPeriodos1.Items.Add(new ListItem(periodos[i].ID.ToString()));
-                }
-            }
-        }
-
-        protected void ButtonModificarPeriodoOK_Click(object sender, EventArgs e)
-        {
-            int periodoID = int.Parse(RadioButtonListPeriodos1.SelectedItem.Text);
-            if (RadioButtonList2.SelectedItem.Text.Equals("Activo"))
-            {
-                Procedures.periodo_CambiarActivo(periodoID, "True");
-            }
-            else
-            {
-                Procedures.periodo_CambiarActivo(periodoID, "False");
-            }
-            Inicio();
-            Label1.Text = "Periodo Modificado Correctamente";
-        }
-
+        
         protected void ButtonAnularPeriodo_Click(object sender, EventArgs e)
         {
             PanelCrearPeriodo.Visible = false;
-            PanelModificarPeriodo.Visible = false;
             PanelAnularPeriodo.Visible = true;
             PanelTerminarPeriodo.Visible = false;
             List<Periodo> periodos = Procedures.xmlPeriodos();
@@ -129,7 +94,6 @@ namespace BDD1
         protected void ButtonTerminarPeriodo_Click(object sender, EventArgs e)
         {
             PanelCrearPeriodo.Visible = false;
-            PanelModificarPeriodo.Visible = false;
             PanelAnularPeriodo.Visible = false;
             PanelTerminarPeriodo.Visible = true;
             List<Periodo> periodos = Procedures.xmlPeriodos();

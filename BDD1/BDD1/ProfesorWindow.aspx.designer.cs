@@ -103,15 +103,6 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonCrearPeriodo;
         
         /// <summary>
-        /// Control ButtonModificarPeriodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonModificarPeriodo;
-        
-        /// <summary>
         /// Control ButtonAnularPeriodo.
         /// </summary>
         /// <remarks>
@@ -164,42 +155,6 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCrearPeriodoOK;
-        
-        /// <summary>
-        /// Control PanelModificarPeriodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelModificarPeriodo;
-        
-        /// <summary>
-        /// Control RadioButtonListPeriodos1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos1;
-        
-        /// <summary>
-        /// Control RadioButtonList2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
-        
-        /// <summary>
-        /// Control ButtonModificarPeriodoOK.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonModificarPeriodoOK;
         
         /// <summary>
         /// Control PanelAnularPeriodo.

@@ -29,10 +29,9 @@
         </asp:Panel>
         <asp:Panel ID="PanelPeriodo" runat="server" Visible="false">
             <h1>Periodos</h1>
-            <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="24%" Height="50px" />
-            <asp:Button ID="ButtonModificarPeriodo" runat="server" Text="Modificar Periodo" OnClick="ButtonModificarPeriodo_Click" Width="24%" Height="50px" />
-            <asp:Button ID="ButtonAnularPeriodo" runat="server" Text="Anular Periodo" Width="24%" Height="50px" OnClick="ButtonAnularPeriodo_Click" />
-            <asp:Button ID="ButtonTerminarPeriodo" runat="server" Text="Terminar Periodo" Width="24%" Height="50px" OnClick="ButtonTerminarPeriodo_Click" />
+            <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="33%" Height="50px" />
+            <asp:Button ID="ButtonAnularPeriodo" runat="server" Text="Anular Periodo" Width="33%" Height="50px" OnClick="ButtonAnularPeriodo_Click" />
+            <asp:Button ID="ButtonTerminarPeriodo" runat="server" Text="Terminar Periodo" Width="33%" Height="50px" OnClick="ButtonTerminarPeriodo_Click" />
             <asp:Panel ID="PanelCrearPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2>Crear Periodo</h2>
                 <table style="width:100%; height: 213px;">
@@ -49,19 +48,7 @@
                 </table>                
                 <asp:Button ID="ButtonCrearPeriodoOK" runat="server" OnClick="ButtonCrearPeriodoOK_Click" Text="Aceptar" />
             </asp:Panel>
-            <asp:Panel ID="PanelModificarPeriodo" style="text-align:center" runat="server" Visible="false">
-                <h2 >Modificar Periodo</h2>
-                Seleccione el ID del Periodo:
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos1" runat="server">
-                </asp:RadioButtonList>
-                Seleccione el estado del periodo:
-                <asp:RadioButtonList  style=" margin: 0 auto;" ID="RadioButtonList2" runat="server">
-                    <asp:ListItem Selected="True">Activo</asp:ListItem>
-                    <asp:ListItem>Inactivo</asp:ListItem>
-                </asp:RadioButtonList>
-                <br />
-                <asp:Button ID="ButtonModificarPeriodoOK" runat="server" OnClick="ButtonModificarPeriodoOK_Click" Text="Aceptar" />
-            </asp:Panel>
+            
             <asp:Panel ID="PanelAnularPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2 >Anular Periodo</h2>
                 Seleccione el ID del Periodo:
@@ -82,7 +69,7 @@
         <asp:Panel ID="PanelGrupos" runat="server" Visible="false">
             <h1>Grupos</h1>
             <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="24%" Height="50px"/>
-            <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="24%" Height="50px" />
+            <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="24%" Height="50px"/>
             <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="24%" Height="50px" OnClick="ButtonAnularGrupo_Click" />
             <asp:Button ID="ButtonTerminarGrupo" runat="server" Text="Terminar Grupo" Width="24%" Height="50px" OnClick="ButtonTerminarGrupo_Click" />
             <table style="width:100%;">
