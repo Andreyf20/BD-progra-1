@@ -11,12 +11,14 @@ namespace BDD1
 {
     public partial class RegistrarNotas : System.Web.UI.Page
     {
+        int ProfesorID;
         Grupo grupo;
         List<Evaluacion> evaluaciones;
         List<GrupoxEstudiante> grupoxestudiantes;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ProfesorID = ProfesorWindow.ProfesorID;
             grupo = ProfesorWindow.notas;
             evaluaciones = new List<Evaluacion>();
             grupoxestudiantes = Procedures.ver_grupoxestudiante_grupo(grupo.ID);
@@ -56,13 +58,27 @@ namespace BDD1
             TableRow row = Table1.Rows[index+1];
             for (int i=1; i<row.Cells.Count-1;i++ )
             {
+                
                 TableCell cell = row.Cells[i];
                 TextBox txt = (TextBox)cell.Controls[0];
                 string[] partes = txt.ID.Split('-');
                 int indexEvaluacion = int.Parse(partes[0]);
                 int indexGrupoXEstudiante = int.Parse(partes[1]);
-                Procedures.evaluacionxestudiante_crear(indexGrupoXEstudiante,indexEvaluacion,decimal.Parse(txt.Text));
-                txt.Text = "";
+                List<decimal> evaluacionesxEstudiante = Procedures.ver_evaluacionesxestudiantes(indexGrupoXEstudiante, indexEvaluacion);
+                decimal Nota = decimal.Parse(txt.Text);
+                if (evaluacionesxEstudiante.Count == 0)
+                {
+                    Procedures.evaluacionxestudiante_crear(indexGrupoXEstudiante, indexEvaluacion, Nota);
+                }
+                else
+                {
+                    decimal notaAnterior = evaluacionesxEstudiante[0];
+                    if (notaAnterior == Nota) { }
+                    else
+                    {
+                        Procedures.evaluacionxestudiante_cambiar_nota(indexGrupoXEstudiante, indexEvaluacion, Nota);
+                    }
+                }
             }
         }
         
@@ -106,8 +122,6 @@ namespace BDD1
                         {
                             txt.Text = evaluacionesxEstudiante[0].ToString();
                         }
-                        
-                        
                         tCell.Controls.Add(txt);
                         tRow.Cells.Add(tCell);
                     }
@@ -122,6 +136,10 @@ namespace BDD1
             }
         }
 
-        
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            ProfesorWindow.ProfesorID = ProfesorID;
+            Server.Transfer("ProfesorWindow.aspx");
+        }
     }
 }

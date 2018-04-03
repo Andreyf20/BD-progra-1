@@ -17,6 +17,8 @@ namespace BDD1
         public static Grupo notas;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label2.Text = "Bienvenido Profesor " +Procedures.nombreProfesor(ProfesorID);
+
         }
 
         
@@ -25,6 +27,7 @@ namespace BDD1
         protected void ButtonInicio_Click(object sender, EventArgs e)
         {
             Inicio();
+            PanelInicio.Visible = true;
         }
 
         private void Inicio()
@@ -36,7 +39,7 @@ namespace BDD1
             PanelModificarGrupo.Visible = false;
             PanelPeriodo.Visible = false;
             PanelGrupos.Visible = false;
-            PanelInicio.Visible = true;
+            PanelInicio.Visible = false;
             PanelRegistrarNotas.Visible = false;
             PanelAnularPeriodo.Visible = false;
             PanelTerminarPeriodo.Visible = false;
@@ -130,7 +133,8 @@ namespace BDD1
             PanelAnularGrupo.Visible = false;
             PanelTerminarGrupo.Visible = false;
             RadioButtonListPeriodos4.Items.Clear();
-            List<Periodo> periodosActivos = Procedures.xmlPeriodosActivos();
+            RadioButtonListEstadoGrupo.Items.Clear();
+            List<Periodo> periodosActivos = Procedures.xmlPeriodos();
             List<EstadoGrupo> estados = Procedures.xmlEstadoGrupo();
             if (periodosActivos.Count != 0)
             {

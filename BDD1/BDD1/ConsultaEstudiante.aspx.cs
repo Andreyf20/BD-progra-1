@@ -17,7 +17,5 @@ namespace BDD1
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
-
-        
     }
 }

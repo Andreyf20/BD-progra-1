@@ -10,6 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="font-size: xx-large; color: #FFFFFF; background-color: #800000" Text="Regresar" />
         </div>
 
         <asp:Table id="Table1" runat="server" style="text-align: center" 

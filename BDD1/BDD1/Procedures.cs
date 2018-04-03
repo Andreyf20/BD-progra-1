@@ -145,13 +145,14 @@ namespace BDD1
             con.Close();
         }
 
-        public static void evaluacionxestudiante_cambiar_nota(int id, decimal Nota)
+        public static void evaluacionxestudiante_cambiar_nota(int @idGrupoxEstudiante ,int @idEvaluacion,  decimal Nota)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("evaluacionxestudiante_cambiar_nota", con);
+            SqlCommand cmd = new SqlCommand("evaluacionesxestudiantes_cambiar_nota", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
-            cmd.Parameters.Add("@activo", SqlDbType.Decimal).Value = Nota;
+            cmd.Parameters.Add("@idGrupoxEstudiante", SqlDbType.Int).Value = @idGrupoxEstudiante;
+            cmd.Parameters.Add("@idEvaluacion", SqlDbType.Int).Value = @idEvaluacion;
+            cmd.Parameters.Add("@Nota", SqlDbType.Decimal).Value = Nota;
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
@@ -494,6 +495,7 @@ namespace BDD1
             }
             return EGS;
         }
+
         public static List<decimal> ver_evaluacionesxestudiantes(int idGrupoxEstudiante, int idEvaluacion)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -598,7 +600,26 @@ namespace BDD1
             adapt.Fill(dataset);
             return dataset;
         }
-        
+
+
+        public static string nombreProfesor(int @id)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("nombreProfesor", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = @id;
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<string> nombre = new List<string>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                string Nota = row["Nombre"].ToString();
+                nombre.Add(Nota);
+            }
+            return nombre[0];
+        }
+
 
     }
 }

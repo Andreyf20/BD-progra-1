@@ -174,12 +174,12 @@ END
 go
 
 go
-CREATE PROCEDURE evaluacionesxestudiantes_cambiar_nota @idEvauacionxEstudiante int, @Nota decimal(7, 4)
+CREATE PROCEDURE evaluacionesxestudiantes_cambiar_nota @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4)
 AS
 BEGIN
 	UPDATE dbo.EvaluacionesxEstudiantes
 	SET Nota = @Nota
-	WHERE id = @idEvauacionxEstudiante
+	WHERE  IdGrupoxEstudiante = @idGrupoxEstudiante	AND IdEvaluacion = @idEvaluacion;
 END
 go
 
@@ -397,5 +397,129 @@ BEGIN
 	WHERE GR.IdGrupo = @idGrupo;
 
 	SELECT * FROM @grupoxrubro_profesor;
+END
+go
+
+go
+CREATE PROCEDURE actualizar_nota_acumulada_estudiante @idGrupo int, @idEstudiante int
+AS
+BEGIN
+	DECLARE @sumaNota Decimal(38, 4);
+	DECLARE @filas int;
+	DECLARE @idGrupoxEstudiante int;
+	DECLARE @tablaNotas Table (ID int, idGrupoxEstudiante int, idEvaluacion int, Nota Decimal(7, 4), idGrupoxRubro int);
+	DECLARE @tablaGrupoxRubro Table (ID int, idGrupo int, idRubro int, ValorPorcentual Decimal(7, 4), Esfijo varchar(6), Cantidad int);
+	DECLARE @tablaDeSuma Table (idRubro int, Nota Decimal(7, 4), Cantidad int);
+	DECLARE @result Table (NotaAcumulada Decimal(7, 4));
+
+	-- SE BUSCA EL idGrupoxEstudiante
+	SET @idGrupoxEstudiante = (SELECT ge.ID FROM dbo.GrupoxEstudiante AS ge WHERE ge.IdEstudiante = @idEstudiante
+	AND ge.IdGrupo = @idGrupo AND ge.IdEstadoGxE != 3 AND ge.IdEstadoGxE != 4);
+
+	-- SE BUSCAN LAS NOTAS DE LAS EVALUACIONES Y SE METEN EN UNA TABLA
+	INSERT INTO @tablaNotas SELECT ee.ID, ee.IdGrupoxEstudiante, ee.IdEvaluacion, ee.Nota, e.IdGrupoxRubro
+	FROM dbo.EvaluacionesxEstudiantes AS ee 
+	INNER JOIN dbo.Evaluacion AS e ON e.ID = ee.IdEvaluacion
+	WHERE ee.IdGrupoxEstudiante = @idGrupoxEstudiante;
+
+	-- SE BUSCA EL GRUPOXRUBRO PARA VER CUALES SON QUIZES
+	INSERT INTO @tablaGrupoxRubro SELECT * FROM dbo.GrupoxRubro AS gr WHERE gr.IdGrupo = @idGrupo;
+
+	INSERT INTO @tablaDeSuma SELECT gr.idRubro, tb.Nota, gr.Cantidad FROM @tablaNotas AS tb INNER JOIN	
+	@tablaGrupoxRubro AS gr 
+	ON tb.idGrupoxRubro = gr.ID;
+
+	SET @sumaNota = (SELECT SUM(Nota) FROM @tablaDeSuma);
+	SET @filas = (SELECT COUNT(*) FROM @tablaDeSuma);
+	SET @sumaNota = @sumaNota / @filas;
+	SELECT @sumaNota;
+
+	UPDATE dbo.GrupoxEstudiante
+	SET NotaAcumulada = @sumaNota
+	WHERE IdGrupo = @idGrupo
+	AND IdEstudiante = @idEstudiante
+	AND IdEstadoGxE != 3
+	AND	IdEstadoGxE != 4;
+
+	INSERT INTO @result SELECT NotaAcumulada FROM dbo.GrupoxEstudiante WHERE IdGrupo = @idGrupo 
+	AND IdEstudiante = @idEstudiante
+	AND IdEstadoGxE != 3
+	AND	IdEstadoGxE != 4;
+
+	SELECT * FROM @result;
+
+END
+go
+
+go
+CREATE PROCEDURE ver_estadogrupo_disponibles
+AS
+BEGIN
+	DECLARE @estadogrupo_disponibles Table (ID int, Nombre varchar(50));
+	INSERT INTO @estadogrupo_disponibles SELECT * FROM dbo.EstadoGrupo;
+
+	SELECT * FROM @estadogrupo_disponibles;
+END
+go
+
+go
+CREATE PROCEDURE ver_notas_estudiante @idEstudiante int
+AS
+BEGIN
+	DECLARE @tablaResultados Table (idEstudiante int, Carnet varchar(50), idGrupo int, NombreCurso varchar(50),
+	NombreEvaluacion varchar(50), Nota Decimal(7, 4), ValorPorcentual Decimal(7, 4));
+	INSERT INTO @tablaResultados SELECT e.ID, e.Carnet, g.ID, g.NombreCurso, eva.Nombre, ee.Nota, eva.ValorPorcentual
+	FROM dbo.Estudiante AS e INNER JOIN 
+	dbo.GrupoxEstudiante AS ge ON @idEstudiante = ge.IdEstudiante INNER JOIN
+	dbo.Grupo AS g ON g.ID = ge.IdGrupo INNER JOIN
+	dbo.EvaluacionesxEstudiantes AS ee ON ee.IdGrupoxEstudiante = ge.ID INNER JOIN
+	dbo.Evaluacion AS eva ON eva.ID = ee.IdEvaluacion
+	WHERE e.ID = @idEstudiante;
+
+	SELECT * FROM @tablaResultados ORDER BY idGrupo ASC;
+END
+go
+
+go
+CREATE PROCEDURE ver_periodos
+AS
+BEGIN
+	DECLARE @periodos_disponibles Table (ID int, FechaInicio Date, FechaFinal Date, Activo varchar(6));
+	INSERT INTO @periodos_disponibles SELECT * FROM dbo.Periodo AS P;
+
+	SELECT * FROM @periodos_disponibles;
+END
+go
+
+go
+CREATE PROCEDURE ver_periodos_disponibles
+AS
+BEGIN
+	DECLARE @periodos_disponibles Table (ID int, FechaInicio Date, FechaFinal Date, Activo varchar(6));
+	INSERT INTO @periodos_disponibles SELECT * FROM dbo.Periodo AS P WHERE P.Activo = 'True';
+
+	SELECT * FROM @periodos_disponibles;
+END
+go
+
+go
+CREATE PROCEDURE ver_rubros_disponibles
+AS
+BEGIN
+	DECLARE @rubros_disponibles Table (ID int, Nombre varchar(50));
+	INSERT INTO @rubros_disponibles SELECT * FROM dbo.Rubro;
+
+	SELECT * FROM @rubros_disponibles;
+END
+go
+
+use BBD1;
+go
+CREATE PROCEDURE nombreProfesor @id int
+AS
+BEGIN
+	DECLARE @result Table(Nombre varchar(50))
+	INSERT INTO @result SELECT Nombre FROM dbo.Profesor WHERE id = @id
+	SELECT * FROM @result;
 END
 go
