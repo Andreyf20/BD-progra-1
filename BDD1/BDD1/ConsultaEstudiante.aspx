@@ -14,8 +14,14 @@
                 Notas del Estudiante
             </h1>          
         </div>
-        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+        Seleccione el ID del Periodo:
+        <asp:RadioButtonList ID="RadioButtonListPeriodos" runat="server" style=" margin: 0 auto;" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonListPeriodos_SelectedIndexChanged">
         </asp:RadioButtonList>
+        <br />
+        Seleccione el Grupo:
+        <asp:RadioButtonList ID="RadioButtonListGrupos" runat="server" style=" margin: 0 auto;" RepeatDirection="Vertical">
+        </asp:RadioButtonList>
+        <br />
         <asp:GridView ID="GridView1" runat="server">
         </asp:GridView>
     </form>

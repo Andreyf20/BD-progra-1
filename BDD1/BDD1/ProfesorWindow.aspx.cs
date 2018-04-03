@@ -12,12 +12,12 @@ namespace BDD1
     public partial class ProfesorWindow : System.Web.UI.Page
     {
         public static int ProfesorID;
-        public static int GrupoID;
+        //public static int GrupoID;
         public static int GrupoxRubroID;
         public static Grupo notas;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label2.Text = "Bienvenido Profesor " +Procedures.nombreProfesor(ProfesorID);
+            Label2.Text = "Bienvenido Profesor " + Procedures.nombreProfesor(ProfesorID);
 
         }
 
@@ -32,7 +32,7 @@ namespace BDD1
 
         private void Inicio()
         {
-            PanelAregarRubro.Visible = false;
+            
             PanelCrearGrupo.Visible = false;
             PanelCrearPeriodo.Visible = false;
             PanelCrearRubros.Visible = false;
@@ -42,9 +42,10 @@ namespace BDD1
             PanelInicio.Visible = false;
             PanelRegistrarNotas.Visible = false;
             PanelAnularPeriodo.Visible = false;
-            PanelTerminarPeriodo.Visible = false;
             PanelAnularGrupo.Visible = false;
-            PanelTerminarGrupo.Visible = false;
+            PanelCrearGrupo.Visible = false;
+            PanelAnularGrupo.Visible = false;
+            PanelModificarGrupo.Visible = false;
             Label1.Text = "";
         }
 
@@ -60,7 +61,6 @@ namespace BDD1
         {
             PanelCrearPeriodo.Visible = true;
             PanelAnularPeriodo.Visible = false;
-            PanelTerminarPeriodo.Visible = false;
         }
 
         protected void ButtonCrearPeriodoOK_Click(object sender, EventArgs e)
@@ -74,7 +74,6 @@ namespace BDD1
         {
             PanelCrearPeriodo.Visible = false;
             PanelAnularPeriodo.Visible = true;
-            PanelTerminarPeriodo.Visible = false;
             List<Periodo> periodos = Procedures.xmlPeriodos();
             RadioButtonListPeriodos2.Items.Clear();
             if (periodos.Count != 0)
@@ -94,25 +93,9 @@ namespace BDD1
             Label1.Text = "Periodo Anulado Correctamente";
         }
 
-        protected void ButtonTerminarPeriodo_Click(object sender, EventArgs e)
-        {
-            PanelCrearPeriodo.Visible = false;
-            PanelAnularPeriodo.Visible = false;
-            PanelTerminarPeriodo.Visible = true;
-            List<Periodo> periodos = Procedures.xmlPeriodos();
-            RadioButtonListPeriodos3.Items.Clear();
-            if (periodos.Count != 0)
-            {
-                for (int i = 0; i < periodos.Count; i++)
-                {
-                    RadioButtonListPeriodos3.Items.Add(new ListItem(periodos[i].ID.ToString()));
-                }
-            }
-        }
-
         protected void ButtonTerminarPeriodoOK_Click(object sender, EventArgs e)
         {
-            int periodoID = int.Parse(RadioButtonListPeriodos3.SelectedItem.Text);
+            int periodoID = int.Parse(RadioButtonListPeriodos2.SelectedItem.Text);
             Procedures.periodo_CambiarActivo(periodoID, "False");
             Inicio();
             Label1.Text = "Periodo Terminado Correctamente";
@@ -131,7 +114,6 @@ namespace BDD1
             PanelCrearGrupo.Visible = true;
             PanelModificarGrupo.Visible = false;
             PanelAnularGrupo.Visible = false;
-            PanelTerminarGrupo.Visible = false;
             RadioButtonListPeriodos4.Items.Clear();
             RadioButtonListEstadoGrupo.Items.Clear();
             List<Periodo> periodosActivos = Procedures.xmlPeriodos();
@@ -159,78 +141,8 @@ namespace BDD1
             string nombre = TextBoxNombreGrupo.Text;
             string codigoGrupo = TextBoxCodigoGrupo.Text;
             
-            GrupoID = Procedures.grupo_crear(estadoID, ProfesorID, periodoID, nombre, codigoGrupo);
+            int GrupoID = Procedures.grupo_crear(estadoID, ProfesorID, periodoID, nombre, codigoGrupo);
 
-            List<Rubro> rubros = Procedures.xmlRubros();
-
-            PanelCrearRubros.Visible = true;
-            DropDownListTipoRubro.Items.Clear();
-            for(int i=0; i<rubros.Count;i++)
-            {
-                DropDownListTipoRubro.Items.Add(rubros[i].nombre);
-            }
-        }
-
-        protected void SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RadioButtonList1.SelectedItem.Text.Equals("Fijo"))
-            {
-                TextBoxCantidadRubro.Visible = true;
-                LabelCantidad.Visible = true;
-            }
-            else
-            {
-                TextBoxCantidadRubro.Visible = false;
-                LabelCantidad.Visible = false;
-            }
-        }
-
-        protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
-        {
-            int periodoID = int.Parse(RadioButtonListPeriodos4.SelectedItem.Text);
-            int idRubro = DropDownListTipoRubro.SelectedIndex;
-            decimal valorPorcentual = decimal.Parse(TextBoxPorcentajeRubro.Text);
-            if (RadioButtonList1.SelectedItem.Text.Equals("Fijo"))
-            {
-                int cantidad = int.Parse(TextBoxCantidadRubro.Text);
-                
-                PanelAregarRubro.Visible = true;
-                Procedures.grupoxrubro_crear(GrupoID,idRubro, valorPorcentual, "True", cantidad);
-            }
-            else
-            {
-                Procedures.grupoxrubro_crear(GrupoID, idRubro, valorPorcentual, "False",0);
-                TextBoxPorcentajeRubro.Text = "";
-            }
-        }
-
-        protected void ButtonAgregarRubroOK_Click(object sender, EventArgs e)
-        {
-            int periodoID = int.Parse(RadioButtonListPeriodos4.SelectedItem.Text);
-            DateTime date = CalendarEvaluacion.SelectedDate;
-            string nombre = TextBoxNombreRubro.Text;
-            string descripción = TextBoxDescripcionRubro.Text;
-            decimal valor = decimal.Parse(TextBoxValorRubro.Text);
-            Procedures.evaluacion_crear(GrupoxRubroID, nombre, date, valor, descripción);
-            string instancia = "Nombre: " + TextBoxNombreRubro.Text + "Descripción: " + TextBoxDescripcionRubro.Text + "Valor: " + TextBoxValorRubro.Text + "\n";
-            TextAreaInstancias.Value += instancia;
-            TextBoxNombreRubro.Text = "";
-            TextBoxDescripcionRubro.Text = "";
-            TextBoxValorRubro.Text = "";
-        }
-
-        protected void ButtonInstanciasOK_Click(object sender, EventArgs e)
-        {
-            TextBoxNombreRubro.Text = "";
-            TextBoxDescripcionRubro.Text = "";
-            TextBoxValorRubro.Text = "";
-            PanelAregarRubro.Visible = false;
-            TextBoxPorcentajeRubro.Text = "";
-            TextBoxCantidadRubro.Text = "";
-        }
-
-        protected void ButtonGrupoOK_Click(object sender, EventArgs e)
-        {
             TextBoxNombreGrupo.Text = "";
             TextBoxCodigoGrupo.Text = "";
             Inicio();
@@ -239,10 +151,9 @@ namespace BDD1
 
         protected void ButtonModificarGrupo_Click(object sender, EventArgs e)
         {
-            PanelModificarGrupo.Visible = true;
             PanelCrearGrupo.Visible = false;
             PanelAnularGrupo.Visible = false;
-            PanelTerminarGrupo.Visible = false;
+            PanelModificarGrupo.Visible = true;
             List<Periodo> periodos = Procedures.xmlPeriodos();
             RadioButtonListPeriodos5.Items.Clear();
             if (periodos.Count != 0)
@@ -270,7 +181,16 @@ namespace BDD1
 
         protected void SelectedIndexChangedGrupo(object sender, EventArgs e)
         {
-            //Poner los datos del grupo para ser cambiados
+            ButtonModificarNormal.Visible = true;
+            ButtonAgregarRubro.Visible = true;
+            ButtonAgregarEvaluacion.Visible = true;
+        }
+
+        protected void ButtonModificarGrupoNormal_Click(object sender, EventArgs e)
+        {
+            PanelModificarNormal.Visible = true;
+            PanelAgregarRubro.Visible = false;
+            PanelAgregarEvaluaciones2.Visible = false;
         }
 
         protected void ButtonModificarGrupoOK_Click(object sender, EventArgs e)
@@ -281,12 +201,112 @@ namespace BDD1
             Label1.Text = "Grupo Modificado Correctamente";
         }
 
+        protected void ButtonAgregarRubro_Click(object sender, EventArgs e)
+        {
+            PanelModificarNormal.Visible = false;
+            PanelAgregarRubro.Visible = true;
+            PanelAgregarEvaluaciones2.Visible = false;
+
+            List<Rubro> rubros = Procedures.xmlRubros();
+
+            DropDownListTipoRubro.Items.Clear();
+            for (int i = 0; i < rubros.Count; i++)
+            {
+                DropDownListTipoRubro.Items.Add(rubros[i].nombre);
+            }
+        }
+
+        protected void SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonList1.SelectedItem.Text.Equals("Fijo"))
+            {
+                TextBoxCantidadRubro.Visible = true;
+                LabelCantidad.Visible = true;
+            }
+            else
+            {
+                TextBoxCantidadRubro.Visible = false;
+                LabelCantidad.Visible = false;
+            }
+        }
+
+        protected void ButtonAgregarRubroOK_Click(object sender, EventArgs e)
+        {
+            int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
+            int indexGrupo = RadioButtonListGrupos1.SelectedIndex;
+            List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
+            Grupo grupo = grupos[indexGrupo];
+            int idRubro = DropDownListTipoRubro.SelectedIndex;
+            decimal valorPorcentual = decimal.Parse(TextBoxPorcentajeRubro.Text);
+            if (RadioButtonList1.SelectedItem.Text.Equals("Fijo"))
+            {
+                int cantidad = int.Parse(TextBoxCantidadRubro.Text);
+
+                PanelAgregarEvaluaciones1.Visible = true;
+                Procedures.grupoxrubro_crear(grupo.ID, idRubro, valorPorcentual, "True", cantidad);
+            }
+            else
+            {
+                Procedures.grupoxrubro_crear(grupo.ID, idRubro, valorPorcentual, "False", 0);
+                TextBoxPorcentajeRubro.Text = "";
+            }
+        }
+
+        protected void ButtonGrupoOK_Click(object sender, EventArgs e)
+        {
+            Inicio();
+        }
+
+        protected void ButtonAgregarEvaluacionOK_Click(object sender, EventArgs e)
+        {
+            int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
+            DateTime date = CalendarEvaluacion.SelectedDate;
+            string nombre = TextBoxNombreRubro.Text;
+            string descripción = TextBoxDescripcionRubro.Text;
+            decimal valor = decimal.Parse(TextBoxValorRubro.Text);
+            Procedures.evaluacion_crear(GrupoxRubroID, nombre, date, valor, descripción);
+            string instancia = "Nombre: " + TextBoxNombreRubro.Text + "Descripción: " + TextBoxDescripcionRubro.Text + "Valor: " + TextBoxValorRubro.Text + "\n";
+            TextAreaInstancias.Value += instancia;
+            TextBoxNombreRubro.Text = "";
+            TextBoxDescripcionRubro.Text = "";
+            TextBoxValorRubro.Text = "";
+        }
+
+        protected void ButtonAgregarEvaluacion_Click(object sender, EventArgs e)
+        {
+            PanelModificarNormal.Visible = false;
+            PanelAgregarRubro.Visible = false;
+            PanelAgregarEvaluaciones2.Visible = true;
+        }
+
+        protected void ButtonAgregarEvaluacionVariable_Click(object sender, EventArgs e)
+        {
+            int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
+            DateTime date = CalendarEvaluacion.SelectedDate;
+            string nombre = TextBoxNombreRubro.Text;
+            string descripción = TextBoxDescripcionRubro.Text;
+            decimal valor = decimal.Parse(TextBoxValorRubro.Text);
+            //Procedures.evaluacion_crear(GrupoxRubroID, nombre, date, valor, descripción);
+            TextBoxNombreRubro.Text = "";
+            TextBoxDescripcionRubro.Text = "";
+            TextBoxValorRubro.Text = "";
+        }
+
+        protected void ButtonInstanciasOK_Click(object sender, EventArgs e)
+        {
+            TextBoxNombreRubro.Text = "";
+            TextBoxDescripcionRubro.Text = "";
+            TextBoxValorRubro.Text = "";
+            PanelAgregarEvaluaciones1.Visible = false;
+            TextBoxPorcentajeRubro.Text = "";
+            TextBoxCantidadRubro.Text = "";
+        }
+
         protected void ButtonAnularGrupo_Click(object sender, EventArgs e)
         {
             PanelModificarGrupo.Visible = false;
             PanelCrearGrupo.Visible = false;
             PanelAnularGrupo.Visible = true;
-            PanelTerminarGrupo.Visible = false;
             RadioButtonListPeriodos6.Items.Clear();
             List<Periodo> periodos = Procedures.xmlPeriodos();
             if (periodos.Count != 0)
@@ -320,37 +340,6 @@ namespace BDD1
             Procedures.grupo_borrar(grupos[indexGrupo].ID);
             Inicio();
             Label1.Text = "Grupo Anulado Correctamente";
-        }
-
-        protected void ButtonTerminarGrupo_Click(object sender, EventArgs e)
-        {
-            PanelModificarGrupo.Visible = false;
-            PanelCrearGrupo.Visible = false;
-            PanelAnularGrupo.Visible = false;
-            PanelTerminarGrupo.Visible = true;
-            RadioButtonListPeriodos7.Items.Clear();
-            List<Periodo> periodos = Procedures.xmlPeriodos();
-            if (periodos.Count != 0)
-            {
-                for (int i = 0; i < periodos.Count; i++)
-                {
-                    RadioButtonListPeriodos7.Items.Add(new ListItem(periodos[i].ID.ToString()));
-                }
-            }
-        }
-
-        protected void SelectedIndexChangedPeriodo3(object sender, EventArgs e)
-        {
-            int indexPeriodo = int.Parse(RadioButtonListPeriodos7.SelectedItem.Text);
-            List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(indexPeriodo, ProfesorID);
-            RadioButtonListGrupos3.Items.Clear();
-            if (grupos.Count != 0)
-            {
-                for (int i = 0; i < grupos.Count; i++)
-                {
-                    RadioButtonListGrupos3.Items.Add(new ListItem(grupos[i].nombreCurso));
-                }
-            }
         }
 
         protected void ButtonTerminarGrupoOK_Click(object sender, EventArgs e)

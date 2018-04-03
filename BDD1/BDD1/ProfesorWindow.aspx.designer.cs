@@ -121,15 +121,6 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonAnularPeriodo;
         
         /// <summary>
-        /// Control ButtonTerminarPeriodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonTerminarPeriodo;
-        
-        /// <summary>
         /// Control PanelCrearPeriodo.
         /// </summary>
         /// <remarks>
@@ -193,24 +184,6 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonAnularPeriodoOK;
         
         /// <summary>
-        /// Control PanelTerminarPeriodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelTerminarPeriodo;
-        
-        /// <summary>
-        /// Control RadioButtonListPeriodos3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos3;
-        
-        /// <summary>
         /// Control ButtonTerminarPeriodoOK.
         /// </summary>
         /// <remarks>
@@ -254,15 +227,6 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonAnularGrupo;
-        
-        /// <summary>
-        /// Control ButtonTerminarGrupo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonTerminarGrupo;
         
         /// <summary>
         /// Control PanelCrearGrupo.
@@ -319,6 +283,105 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonCrearGrupoOK;
         
         /// <summary>
+        /// Control PanelModificarGrupo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelModificarGrupo;
+        
+        /// <summary>
+        /// Control RadioButtonListPeriodos5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos5;
+        
+        /// <summary>
+        /// Control RadioButtonListGrupos1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos1;
+        
+        /// <summary>
+        /// Control ButtonModificarNormal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonModificarNormal;
+        
+        /// <summary>
+        /// Control ButtonAgregarRubro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAgregarRubro;
+        
+        /// <summary>
+        /// Control ButtonAgregarEvaluacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAgregarEvaluacion;
+        
+        /// <summary>
+        /// Control PanelModificarNormal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelModificarNormal;
+        
+        /// <summary>
+        /// Control TextBoxNombreGrupoNew.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNombreGrupoNew;
+        
+        /// <summary>
+        /// Control TextBoxCodigoGrupoNew.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCodigoGrupoNew;
+        
+        /// <summary>
+        /// Control ButtonModificarGrupoOK.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonModificarGrupoOK;
+        
+        /// <summary>
+        /// Control PanelAgregarRubro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelAgregarRubro;
+        
+        /// <summary>
         /// Control PanelCrearRubros.
         /// </summary>
         /// <remarks>
@@ -373,13 +436,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.TextBox TextBoxCantidadRubro;
         
         /// <summary>
-        /// Control ButtonAgregarRubro.
+        /// Control ButtonAgregarRubro1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAgregarRubro;
+        protected global::System.Web.UI.WebControls.Button ButtonAgregarRubro1;
         
         /// <summary>
         /// Control ButtonGrupoOK.
@@ -391,13 +454,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonGrupoOK;
         
         /// <summary>
-        /// Control PanelAregarRubro.
+        /// Control PanelAgregarEvaluaciones1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelAregarRubro;
+        protected global::System.Web.UI.WebControls.Panel PanelAgregarEvaluaciones1;
         
         /// <summary>
         /// Control TextAreaInstancias.
@@ -463,58 +526,58 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button ButtonInstanciasOK;
         
         /// <summary>
-        /// Control PanelModificarGrupo.
+        /// Control PanelAgregarEvaluaciones2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelModificarGrupo;
+        protected global::System.Web.UI.WebControls.Panel PanelAgregarEvaluaciones2;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos5.
+        /// Control TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos5;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// Control RadioButtonListGrupos1.
+        /// Control TextBox2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
-        /// Control TextBoxNombreGrupoNew.
+        /// Control TextBox3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxNombreGrupoNew;
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// Control TextBoxCodigoGrupoNew.
+        /// Control Calendar1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCodigoGrupoNew;
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// Control ButtonModificarGrupoOK.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonModificarGrupoOK;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// Control PanelAnularGrupo.
@@ -551,33 +614,6 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonAnularGrupoOK;
-        
-        /// <summary>
-        /// Control PanelTerminarGrupo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelTerminarGrupo;
-        
-        /// <summary>
-        /// Control RadioButtonListPeriodos7.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos7;
-        
-        /// <summary>
-        /// Control RadioButtonListGrupos3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos3;
         
         /// <summary>
         /// Control ButtonTerminarGrupoOK.

@@ -16,9 +16,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            
-            
-            
             <table style="width:100%;">
                 <tr>
                     <td><asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Profesor" Height="200px" Width="740px" style="font-size: xx-large; background-color: #3366FF; font-weight: 700;" Font-Bold="True" Font-Size="XX-Large" /></td>
@@ -76,15 +73,8 @@
         <p style="text-align:center";>
             <asp:Label ID="Label2" runat="server" style="font-weight: 700; font-size: xx-large" Text="Label" Visible="False"></asp:Label>
         </p>
-        
-        
         </asp:Panel>
-                
-                
-            
-            
         </div>
-        
     </form>
 </body>
 </html>
