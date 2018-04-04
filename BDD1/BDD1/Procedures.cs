@@ -277,7 +277,7 @@ namespace BDD1
             con.Close();
         }
 
-        public static void grupoxrubro_crear(int idgrupo, int idRubro, decimal valorPorcentual, string esFijo, int cantidad)
+        public static int grupoxrubro_crear(int idgrupo, int idRubro, decimal valorPorcentual, string esFijo, int cantidad)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupoxrubro_crear", con);
@@ -287,9 +287,12 @@ namespace BDD1
             cmd.Parameters.Add("@valorPorcentual", SqlDbType.Int).Value = valorPorcentual;
             cmd.Parameters.Add("@esFijo", SqlDbType.VarChar).Value = esFijo;
             cmd.Parameters.Add("@cantidad", SqlDbType.Int).Value = cantidad;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         //Periodo

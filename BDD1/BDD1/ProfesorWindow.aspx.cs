@@ -18,10 +18,7 @@ namespace BDD1
         protected void Page_Load(object sender, EventArgs e)
         {
             Label2.Text = "Bienvenido Profesor " + Procedures.nombreProfesor(ProfesorID);
-
         }
-
-        
         
         //Inicio
         protected void ButtonInicio_Click(object sender, EventArgs e)
@@ -256,11 +253,11 @@ namespace BDD1
                 int cantidad = int.Parse(TextBoxCantidadRubro.Text);
 
                 PanelAgregarEvaluaciones1.Visible = true;
-                Procedures.grupoxrubro_crear(grupo.ID, idRubro, valorPorcentual, "True", cantidad);
+                GrupoxRubroID = Procedures.grupoxrubro_crear(grupo.ID, idRubro, valorPorcentual, "True", cantidad);
             }
             else
             {
-                Procedures.grupoxrubro_crear(grupo.ID, idRubro, valorPorcentual, "False", 0);
+                GrupoxRubroID = Procedures.grupoxrubro_crear(grupo.ID, idRubro, valorPorcentual, "False", 0);
                 TextBoxPorcentajeRubro.Text = "";
             }
         }
