@@ -22,13 +22,13 @@ namespace BDD1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm formTitulo;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos.
+        /// Control Panel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// Control RadioButtonListGrupos.
@@ -38,6 +38,15 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos;
+        
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// Control GridView1.

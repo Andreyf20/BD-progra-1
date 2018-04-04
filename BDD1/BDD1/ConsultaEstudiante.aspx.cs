@@ -10,37 +10,42 @@ namespace BDD1
     public partial class ConsultaEstudiante : System.Web.UI.Page
     {
         public static int estudianteID;
+        public static List<Grupo> grupos;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Periodo> periodos = Procedures.xmlPeriodos();
-            RadioButtonListPeriodos.Items.Clear();
-            if (periodos.Count != 0)
+            if (grupos.Count != 0)
             {
-                for (int i = 0; i < periodos.Count; i++)
+                for (int i = 0; i < grupos.Count; i++)
                 {
-                    RadioButtonListPeriodos.Items.Add(new ListItem(periodos[i].ID.ToString()));
+                    RadioButtonListGrupos.Items.Add(new ListItem(grupos[i].nombreCurso.ToString()));
                 }
             }
-
-
-            System.Data.DataTable dt = Procedures.verNotas(estudianteID);
+        }
+        public void ponerGrupos()
+        {
+            if (grupos.Count != 0)
+            {
+                for (int i = 0; i < grupos.Count; i++)
+                {
+                    RadioButtonListGrupos.Items.Add(new ListItem(grupos[i].nombreCurso.ToString()));
+                }
+            }
+        }
+        protected void SelectedIndexChangedGrupo(object sender, EventArgs e)
+        {
+            int indexGrupo = RadioButtonListGrupos.SelectedIndex;
+            
+            Grupo grupo = grupos[indexGrupo];
+            Label1.Text = "Nota Acumulada: " + Procedures.actualizar_nota_acumulada_estudiante(grupo.ID, estudianteID);
+            Label1.Visible = true;
+            System.Data.DataTable dt = Procedures.ver_notas_estudiante_grupo(estudianteID, grupo.ID);
             GridView1.DataSource = dt;
             GridView1.DataBind();
-        }
+            RadioButtonListGrupos.Items.Clear();
+            ponerGrupos();
 
-        protected void RadioButtonListPeriodos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //int indexPeriodo = int.Parse(RadioButtonListPeriodos.SelectedItem.Text);
-            //RadioButtonListGrupos.Items.Clear();
-            //List<Grupo> grupos = Procedures.grupo
-            //if (grupos.Count != 0)
-            //{
-            //    for (int i = 0; i < grupos.Count; i++)
-            //    {
-            //        RadioButtonListGrupos.Items.Add(new ListItem(grupos[i].nombreCurso));
-            //    }
-            //}
         }
     }
 }

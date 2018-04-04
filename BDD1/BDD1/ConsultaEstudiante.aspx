@@ -6,6 +6,14 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        #formTitulo {
+            text-align: center;
+        }
+        .auto-style1 {
+            font-size: large;
+        }
+    </style>
 </head>
 <body>
     <form id="formTitulo" runat="server">
@@ -14,15 +22,19 @@
                 Notas del Estudiante
             </h1>          
         </div>
-        Seleccione el ID del Periodo:
-        <asp:RadioButtonList ID="RadioButtonListPeriodos" runat="server" style=" margin: 0 auto;" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonListPeriodos_SelectedIndexChanged">
-        </asp:RadioButtonList>
-        <br />
+        <div class="auto-style1">
         Seleccione el Grupo:
-        <asp:RadioButtonList ID="RadioButtonListGrupos" runat="server" style=" margin: 0 auto;" RepeatDirection="Vertical">
+            <asp:Panel ID="Panel1" runat="server">
+            </asp:Panel>
+        </div>
+
+        <asp:RadioButtonList ID="RadioButtonListGrupos" runat="server" style=" margin: 0 auto;" RepeatDirection="Vertical" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo">
         </asp:RadioButtonList>
         <br />
-        <asp:GridView ID="GridView1" runat="server">
+        <asp:Label ID="Label1" runat="server" Visible="false" Text=""></asp:Label>
+        <br />
+        
+        <asp:GridView ID="GridView1" runat="server" style=" margin: 0 auto;">
         </asp:GridView>
     </form>
 </body>

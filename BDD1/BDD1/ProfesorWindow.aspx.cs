@@ -191,10 +191,21 @@ namespace BDD1
             PanelModificarNormal.Visible = true;
             PanelAgregarRubro.Visible = false;
             PanelAgregarEvaluaciones2.Visible = false;
+            int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
+            int indexGrupo = RadioButtonListGrupos1.SelectedIndex;
+            List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
+            Grupo grupo = grupos[indexGrupo];
+            TextBoxNombreGrupoNew.Text = Procedures.ver_grupo(grupo.ID)[0];
+            TextBoxCodigoGrupoNew.Text = Procedures.ver_grupo(grupo.ID)[1];
         }
 
         protected void ButtonModificarGrupoOK_Click(object sender, EventArgs e)
         {
+            int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
+            int indexGrupo = RadioButtonListGrupos1.SelectedIndex;
+            List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
+            Grupo grupo = grupos[indexGrupo];
+            Procedures.actualizar_grupo_nombre_codigo(grupo.ID, TextBoxNombreGrupoNew.Text, TextBoxCodigoGrupoNew.Text);
             TextBoxNombreGrupoNew.Text = "";
             TextBoxCodigoGrupoNew.Text = "";
             Inicio();
@@ -277,16 +288,32 @@ namespace BDD1
             PanelModificarNormal.Visible = false;
             PanelAgregarRubro.Visible = false;
             PanelAgregarEvaluaciones2.Visible = true;
+            int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
+            int indexGrupo = RadioButtonListGrupos1.SelectedIndex;
+            List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
+            Grupo grupo = grupos[indexGrupo];
+            List<GrupoxRubro> periodos = Procedures.ver_grupoxrubro_grupo_nofijos(grupo.ID);
+            List<Rubro> rubros = Procedures.xmlRubros();
+            if (periodos.Count != 0)
+            {
+                for (int i = 0; i < periodos.Count; i++)
+                {
+                    RadioButtonList2.Items.Add(new ListItem(rubros[periodos[i].idRubro].nombre));
+                }
+            }
+
         }
 
         protected void ButtonAgregarEvaluacionVariable_Click(object sender, EventArgs e)
         {
+            List<Rubro> rubros = Procedures.xmlRubros();
+            int idRubro = RadioButtonList2.SelectedIndex;
             int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
             DateTime date = CalendarEvaluacion.SelectedDate;
             string nombre = TextBoxNombreRubro.Text;
             string descripción = TextBoxDescripcionRubro.Text;
             decimal valor = decimal.Parse(TextBoxValorRubro.Text);
-            //Procedures.evaluacion_crear(GrupoxRubroID, nombre, date, valor, descripción);
+            Procedures.evaluacion_crear(idRubro, nombre, date, valor, descripción);
             TextBoxNombreRubro.Text = "";
             TextBoxDescripcionRubro.Text = "";
             TextBoxValorRubro.Text = "";

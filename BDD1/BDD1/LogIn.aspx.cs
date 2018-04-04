@@ -65,6 +65,7 @@ namespace BDD1
                 Label2.Text = "Bienvenido";
                 Label2.Visible = true;
                 ConsultaEstudiante.estudianteID = ID;
+                ConsultaEstudiante.grupos = Procedures.ver_grupos_estudiante(ID);
                 Server.Transfer("ConsultaEstudiante.aspx");
             }
         }

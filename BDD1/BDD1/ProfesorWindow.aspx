@@ -202,7 +202,9 @@
             </asp:Panel>
             <asp:Panel ID="PanelAgregarEvaluaciones2" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4">Agregar Evaluaciones Variables</h2>
-                        &nbsp;<br /> 
+                        &nbsp;<br />
+                <asp:RadioButtonList ID="RadioButtonList2" runat="server"  AutoPostBack="True" style=" margin: 0 auto;">
+                </asp:RadioButtonList>
                             <span class="auto-style7">Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style7"></asp:TextBox>
                         <br class="auto-style7" />
                             <span class="auto-style7">

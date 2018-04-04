@@ -523,3 +523,69 @@ BEGIN
 	SELECT * FROM @result;
 END
 go
+
+
+go
+CREATE PROCEDURE ver_grupoxrubro_grupo_nofijos @idGrupo int
+AS
+BEGIN
+	DECLARE @result Table (ID INT, IdGrupo int, IdRubro int, ValorPorcentual Decimal(7, 4), Esfijo varchar(6), Cantidad int);
+
+	INSERT INTO @result SELECT * FROM dbo.GrupoxRubro AS GR WHERE GR.IdGrupo = @idGrupo AND GR.Esfijo != 'True';
+	
+	SELECT * FROM @result; 
+END
+go
+
+go
+CREATE PROCEDURE ver_grupos_estudiante @idEstudiante int
+AS
+BEGIN
+	DECLARE @result Table (ID int ,IdEstado int ,IdPeriodo int, IdProfesor int, NombreCurso varchar(50), CodigoGrupo varchar(50));
+	INSERT INTO @result SELECT G.ID, G.IdEstado, G.IdPeriodo, G.idProfesor, G.NombreCurso, G.CodigoGrupo FROM dbo.Grupo AS G INNER JOIN dbo.GrupoxEstudiante AS GE ON GE.IdGrupo = G.ID
+	WHERE GE.IdEstudiante = @idEstudiante;
+
+	SELECT * FROM @result;
+END
+go
+
+go
+CREATE PROCEDURE actualizar_grupo_nombre_codigo @idGrupo int, @NombreCurso varchar(50), @CodigoGrupo varchar(50)
+AS
+BEGIN
+	UPDATE dbo.Grupo
+	SET NombreCurso = @NombreCurso, CodigoGrupo = @CodigoGrupo
+	WHERE ID = @idGrupo;
+END
+go
+
+go
+CREATE PROCEDURE ver_grupo @idGrupo int
+AS
+BEGIN
+	DECLARE @result Table (NombreCurso varchar(50), CodigoGrupo varchar(50));
+
+	INSERT INTO @result SELECT NombreCurso, CodigoGrupo FROM dbo.Grupo WHERE ID = @idGrupo;
+
+	SELECT * FROM @result;
+END
+go
+
+go
+CREATE PROCEDURE ver_notas_estudiante_grupo @idEstudiante int, @idGrupo int
+AS
+BEGIN
+	DECLARE @tablaResultados Table (idEstudiante int, Carnet varchar(50), idGrupo int, NombreCurso varchar(50),
+	NombreEvaluacion varchar(50), Nota Decimal(7, 4), ValorPorcentual Decimal(7, 4));
+	INSERT INTO @tablaResultados SELECT e.ID, e.Carnet, g.ID, g.NombreCurso, eva.Nombre, ee.Nota, eva.ValorPorcentual
+	FROM dbo.Estudiante AS e INNER JOIN 
+	dbo.GrupoxEstudiante AS ge ON @idEstudiante = ge.IdEstudiante INNER JOIN
+	dbo.Grupo AS g ON g.ID = ge.IdGrupo INNER JOIN
+	dbo.EvaluacionesxEstudiantes AS ee ON ee.IdGrupoxEstudiante = ge.ID INNER JOIN
+	dbo.Evaluacion AS eva ON eva.ID = ee.IdEvaluacion
+	WHERE e.ID = @idEstudiante
+	AND g.ID = @idGrupo;
+
+	SELECT * FROM @tablaResultados ORDER BY idGrupo ASC;
+END
+go

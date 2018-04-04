@@ -104,6 +104,7 @@ namespace BDD1
             con.Close();
         }
 
+
         //Evaluación
 
         public static void evaluacion_borrar(int id)
@@ -496,6 +497,30 @@ namespace BDD1
             return EGS;
         }
 
+        public static List<Grupo> ver_grupos_estudiante(int @idEstudiante)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("ver_grupos_estudiante", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@idEstudiante", SqlDbType.Int).Value = @idEstudiante;
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<Grupo> EGS = new List<Grupo>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                int ID = int.Parse(row["ID"].ToString());
+                int idEstado = int.Parse(row["idEstado"].ToString());
+                int idPeriodo = int.Parse(row["idPeriodo"].ToString());
+                int idProfesor = int.Parse(row["idProfesor"].ToString());
+                string NombreCurso = row["NombreCurso"].ToString();
+                string CodigoGrupo = row["CodigoGrupo"].ToString();
+                Grupo EG = new Grupo(ID, NombreCurso, CodigoGrupo, idEstado, idPeriodo, idProfesor);
+                EGS.Add(EG);
+            }
+            return EGS;
+        }
+
         public static List<decimal> ver_evaluacionesxestudiantes(int idGrupoxEstudiante, int idEvaluacion)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -511,6 +536,26 @@ namespace BDD1
             {
                 decimal Nota = decimal.Parse(row["Nota"].ToString());
                 evaluaciones.Add(Nota);
+            }
+            return evaluaciones;
+        }
+        
+        public static List<string> ver_grupo(int idGrupo)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("ver_grupo", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<string> evaluaciones = new List<string>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                string Nombre = row["NombreCurso"].ToString();
+                string Codigo = row["CodigoGrupo"].ToString();
+                evaluaciones.Add(Nombre);
+                evaluaciones.Add(Codigo);
             }
             return evaluaciones;
         }
@@ -562,6 +607,31 @@ namespace BDD1
             }
             return grupos;
         }
+
+        public static List<GrupoxRubro> ver_grupoxrubro_grupo_nofijos(int @idGrupo)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand com = new SqlCommand("ver_grupoxrubro_grupo_nofijos", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add("@idGrupo", SqlDbType.Int).Value = @idGrupo;
+            SqlDataAdapter adapt = new SqlDataAdapter(com);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<GrupoxRubro> grupos = new List<GrupoxRubro>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                int ID = int.Parse(row["ID"].ToString());
+                int IdGrupo = int.Parse(row["IdGrupo"].ToString());
+                int IdRubro = int.Parse(row["IdRubro"].ToString());
+                int Cantidad = int.Parse(row["Cantidad"].ToString());
+                decimal ValorPorcentual = decimal.Parse(row["ValorPorcentual"].ToString());
+                string EsFijo = row["EsFijo"].ToString();
+                GrupoxRubro grupo = new GrupoxRubro(ID, ValorPorcentual, EsFijo, Cantidad, IdGrupo, IdRubro);
+                grupos.Add(grupo);
+            }
+            return grupos;
+        }
+         
         public static List<GrupoxEstudiante> ver_grupoxestudiante_grupo(int @idGrupo)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
@@ -601,6 +671,19 @@ namespace BDD1
             return dataset;
         }
 
+        public static DataTable ver_notas_estudiante_grupo(int idEstudiante, int idGrupo)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand com = new SqlCommand("ver_notas_estudiante_grupo", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add("@idEstudiante", SqlDbType.Int).Value = idEstudiante;
+            com.Parameters.Add("@idGrupo", SqlDbType.Int).Value = idGrupo;
+            SqlDataAdapter adapt = new SqlDataAdapter(com);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            return dataset;
+        }
+
 
         public static string nombreProfesor(int @id)
         {
@@ -619,6 +702,20 @@ namespace BDD1
             }
             return nombre[0];
         }
+
+        public static void actualizar_grupo_nombre_codigo(int @idGrupo, string @NombreCurso, string @CodigoGrupo)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("actualizar_grupo_nombre_codigo", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@idGrupo", SqlDbType.Int).Value = @idGrupo;
+            cmd.Parameters.Add("@NombreCurso", SqlDbType.VarChar).Value = @NombreCurso;
+            cmd.Parameters.Add("@CodigoGrupo", SqlDbType.VarChar).Value = @CodigoGrupo;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
 
 
     }
