@@ -192,7 +192,7 @@ namespace BDD1
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@idEstado", SqlDbType.Int).Value = idEstado;
             cmd.Parameters.Add("@idPeriodo", SqlDbType.Int).Value = idPeriodo;
-            cmd.Parameters.Add("@idPforesor", SqlDbType.Int).Value = idPforesor;
+            cmd.Parameters.Add("@idProfesor", SqlDbType.Int).Value = idPforesor;
             cmd.Parameters.Add("@NombreCurso", SqlDbType.VarChar).Value = NombreCurso;
             cmd.Parameters.Add("@CodigoGrupo", SqlDbType.VarChar).Value = CodigoGrupo;
             cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;

@@ -147,9 +147,11 @@
                 <asp:Button ID="ButtonModificarGrupoOK" runat="server" OnClick="ButtonModificarGrupoOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
             </asp:Panel>
             <asp:Panel ID="PanelAgregarRubro" style="text-align:center" runat="server" Visible="false">
-                <table style="width:100%;">
-                <tr>
-                <td>
+                Hola
+                <table style="width:100%; height: 213px;">
+                    <tr>
+                        <td>
+
                         <asp:Panel style="text-align:center" ID="PanelCrearRubros" runat="server" Visible="true">
                     <h2 class="auto-style4" >Crear Rubros</h2>
                             <span class="auto-style7">
@@ -172,7 +174,7 @@
                             <asp:TextBox ID="TextBoxCantidadRubro"  runat="server" Width="110px" CssClass="auto-style7"></asp:TextBox>
                             <br />
                     <br />
-                    <asp:Button  ID="ButtonAgregarRubro1" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubroOK_Click" CssClass="auto-style5" Height="75px" Width="200px" />
+                    <asp:Button  ID="ButtonAgregarRubro1" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubroOK_Click" CssClass="auto-style5" Height="75px" Width="236px" />
                             <asp:Button ID="ButtonGrupoOK" runat="server" OnClick="ButtonGrupoOK_Click" Text="Terminar" CssClass="auto-style5" Height="75px" Width="200px" />
                 </asp:Panel>
                     </td>
@@ -193,7 +195,7 @@
                         <br />
                         <asp:Calendar style=" margin: 0 auto;" ID="CalendarEvaluacion" runat="server"></asp:Calendar>
                             <br />
-                        <asp:Button ID="ButtonAgregarRubroOK" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionOK_Click" CssClass="auto-style5" Height="75px" Width="200px" />
+                        <asp:Button ID="ButtonAgregarRubroOK" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionOK_Click" CssClass="auto-style5" Height="75px" Width="285px" />
                         <asp:Button ID="ButtonInstanciasOK" runat="server" OnClick="ButtonInstanciasOK_Click" Text="Terminar" CssClass="auto-style5" Height="75px" Width="200px" />
                     </asp:Panel>
                     </td>
@@ -215,9 +217,10 @@
                             <br />
                             Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:TextBox ID="TextBox3" runat="server" CssClass="auto-style7"></asp:TextBox>
                         <br />
+                <br />
                         <asp:Calendar style=" margin: 0 auto;" ID="Calendar1" runat="server"></asp:Calendar>
                             <br />
-                        <asp:Button ID="Button1" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionVariable_Click" CssClass="auto-style5" Height="75px" Width="200px" />
+                        <asp:Button ID="Button1" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionVariable_Click" CssClass="auto-style5" Height="75px" Width="288px" />
             </asp:Panel>
 
             </asp:Panel>

@@ -137,11 +137,12 @@ namespace BDD1
         protected void ButtonCrearGrupoOK_Click(object sender, EventArgs e)
         {
             int periodoID = int.Parse(RadioButtonListPeriodos4.SelectedItem.Text);
+            Console.WriteLine(periodoID);
             int estadoID = RadioButtonListEstadoGrupo.SelectedIndex;
             string nombre = TextBoxNombreGrupo.Text;
             string codigoGrupo = TextBoxCodigoGrupo.Text;
             
-            int GrupoID = Procedures.grupo_crear(estadoID, ProfesorID, periodoID, nombre, codigoGrupo);
+            int GrupoID = Procedures.grupo_crear(estadoID, periodoID, ProfesorID, nombre, codigoGrupo);
 
             TextBoxNombreGrupo.Text = "";
             TextBoxCodigoGrupo.Text = "";
@@ -216,6 +217,7 @@ namespace BDD1
         {
             PanelModificarNormal.Visible = false;
             PanelAgregarRubro.Visible = true;
+            PanelCrearRubros.Visible = true;
             PanelAgregarEvaluaciones2.Visible = false;
 
             List<Rubro> rubros = Procedures.xmlRubros();
@@ -310,13 +312,13 @@ namespace BDD1
             int idRubro = RadioButtonList2.SelectedIndex;
             int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
             DateTime date = CalendarEvaluacion.SelectedDate;
-            string nombre = TextBoxNombreRubro.Text;
-            string descripción = TextBoxDescripcionRubro.Text;
-            decimal valor = decimal.Parse(TextBoxValorRubro.Text);
+            string nombre = TextBox1.Text;
+            string descripción = TextBox2.Text;
+            decimal valor = decimal.Parse(TextBox3.Text);
             Procedures.evaluacion_crear(idRubro, nombre, date, valor, descripción);
-            TextBoxNombreRubro.Text = "";
-            TextBoxDescripcionRubro.Text = "";
-            TextBoxValorRubro.Text = "";
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
         }
 
         protected void ButtonInstanciasOK_Click(object sender, EventArgs e)
