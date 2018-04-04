@@ -205,17 +205,17 @@ namespace BDD1
 
         //Grupo x Estudiante
 
-        public static void grupoxestudiante_actualizar_nota_acumulada(int id, decimal nota)
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("grupoxestudiante_actualizar_nota_acumulada", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
-            cmd.Parameters.Add("@nota", SqlDbType.Decimal).Value = nota;
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
+        //public static void grupoxestudiante_actualizar_nota_acumulada(int id, decimal nota)
+        //{
+        //    SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+        //    SqlCommand cmd = new SqlCommand("grupoxestudiante_actualizar_nota_acumulada", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+        //    cmd.Parameters.Add("@nota", SqlDbType.Decimal).Value = nota;
+        //    con.Open();
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //}
 
         public static void grupoxestudiante_borrar(int id)
         {
@@ -658,7 +658,29 @@ namespace BDD1
             return grupos;
         }
 
-      
+        public static List<Estudiante> verEstudiantes()
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand com = new SqlCommand("verEstudiantes", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapt = new SqlDataAdapter(com);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<Estudiante> estudiantes = new List<Estudiante>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                int ID = int.Parse(row["ID"].ToString());
+                string Contraseña = row["Contraseña"].ToString();
+                string Nombre = row["Nombre"].ToString();
+                string Apellido = row["Apellido"].ToString();
+                string Correo = row["Correo"].ToString();
+                string Carnet = row["Carnet"].ToString();
+                string Telefono = row["Telefono"].ToString();
+                Estudiante grupo = new Estudiante(ID, Nombre, Apellido, Correo, Contraseña, Carnet);
+                estudiantes.Add(grupo);
+            }
+            return estudiantes;
+        }
 
         //VerNotas
 

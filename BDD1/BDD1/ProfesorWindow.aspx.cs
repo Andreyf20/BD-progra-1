@@ -189,6 +189,7 @@ namespace BDD1
             PanelModificarNormal.Visible = true;
             PanelAgregarRubro.Visible = false;
             PanelAgregarEvaluaciones2.Visible = false;
+            PanelAgregarEstudiantes.Visible = false;
             int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
             int indexGrupo = RadioButtonListGrupos1.SelectedIndex;
             List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
@@ -214,6 +215,7 @@ namespace BDD1
         {
             PanelModificarNormal.Visible = false;
             PanelAgregarRubro.Visible = true;
+            PanelAgregarEstudiantes.Visible = false;
             PanelCrearRubros.Visible = true;
             PanelAgregarEvaluaciones2.Visible = false;
 
@@ -287,6 +289,7 @@ namespace BDD1
             PanelModificarNormal.Visible = false;
             PanelAgregarRubro.Visible = false;
             PanelAgregarEvaluaciones2.Visible = true;
+            PanelAgregarEstudiantes.Visible = false;
             int periodoID = int.Parse(RadioButtonListPeriodos5.SelectedItem.Text);
             int indexGrupo = RadioButtonListGrupos1.SelectedIndex;
             List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodoID, ProfesorID);
@@ -326,6 +329,38 @@ namespace BDD1
             PanelAgregarEvaluaciones1.Visible = false;
             TextBoxPorcentajeRubro.Text = "";
             TextBoxCantidadRubro.Text = "";
+        }
+
+        protected void ButtonAgregarEstudiantes_Click(object sender, EventArgs e)
+        {
+            PanelModificarNormal.Visible = false;
+            PanelAgregarRubro.Visible = false;
+            PanelAgregarEvaluaciones2.Visible = false;
+            PanelAgregarEstudiantes.Visible = true;
+            CheckBoxList1.Items.Clear();
+            List<Estudiante> estudiantes = Procedures.verEstudiantes();
+            if (estudiantes.Count != 0)
+            {
+                for (int i = 0; i < estudiantes.Count; i++)
+                {
+                    CheckBoxList1.Items.Add(new ListItem(estudiantes[i].nombre+"("+estudiantes[i].carnet+")",estudiantes[i].ID.ToString()));
+                }
+            }
+
+        }
+
+        protected void ButtonAgregarEstudiantesOK_Click(object sender, EventArgs e)
+        {
+            int periodo = int.Parse(RadioButtonListPeriodos6.SelectedItem.Text);
+            int indexGrupo = RadioButtonListGrupos2.SelectedIndex;
+            List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(periodo, ProfesorID);
+            int grupoID = grupos[indexGrupo].ID;
+            foreach (ListItem item in CheckBoxList1.Items)
+                if (item.Selected)
+                {
+                    Procedures.grupoxestudiante_crear(grupoID, 1, int.Parse(item.Value), 0);
+                }
+                        
         }
 
         protected void ButtonAnularGrupo_Click(object sender, EventArgs e)
@@ -416,6 +451,7 @@ namespace BDD1
             notas = grupos[indexGrupo];
             Server.Transfer("RegistrarNotas.aspx");
         }
+
         
     }
 }

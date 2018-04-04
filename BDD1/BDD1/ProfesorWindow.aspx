@@ -90,8 +90,7 @@
             <h1>Grupos</h1>
             <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
             <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular o Terminar Grupo" Width="33%" Height="50px" OnClick="ButtonAnularGrupo_Click" CssClass="auto-style6" />
-            
+            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular o Terminar" Width="33%" Height="50px" OnClick="ButtonAnularGrupo_Click" CssClass="auto-style6" />
             <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4" >Crear Grupo</h2>
                 <span class="auto-style7">
@@ -128,10 +127,11 @@
                 </asp:RadioButtonList>
                 <br />
                  </span>
-            <asp:Button ID="ButtonModificarNormal" Visible="false" runat="server" Text="Modificar Nombre y Codigo" Width="33%" Height="50px" OnClick="ButtonModificarGrupoNormal_Click" CssClass="auto-style6" />
-            <asp:Button ID="ButtonAgregarRubro" Visible="false" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubro_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-            <asp:Button ID="ButtonAgregarEvaluacion" Visible="false" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacion_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-            
+            <asp:Button ID="ButtonModificarNormal" Visible="false" runat="server" Text="Modificar Nombre y Codigo" Width="24%" Height="50px" OnClick="ButtonModificarGrupoNormal_Click" CssClass="auto-style6" />
+            <asp:Button ID="ButtonAgregarRubro" Visible="false" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubro_Click" Width="24%" Height="50px" CssClass="auto-style6"/>
+            <asp:Button ID="ButtonAgregarEvaluacion" Visible="false" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacion_Click" Width="24%" Height="50px" CssClass="auto-style6"/>
+            <asp:Button ID="ButtonAgregarEstudiantes" runat="server" Text="Agregar Estudiantes" Width="24%" Height="50px" OnClick="ButtonAgregarEstudiantes_Click" CssClass="auto-style6" />
+
             <asp:Panel ID="PanelModificarNormal" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4">Modificar Grupo</h2>
                 Nombre Grupo:&nbsp;
@@ -224,6 +224,19 @@
             </asp:Panel>
 
             </asp:Panel>
+            <asp:Panel ID="PanelAgregarEstudiantes" style="text-align:center" runat="server" Visible="false">
+                <h2 class="auto-style4" >Agregar Estudiantes</h2>
+                <br />
+                Seleccione los estudiantes que desea:
+                <br />
+                <br />
+                <asp:CheckBoxList  ID="CheckBoxList1"  runat="server">
+                </asp:CheckBoxList>
+                <br />
+                <br />
+                
+                <asp:Button ID="ButtonAgregarEstudiantesOK" runat="server" OnClick="ButtonAgregarEstudiantesOK_Click"  Text="Agregar Estudiantes" CssClass="auto-style5" Height="75px" Width="315px" />
+            </asp:Panel>               
             <asp:Panel ID="PanelAnularGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4" >Anular o Terminar Grupo</h2>
                 <span class="auto-style7">
