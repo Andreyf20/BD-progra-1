@@ -70,12 +70,20 @@ namespace BDD1
             DataTable dataset = new DataTable();
             adapt.Fill(dataset);
             List<decimal> evaluaciones = new List<decimal>();
-            foreach (DataRow row in dataset.Rows)
+            if (dataset.Rows[0].ToString()=="")
             {
-                decimal Nota = decimal.Parse(row["Column1"].ToString());
-                evaluaciones.Add(Nota);
+                return -1;
             }
-            return evaluaciones[0];
+            else
+            {
+                Console.WriteLine(dataset.Rows[0].ToString());
+                foreach (DataRow row in dataset.Rows)
+                {
+                    decimal Nota = decimal.Parse(row["Column1"].ToString());
+                    evaluaciones.Add(Nota);
+                }
+                return evaluaciones[0];
+            }
         }
         
         public static void estudiante_borrar(int id)
