@@ -31,10 +31,8 @@ go
 CREATE PROCEDURE rubro_crear @nombre nvarchar(50)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Rubro);
-    SET @ID = @ID + 1;
-	INSERT INTO dbo.Rubro(ID, Nombre)
-	VALUES(@ID, @nombre)
+	INSERT INTO dbo.Rubro(Nombre)
+	VALUES(@nombre)
 END
 go
 
@@ -68,19 +66,17 @@ go
 CREATE PROCEDURE periodo_crear @inicio date, @final date
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Periodo);
-    SET @ID = @ID + 1;
 	DECLARE @result int
 	IF (@inicio < convert(varchar, getdate(), 101)) AND (@final > convert(varchar, getdate(), 101))
 	BEGIN
-		INSERT INTO dbo.Periodo(ID, FechaInicio, FechaFinal, Activo)
-		VALUES(@ID, @inicio, @final, 'True'); --SE INSERTA UN "1" PORQUE ESTA ACTIVO
+		INSERT INTO dbo.Periodo(FechaInicio, FechaFinal, Activo)
+		VALUES(@inicio, @final, 'True'); --SE INSERTA UN "1" PORQUE ESTA ACTIVO
 		SET @result = 1;
 	END
 	ELSE
 	BEGIN
-		INSERT INTO dbo.Periodo(ID, FechaInicio, FechaFinal, Activo)
-		VALUES(@ID, @inicio, @final, 'False'); --SE INSERTA UN "0" PORQUE ESTA INACTIVO
+		INSERT INTO dbo.Periodo(FechaInicio, FechaFinal, Activo)
+		VALUES(@inicio, @final, 'False'); --SE INSERTA UN "0" PORQUE ESTA INACTIVO
 		SET @result = 0;
 	END
 	RETURN @result;
@@ -109,11 +105,9 @@ go
 CREATE PROCEDURE grupoxrubro_crear @idGrupo int, @idRubro int, @valorPorcentual int, @esFijo varchar(6), @cantidad int
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.GrupoxRubro);
-    SET @ID = @ID + 1;
 	DECLARE @result int;
-	INSERT INTO dbo.GrupoxRubro(ID, idGrupo, idRubro, ValorPorcentual, Esfijo, Cantidad)
-	VALUES(@ID, @idGrupo, @idRubro, @valorPorcentual, @esFijo, @cantidad);
+	INSERT INTO dbo.GrupoxRubro(idGrupo, idRubro, ValorPorcentual, Esfijo, Cantidad)
+	VALUES(@idGrupo, @idRubro, @valorPorcentual, @esFijo, @cantidad);
 	SET @result = (SELECT SCOPE_IDENTITY());
 	RETURN @result;
 END
@@ -124,10 +118,8 @@ CREATE PROCEDURE grupoxestudiante_crear @idgrupo int, @idestadogxe int, @idestud
 @NotaAcumulada decimal(7, 4)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.GrupoxEstudiante);
-    SET @ID = @ID + 1;
-	INSERT INTO dbo.GrupoxEstudiante (ID, idGrupo, idEstadoGxE, idEstudiante, NotaAcumulada)
-	VALUES(@ID, @idgrupo, @idestadogxe, @idestudiante, @NotaAcumulada)
+	INSERT INTO dbo.GrupoxEstudiante (idGrupo, idEstadoGxE, idEstudiante, NotaAcumulada)
+	VALUES(@idgrupo, @idestadogxe, @idestudiante, @NotaAcumulada)
 END
 go
 
@@ -164,11 +156,9 @@ CREATE PROCEDURE grupo_crear @idEstado int, @idPeriodo int, @idProfesor int, @No
 @CodigoGrupo varchar(50)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EstadoGrupo);
-    SET @ID = @ID + 1;
 	DECLARE @result int;
-	INSERT INTO dbo.Grupo(ID, idEstado, idPeriodo,idProfesor ,NombreCurso, CodigoGrupo)
-	VALUES(@ID, @idEstado, @idPeriodo,@idProfesor ,@NombreCurso, @CodigoGrupo);
+	INSERT INTO dbo.Grupo(idEstado, idPeriodo,idProfesor ,NombreCurso, CodigoGrupo)
+	VALUES(@idEstado, @idPeriodo,@idProfesor ,@NombreCurso, @CodigoGrupo);
 	SET @result = (SELECT SCOPE_IDENTITY());
 	RETURN @result;
 END
@@ -178,10 +168,8 @@ go
 CREATE PROCEDURE evaluacionxestudiante_crear @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EvaluacionesxEstudiantes);
-    SET @ID = @ID + 1;
-	INSERT INTO dbo.EvaluacionesxEstudiantes(ID, idGrupoxEstudiante, idEvaluacion, Nota)
-	VALUES(@ID, @idGrupoxEstudiante, @idEvaluacion, @Nota)
+	INSERT INTO dbo.EvaluacionesxEstudiantes(idGrupoxEstudiante, idEvaluacion, Nota)
+	VALUES(@idGrupoxEstudiante, @idEvaluacion, @Nota)
 END
 go
 
@@ -218,10 +206,8 @@ CREATE PROCEDURE estudiante_crear @Nombre varchar(50), @Apellido varchar(50), @T
 @Correo varchar(50), @Contraseña varchar(50)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Estudiante);
-    SET @ID = @ID + 1;
-	INSERT INTO dbo.Estudiante(ID, Nombre, Apellido, Telefono, Correo, Contraseña)
-	VALUES(@ID, @Nombre, @Apellido, @Telefono, @Correo, @Contraseña)
+	INSERT INTO dbo.Estudiante(Nombre, Apellido, Telefono, Correo, Contraseña)
+	VALUES(@Nombre, @Apellido, @Telefono, @Correo, @Contraseña)
 END
 go
 
@@ -238,10 +224,8 @@ go
 CREATE PROCEDURE estadogxe_crear @Nombre varchar(50)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EstadoGxE);
-    SET @ID = @ID + 1;
-	INSERT INTO dbo.EstadoGxE(ID, Nombre)
-	VALUES(@ID, @Nombre);
+	INSERT INTO dbo.EstadoGxE(Nombre)
+	VALUES(@Nombre)
 END
 go
 
@@ -258,10 +242,8 @@ go
 CREATE PROCEDURE estadogrupo_crear @Nombre varchar(50)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EstadoGrupo);
-    SET @ID = @ID + 1;
-	INSERT INTO dbo.EstadoGrupo(ID, Nombre)
-	VALUES(@ID, @Nombre)
+	INSERT INTO dbo.EstadoGrupo(Nombre)
+	VALUES(@Nombre)
 END
 go
 
@@ -613,8 +595,6 @@ CREATE PROCEDURE evaluacion_crear @idGrupoxRubro int, @Nombre varchar(50), @Fech
 @ValorPorcentual decimal(7, 4), @Descripcion varchar(100)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Evaluacion);
-    SET @ID = @ID + 1;
 	Declare @TablaValores Table (Cantidad int, esfijo varchar(6));
 	INSERT INTO @TablaValores SELECT Cantidad, esfijo FROM dbo.GrupoxRubro WHERE ID = @idGrupoxRubro;
 	SELECT * FROM @TablaValores
@@ -626,15 +606,15 @@ BEGIN
 		SET @Porcentaje = (SELECT TOP 1 ValorPorcentual FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro);
 		DECLARE @PorcentajeNuevo Decimal(7, 4);
 		SET @PorcentajeNuevo = @Porcentaje / @CantidadDeEvaluaciones;
-		INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
-		VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @PorcentajeNuevo, @Descripcion);
+		INSERT INTO dbo.Evaluacion(idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
+		VALUES(@idGrupoxRubro, @Nombre, @Fecha, @PorcentajeNuevo, @Descripcion);
 		UPDATE dbo.Evaluacion SET ValorPorcentual = @PorcentajeNuevo WHERE IdGrupoxRubro = @idGrupoxRubro;
 		EXEC grupoxrubro_aumentar_cantidad @idGrupoxRubro;
 		END
 	ELSE
 		BEGIN
-		INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
-		VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @ValorPorcentual, @Descripcion)
+		INSERT INTO dbo.Evaluacion(idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
+		VALUES(@idGrupoxRubro, @Nombre, @Fecha, @ValorPorcentual, @Descripcion)
 		END
 END
 go
