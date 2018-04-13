@@ -684,7 +684,7 @@ namespace BDD1
                 string Correo = row["Correo"].ToString();
                 string Carnet = row["Carnet"].ToString();
                 string Telefono = row["Telefono"].ToString();
-                Estudiante grupo = new Estudiante(ID, Nombre, Apellido, Correo, Contraseña, Carnet);
+                Estudiante grupo = new Estudiante(ID, Nombre, Apellido,Telefono, Correo, Contraseña, Carnet);
                 estudiantes.Add(grupo);
             }
             return estudiantes;

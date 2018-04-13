@@ -27,8 +27,6 @@
                 <h1 ;="" style="text-align:center">Iniciar Sesión para Profesores </h1>
             </div>
             <p ;="" style="text-align:center; font-size: xx-large;">
-                &nbsp;</p>
-            <p ;="" style="text-align:center; font-size: xx-large;">
                 Correo:
             </p>
             <p ;="" style="text-align:center">
@@ -53,8 +51,6 @@
                 Iniciar Sesión para Estudiantes
             </h1>
         </div>
-        <p style="text-align:center; font-size: xx-large;";>
-            &nbsp;</p>
         <p style="text-align:center; font-size: xx-large;";>
             Correo:
         </p>

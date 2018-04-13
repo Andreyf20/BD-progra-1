@@ -13,12 +13,14 @@ namespace BDD1
         public string contraseña;
         public string apellido;
         public string carnet;
+        public string telefono;
 
-        public Estudiante(int ID,string nombre, string apellido, string correo, string contraseña, string carnet)
+        public Estudiante(int ID,string nombre, string apellido, string telefono, string correo, string contraseña, string carnet)
         {
             this.ID = ID;
             this.nombre = nombre;
             this.apellido = apellido;
+            this.telefono = telefono;
             this.contraseña = contraseña;
             this.correo = correo;
             this.carnet = carnet;
