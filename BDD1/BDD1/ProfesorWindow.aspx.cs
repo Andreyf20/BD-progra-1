@@ -17,6 +17,7 @@ namespace BDD1
         public static int GrupoxRubroID;
         public static int EvaluacionID;
         public static Grupo notas;
+        List<Evaluacion> evaluaciones = new List<Evaluacion>();
         protected void Page_Load(object sender, EventArgs e)
         {
             Label2.Text = "Bienvenido Profesor " + Procedures.nombreProfesor(ProfesorID);
@@ -56,6 +57,11 @@ namespace BDD1
             PanelAgregarEvaluaciones2.Visible = false;
             PanelModificarEvaluacion.Visible = false;
             PanelAnularEvaluacion.Visible = false;
+
+            PanelCrearEstudiante.Visible = false;
+            PanelModificarEstudiante.Visible = false;
+            PanelAnularEstudiante.Visible = false;
+            PanelEstudiante.Visible = false;
 
             Label1.Text = "";
         }
@@ -539,7 +545,6 @@ namespace BDD1
 
         protected void ButtonCrearEvaluaciones_Click(object sender, EventArgs e)
         {
-            Inicio();
             PanelEvaluacion.Visible = true;
             PanelAgregarEvaluaciones2.Visible = true;
             PanelModificarEvaluacion.Visible = false;
@@ -562,7 +567,6 @@ namespace BDD1
 
         protected void ButtonModificarEvaluaciones_Click(object sender, EventArgs e)
         {
-            Inicio();
             PanelEvaluacion.Visible = true;
             PanelAgregarEvaluaciones2.Visible = false;
             PanelModificarEvaluacion.Visible = true;
@@ -572,12 +576,23 @@ namespace BDD1
 
         protected void ButtonAnularEvaluaciones_Click(object sender, EventArgs e)
         {
-            Inicio();
             PanelEvaluacion.Visible = true;
             PanelAgregarEvaluaciones2.Visible = false;
             PanelModificarEvaluacion.Visible = false;
             PanelAnularEvaluacion.Visible = true;
+            
+            List<GrupoxRubro> grupoxRubros = Procedures.ver_grupoxrubro_grupo(GrupoID);
 
+            for (int i = 0; i < grupoxRubros.Count; i++)
+            {
+                GrupoxRubro gr = grupoxRubros[i];
+                List<Evaluacion> ev = Procedures.ver_evaluacion_grupoxrubro(gr.ID);
+                for (int j = 0; j < ev.Count; j++)
+                {
+                    evaluaciones.Add(ev[j]);
+                    RadioButtonListEvaluaciones2.Items.Add(new ListItem(ev[j].nombre));
+                }
+            }
         }
 
         protected void SelectedIndexChangedPeriodo5(object sender, EventArgs e)
@@ -608,7 +623,8 @@ namespace BDD1
         {
             PanelCrearEstudiante.Visible = true;
             PanelModificarEstudiante.Visible = false;
-            
+            PanelAnularEstudiante.Visible = false;
+
             string Nombre = TextBoxNombre.Text;
             string Apellido = TextBoxApellido.Text;
             string Telefono = TextBoxTelefono.Text;
@@ -632,6 +648,7 @@ namespace BDD1
         {
             PanelCrearEstudiante.Visible = false;
             PanelModificarEstudiante.Visible = true;
+            PanelAnularEstudiante.Visible = false;
 
             RadioButtonListEstudiantes1.Items.Clear();
             List<Estudiante> estudiantes = Procedures.verEstudiantes();
@@ -666,16 +683,48 @@ namespace BDD1
         protected void ButtonCrearEstudiante_Click(object sender, EventArgs e)
         {
             PanelCrearEstudiante.Visible = true;
+            PanelModificarEstudiante.Visible = false;
+            PanelAnularEstudiante.Visible = false;
         }
 
         protected void ButtonAnularEstudiante_Click(object sender, EventArgs e)
         {
+            PanelCrearEstudiante.Visible = false;
+            PanelModificarEstudiante.Visible = false;
+            PanelAnularEstudiante.Visible = true;
+
+            RadioButtonListEstudiantes2.Items.Clear();
+            List<Estudiante> estudiantes = Procedures.verEstudiantes();
+            if (estudiantes.Count != 0)
+            {
+                for (int i = 0; i < estudiantes.Count; i++)
+                {
+                    RadioButtonListEstudiantes2.Items.Add(new ListItem(estudiantes[i].nombre + "(" + estudiantes[i].carnet + ")", estudiantes[i].ID.ToString()));
+                }
+            }
 
         }
 
         protected void ButtonModificarEstudianteOK_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ButtonAnularEstudianteOK_Click(object sender, EventArgs e)
+        {
+            List<Estudiante> estudiantes = Procedures.verEstudiantes();
+            int index = RadioButtonListEstudiantes1.SelectedIndex;
+            Estudiante estudiante = estudiantes[index];
+            Procedures.estudiante_borrar(estudiante.ID);
+            Inicio();
+        }
+
+        protected void ButtonAnularEvaluacionOK_Click(object sender, EventArgs e)
+        {
+            int index = RadioButtonListEvaluaciones2.SelectedIndex;
+            EvaluacionID = evaluaciones[index].ID;
+            Procedures.evaluacion_borrar(EvaluacionID);
+            Inicio();
         }
     }
 }

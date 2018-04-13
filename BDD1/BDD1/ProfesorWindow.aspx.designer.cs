@@ -292,6 +292,33 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
+        /// Control PanelAnularEstudiante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelAnularEstudiante;
+        
+        /// <summary>
+        /// Control RadioButtonListEstudiantes2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListEstudiantes2;
+        
+        /// <summary>
+        /// Control ButtonAnularEstudianteOK.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAnularEstudianteOK;
+        
+        /// <summary>
         /// Control PanelPeriodo.
         /// </summary>
         /// <remarks>
@@ -1028,6 +1055,24 @@ namespace BDD1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelAnularEvaluacion;
+        
+        /// <summary>
+        /// Control RadioButtonListEvaluaciones2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListEvaluaciones2;
+        
+        /// <summary>
+        /// Control ButtonAnularEvaluacionOK.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAnularEvaluacionOK;
         
         /// <summary>
         /// Control PanelRegistrarNotas.
