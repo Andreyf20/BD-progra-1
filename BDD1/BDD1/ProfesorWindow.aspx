@@ -53,82 +53,10 @@
         <asp:Panel style="text-align:center" ID="PanelInicio" runat="server" Visible="true">
             
             <h1>
-                <asp:Label ID="Label2" runat="server"></asp:Label>
-            </h1>
-            <h1>
                 <asp:Label ID="Label1" runat="server"></asp:Label>
             </h1>
         </asp:Panel>
-        <asp:Panel style="text-align:center" ID="PanelEstudiante" runat="server" Visible="false">
-            <h1>Estudiantes</h1>
-            <asp:Button ID="ButtonCrearEstudiante" runat="server" Text="Crear Estudiante" OnClick="ButtonCrearEstudiante_Click" Width="33%" Height="50px" CssClass="auto-style6" />
-            <asp:Button ID="ButtonModificarEstudiante" runat="server" Text="Modificar Estudiante" Width="33%" Height="50px" OnClick="ButtonModificarEstudiante_Click" CssClass="auto-style6" />
-            <asp:Button ID="ButtonAnularEstudiante" runat="server" Text="Anular Estudiante" Width="33%" Height="50px" OnClick="ButtonAnularEstudiante_Click" CssClass="auto-style6" />
-            <asp:Panel ID="PanelCrearEstudiante" style="text-align:center" runat="server" Visible="false">
-                <h2 style="font-size: xx-large">Crear Estudiante</h2>
-                <span class="auto-style7">Nombre: </span>  <asp:TextBox ID="TextBoxNombre" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <br class="auto-style7" />
-                <span class="auto-style7">Apellido: </span>  <asp:TextBox ID="TextBoxApellido" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <br class="auto-style7" />
-                <span class="auto-style7">Telefono: </span>  <asp:TextBox ID="TextBoxTelefono" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <br class="auto-style7" />
-                <span class="auto-style7">Carnet: </span>  <asp:TextBox ID="TextBoxCarnet" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <br class="auto-style7" />
-                <span class="auto-style7">Correo: </span>  <asp:TextBox ID="TextBoxCorreo" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <br class="auto-style7" />
-                <span class="auto-style7">Contraseña: </span>  <asp:TextBox ID="TextBoxContraseña" runat="server" CssClass="auto-style7"></asp:TextBox>     
-                <br />
-                <br />          
-                <asp:Button ID="Button2" runat="server" OnClick="ButtonCrearEstudianteOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
-            </asp:Panel>
-            <asp:Panel ID="PanelModificarEstudiante" style="text-align:center" runat="server" Visible="false">
-                <h2 style="font-size: xx-large">Modificar Estudiante</h2>
-
-                <table style="width:100%; height: 213px;">
-                    <tr>
-                        <td>
-                            <asp:RadioButtonList ID="RadioButtonListEstudiantes1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonListEstudiantes1_SelectedIndexChanged">
-                            </asp:RadioButtonList>
-                        </td>
-                        <td>
-                            <span class="auto-style7">Nombre: </span>  <asp:TextBox ID="TextBoxNombreNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                            <br class="auto-style7" />
-                            <br class="auto-style7" />
-                            <span class="auto-style7">Apellido: </span>  <asp:TextBox ID="TextBoxApellidoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                            <br class="auto-style7" />
-                            <br class="auto-style7" />
-                            <span class="auto-style7">Telefono: </span>  <asp:TextBox ID="TextBoxTelefonoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                            <br class="auto-style7" />
-                            <br class="auto-style7" />
-                            <span class="auto-style7">Carnet: </span>  <asp:TextBox ID="TextBoxCarnetNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                            <br class="auto-style7" />
-                            <br class="auto-style7" />
-                            <span class="auto-style7">Correo: </span>  <asp:TextBox ID="TextBoxCorreoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                            <br class="auto-style7" />
-                            <br class="auto-style7" />
-                            <span class="auto-style7">Contraseña: </span>  <asp:TextBox ID="TextBoxContraseñaNew" runat="server" CssClass="auto-style7"></asp:TextBox>        
-                            <br />
-                            <br />                             
-                            <asp:Button ID="Button3" runat="server" OnClick="ButtonModificarEstudianteOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
-                        </td>
-                    </tr>
-                </table>
-            </asp:Panel>
-            <asp:Panel ID="PanelAnularEstudiante" runat="server" Visible="false">
-                <h2 style="font-size: xx-large">Anular Estudiante</h2>
-                <asp:RadioButtonList ID="RadioButtonListEstudiantes2" runat="server">
-                </asp:RadioButtonList>
-                <br />
-                <br /> 
-                <asp:Button ID="ButtonAnularEstudianteOK" runat="server" OnClick="ButtonAnularEstudianteOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
-
-            </asp:Panel>
-        </asp:Panel>
+        
         <asp:Panel ID="PanelPeriodo" runat="server" Visible="false">
             <h1 class="auto-style8">Periodos</h1>
             <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="49%" Height="50px" CssClass="auto-style6" />
@@ -161,6 +89,7 @@
             </asp:Panel>
         </asp:Panel>
         <asp:Panel ID="PanelGrupos" style="text-align:center" runat="server" Visible="false">
+            <h1>Menu Grupos</h1>
             <asp:Button ID="ButtonGrupo" runat="server" Text="Grupos" OnClick="ButtonGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
             <asp:Button ID="ButtonGrupoxRubros" runat="server" Text="Rubros por Grupo" OnClick="ButtonGrupoxRubro_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
             <asp:Button ID="ButtonEvaluaciones" runat="server" Text="Evaluaciones" Width="33%" Height="50px" OnClick="ButtonEvaluacion_Click" CssClass="auto-style6" />
@@ -168,7 +97,7 @@
             <h1>Grupos</h1>
             <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
             <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular o Terminar" Width="33%" Height="50px" OnClick="ButtonAnularGrupo_Click" CssClass="auto-style6" />
+            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="33%" Height="50px" OnClick="ButtonAnularGrupo_Click" CssClass="auto-style6" />
             <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4" >Crear Grupo</h2>
                 <span class="auto-style7">
@@ -228,10 +157,10 @@
             </asp:Panel>
             <asp:Panel ID="PanelAgregarEstudiantes" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4" >Agregar Estudiantes</h2>
-                <br />
-                Seleccione los estudiantes que desea:
-                <br />
-                <br />
+                <br class="auto-style7" />
+                <span class="auto-style7">Seleccione los estudiantes que desea: </span>
+                <br class="auto-style7" />
+                <br class="auto-style7" />
                 <asp:CheckBoxList  ID="CheckBoxList1"  runat="server">
                 </asp:CheckBoxList>
                 <br />
@@ -240,7 +169,7 @@
                 <asp:Button ID="ButtonAgregarEstudiantesOK" runat="server" OnClick="ButtonAgregarEstudiantesOK_Click"  Text="Agregar Estudiantes" CssClass="auto-style5" Height="75px" Width="315px" />
             </asp:Panel>               
             <asp:Panel ID="PanelAnularGrupo" style="text-align:center" runat="server" Visible="false">
-                <h2 class="auto-style4" >Anular o Terminar Grupo</h2>
+                <h2 class="auto-style4" >Anular&nbsp; Grupo</h2>
                 <span class="auto-style7">
                 <br />
                 Seleccione el ID del Periodo: </span>
@@ -252,7 +181,6 @@
                 </asp:RadioButtonList>
                 <br />
                 <asp:Button ID="ButtonAnularGrupoOK" runat="server" OnClick="ButtonAnularGrupoOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
-                <asp:Button ID="ButtonTerminarGrupoOK" runat="server" CssClass="auto-style5" Height="75px" OnClick="ButtonTerminarGrupoOK_Click" Text="Terminar" Width="200px" />
             </asp:Panel>
         </asp:Panel>
             <asp:Panel ID="PanelGrupoxRubro" style="text-align:center" runat="server" Visible="false">
@@ -268,9 +196,8 @@
                 </asp:RadioButtonList>
                 <br />
                  </span>
-                <asp:Button ID="ButtonCrearGrupoxRubro" Visible="false" runat="server" Text="Crear Rubros por Grupo" OnClick="ButtonCrearGrupoxRubro_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-                <asp:Button ID="ButtonModificarGrupoxRubro" Visible="false" runat="server" Text="Modificar Rubros por Grupo" OnClick="ButtonModificarGrupoxRubro_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-                <asp:Button ID="ButtonAnularGrupoxRubro" Visible="false" runat="server" Text="Anular Rubros por Grupo" Width="33%" Height="50px" OnClick="ButtonAnularGrupoxRubro_Click" CssClass="auto-style6" />
+                <asp:Button ID="ButtonCrearGrupoxRubro" Visible="false" runat="server" Text="Crear Rubros por Grupo" OnClick="ButtonCrearGrupoxRubro_Click" Width="49%" Height="50px" CssClass="auto-style6"/>
+                <asp:Button ID="ButtonAnularGrupoxRubro" Visible="false" runat="server" Text="Anular Rubros por Grupo" OnClick="ButtonAnularGrupoxRubro_Click" Width="49%" Height="50px" CssClass="auto-style6"/>
                 <asp:Panel ID="PanelAgregarRubro" style="text-align:center" runat="server" Visible="false">
                 <table style="width:100%; height: 213px;">
                     <tr>
@@ -349,7 +276,6 @@
                 <br />
                  </span>
                 <asp:Button ID="ButtonCrearEvaluaciones" Visible="false" runat="server" Text="Crear Evaluaciones Variables" OnClick="ButtonCrearEvaluaciones_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-                <asp:Button ID="ButtonModificarEvaluaciones" Visible="false" runat="server" Text="Modificar Evaluaciones" OnClick="ButtonModificarEvaluaciones_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
                 <asp:Button ID="ButtonAnularEvaluaciones" Visible="false" runat="server" Text="Anular Evaluaciones" Width="33%" Height="50px" OnClick="ButtonAnularEvaluaciones_Click" CssClass="auto-style6" />
                 
                 <asp:Panel ID="PanelAgregarEvaluaciones2" style="text-align:center" runat="server" Visible="false">
@@ -371,8 +297,6 @@
                             <br />
                         <asp:Button ID="Button1" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionVariable_Click" CssClass="auto-style5" Height="75px" Width="288px" />
             </asp:Panel>
-            <asp:Panel style="text-align:center" ID="PanelModificarEvaluacion" runat="server" Visible="false">
-            </asp:Panel>
             <asp:Panel style="text-align:center" ID="PanelAnularEvaluacion" runat="server" Visible="false">
                 <h2>Anular Evaluaciones</h2>
                 <asp:RadioButtonList ID="RadioButtonListEvaluaciones2" runat="server"  AutoPostBack="True" style=" margin: 0 auto;">
@@ -381,7 +305,75 @@
             </asp:Panel>
             </asp:Panel>
         </asp:Panel>
-        
+        <asp:Panel style="text-align:center" ID="PanelEstudiante" runat="server" Visible="false">
+            <h1>Estudiantes</h1>
+            <asp:Button ID="ButtonCrearEstudiante" runat="server" Text="Crear Estudiante" OnClick="ButtonCrearEstudiante_Click" Width="33%" Height="50px" CssClass="auto-style6" />
+            <asp:Button ID="ButtonModificarEstudiante" runat="server" Text="Modificar Estudiante" Width="33%" Height="50px" OnClick="ButtonModificarEstudiante_Click" CssClass="auto-style6" />
+            <asp:Button ID="ButtonAnularEstudiante" runat="server" Text="Anular Estudiante" Width="33%" Height="50px" OnClick="ButtonAnularEstudiante_Click" CssClass="auto-style6" />
+            <asp:Panel ID="PanelCrearEstudiante" style="text-align:center" runat="server" Visible="false">
+                <h2 style="font-size: xx-large">Crear Estudiante</h2>
+                <span class="auto-style7">Nombre: </span>  <asp:TextBox ID="TextBoxNombre" runat="server" CssClass="auto-style7"></asp:TextBox>
+                <br class="auto-style7" />
+                <br class="auto-style7" />
+                <span class="auto-style7">Apellido: </span>  <asp:TextBox ID="TextBoxApellido" runat="server" CssClass="auto-style7"></asp:TextBox>
+                <br class="auto-style7" />
+                <br class="auto-style7" />
+                <span class="auto-style7">Telefono: </span>  <asp:TextBox ID="TextBoxTelefono" runat="server" CssClass="auto-style7"></asp:TextBox>
+                <br class="auto-style7" />
+                <br class="auto-style7" />
+                <span class="auto-style7">Carnet: </span>  <asp:TextBox ID="TextBoxCarnet" runat="server" CssClass="auto-style7"></asp:TextBox>
+                <br class="auto-style7" />
+                <br class="auto-style7" />
+                <span class="auto-style7">Correo: </span>  <asp:TextBox ID="TextBoxCorreo" runat="server" CssClass="auto-style7"></asp:TextBox>
+                <br class="auto-style7" />
+                <br class="auto-style7" />
+                <span class="auto-style7">Contraseña: </span>  <asp:TextBox ID="TextBoxContraseña" runat="server" CssClass="auto-style7"></asp:TextBox>     
+                <br />
+                <br />          
+                <asp:Button ID="Button2" runat="server" OnClick="ButtonCrearEstudianteOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
+            </asp:Panel>
+            <asp:Panel ID="PanelModificarEstudiante" style="text-align:center" runat="server" Visible="false">
+                <h2 style="font-size: xx-large">Modificar Estudiante</h2>
+
+                <table style="width:100%; height: 213px;">
+                    <tr>
+                        <td>
+                            <asp:RadioButtonList ID="RadioButtonListEstudiantes1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonListEstudiantes1_SelectedIndexChanged">
+                            </asp:RadioButtonList>
+                        </td>
+                        <td>
+                            <span class="auto-style7">Nombre: </span>  <asp:TextBox ID="TextBoxNombreNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                            <br class="auto-style7" />
+                            <br class="auto-style7" />
+                            <span class="auto-style7">Apellido: </span>  <asp:TextBox ID="TextBoxApellidoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                            <br class="auto-style7" />
+                            <br class="auto-style7" />
+                            <span class="auto-style7">Telefono: </span>  <asp:TextBox ID="TextBoxTelefonoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                            <br class="auto-style7" />
+                            <br class="auto-style7" />
+                            <span class="auto-style7">Carnet: </span>  <asp:TextBox ID="TextBoxCarnetNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                            <br class="auto-style7" />
+                            <br class="auto-style7" />
+                            <span class="auto-style7">Correo: </span>  <asp:TextBox ID="TextBoxCorreoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                            <br class="auto-style7" />
+                            <br class="auto-style7" />
+                            <span class="auto-style7">Contraseña: </span>  <asp:TextBox ID="TextBoxContraseñaNew" runat="server" CssClass="auto-style7"></asp:TextBox>        
+                            <br />
+                            <br />                             
+                            <asp:Button ID="Button3" runat="server" OnClick="ButtonModificarEstudianteOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
+                        </td>
+                    </tr>
+                </table>
+            </asp:Panel>
+            <asp:Panel ID="PanelAnularEstudiante" runat="server" Visible="false">
+                <h2 style="font-size: xx-large">Anular Estudiante</h2>
+                <asp:RadioButtonList ID="RadioButtonListEstudiantes2" runat="server">
+                </asp:RadioButtonList>
+                <br />
+                <br /> 
+                <asp:Button ID="ButtonAnularEstudianteOK" runat="server" OnClick="ButtonAnularEstudianteOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
+            </asp:Panel>
+        </asp:Panel>
         
         <asp:Panel style="text-align:center" ID="PanelRegistrarNotas" runat="server" Visible="false">
             <h1>Registrar Notas</h1>
