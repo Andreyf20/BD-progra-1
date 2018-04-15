@@ -42,7 +42,15 @@ go
 CREATE PROCEDURE rubro_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.Rubro WHERE id = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.Rubro WHERE id = @id;
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -60,7 +68,15 @@ go
 CREATE PROCEDURE periodo_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.Periodo WHERE id = @id;
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.Periodo WHERE id = @id;
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -101,7 +117,15 @@ go
 CREATE PROCEDURE grupoxrubro_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.GrupoxRubro WHERE id = @id;
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.GrupoxRubro WHERE id = @id;
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -135,8 +159,16 @@ go
 CREATE PROCEDURE grupoxestudiante_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.GrupoxEstudiante
-	WHERE id = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.GrupoxEstudiante
+		WHERE id = @id;
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -154,8 +186,16 @@ go
 CREATE PROCEDURE grupo_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.Grupo
-	WHERE id = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.Grupo
+		WHERE id = @id
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -199,8 +239,16 @@ go
 CREATE PROCEDURE evaluacionxestudiante_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.EvaluacionesxEstudiantes
-	WHERE id = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.EvaluacionesxEstudiantes
+		WHERE id = @id;
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -208,8 +256,16 @@ go
 CREATE PROCEDURE evaluacion_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.Evaluacion
-	WHERE ID = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.Evaluacion
+		WHERE ID = @id
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -229,8 +285,16 @@ go
 CREATE PROCEDURE estudiante_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.Estudiante
-	WHERE ID = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.Estudiante 
+		WHERE ID = @id
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -249,8 +313,16 @@ go
 CREATE PROCEDURE estadogxe_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.EstadoGxE
-	WHERE ID = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.EstadoGxE
+		WHERE ID = @id
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
@@ -269,8 +341,16 @@ go
 CREATE PROCEDURE estadogrupo_borrar @id int
 AS
 BEGIN
-	DELETE FROM dbo.EstadoGrupo
-	WHERE ID = @id
+	DECLARE @result int;
+	BEGIN TRY
+		DELETE FROM dbo.EstadoGrupo
+		WHERE ID = @id
+		SET @result = 0;
+	END TRY
+	BEGIN CATCH
+		SET @result = -1;
+	END CATCH
+	RETURN @result;
 END
 go
 
