@@ -37,20 +37,37 @@
         .auto-style8 {
             text-align: center;
         }
+        .auto-style9 {
+            width: 50px;
+        }
+        .auto-style10 {
+            width: 1500px;
+        }
         </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div >
         </div>
-        <asp:Panel ID="PanelMenu"  runat="server" Visible="true" BackColor="#3333FF">
-            <asp:ImageButton ID="ImageButton1" ImageUrl="~/icon.jpg" runat="server" Height="50px" Width="5%" OnClick="ImageButton1_Click" />
-            <asp:Button ID="ButtonInicio" runat="server"  BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonInicio_Click" Text="Inicio" Width="18%" />
-            <asp:Button ID="ButtonPeriodos" runat="server" BackColor="#3333FF" BorderStyle="None" CssClass="auto-style1" Font-Size="XX-Large" Height="50px" OnClick="ButtonPeriodos_Click" Text="Periodos" Width="18%" />
-            <asp:Button ID="ButtonGrupos" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonGrupos_Click" Text="Grupos" Width="18%" />
-            <asp:Button ID="ButtonEstudiantes" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonEstudiantes_Click" Text="Estudiantes" Width="18%" />
-            <asp:Button ID="ButtonRegistrarNotas" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonRegistrarNotas_Click" Text="Registrar Notas" Width="18%" />
-        </asp:Panel>
+        <table>
+            <tr>
+                <td class="auto-style9">
+                    <asp:ImageButton ID="ImageButton1" ImageUrl="~/icon.jpg" runat="server" Height="50px" Width="100%" OnClick="ImageButton1_Click" />
+                </td>
+                <td class="auto-style10">
+                    <asp:Panel ID="PanelMenu"  runat="server" Visible="true" BackColor="#3333FF" Width="100%">
+            
+                    <asp:Button ID="ButtonInicio" runat="server"  BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonInicio_Click" Text="Inicio" Width="19.5%" />
+                    <asp:Button ID="ButtonPeriodos" runat="server" BackColor="#3333FF" BorderStyle="None" CssClass="auto-style1" Font-Size="XX-Large" Height="50px" OnClick="ButtonPeriodos_Click" Text="Periodos" Width="19.5%" />
+                    <asp:Button ID="ButtonGrupos" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonGrupos_Click" Text="Grupos" Width="19.5%" />
+                    <asp:Button ID="ButtonEstudiantes" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonEstudiantes_Click" Text="Estudiantes" Width="19.5%" />
+                    <asp:Button ID="ButtonRegistrarNotas" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonRegistrarNotas_Click" Text="Registrar Notas" Width="19.5%" />
+                </asp:Panel>
+                </td>
+            </tr>
+        </table>
+        
+        
         <asp:Panel style="text-align:center" ID="PanelInicio" runat="server" Visible="true">
             <h1>
                 <asp:Label ID="Label1" runat="server"></asp:Label>

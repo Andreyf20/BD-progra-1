@@ -29,8 +29,6 @@ namespace BDD1
         {
             Inicio();
             PanelInicio.Visible = true;
-            Post post = new Post();
-            Label1.Text = post.PostIn;
         }
 
         private void Inicio()
