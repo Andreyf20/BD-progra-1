@@ -89,6 +89,7 @@
     <Compile Include="Clases\EvaluacionxEstudiante.cs" />
     <Compile Include="Clases\GrupoxRubro.cs" />
     <Compile Include="Clases\Periodo.cs" />
+    <Compile Include="Clases\Post.cs" />
     <Compile Include="Clases\Rubro.cs" />
     <Compile Include="ConsultaEstudiante.aspx.cs">
       <DependentUpon>ConsultaEstudiante.aspx</DependentUpon>

@@ -9,6 +9,8 @@ namespace BDD1
 {
     public class Procedures
     {
+        
+
         //Estado Grupo
 
         public static int estadogrupo_borrar(int id)
