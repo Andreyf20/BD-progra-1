@@ -51,12 +51,10 @@
             <asp:Button ID="ButtonRegistrarNotas" runat="server" Text="Registrar Notas" OnClick="ButtonRegistrarNotas_Click" Width="20%" Height="50px" BorderStyle="None" CssClass="auto-style2"/>
         </asp:Panel>
         <asp:Panel style="text-align:center" ID="PanelInicio" runat="server" Visible="true">
-            
             <h1>
                 <asp:Label ID="Label1" runat="server"></asp:Label>
             </h1>
         </asp:Panel>
-        
         <asp:Panel ID="PanelPeriodo" runat="server" Visible="false">
             <h1 class="auto-style8">Periodos</h1>
             <asp:Button ID="ButtonCrearPeriodo" runat="server" Text="Crear Periodo" OnClick="ButtonCrearPeriodo_Click" Width="49%" Height="50px" CssClass="auto-style6" />
@@ -64,24 +62,23 @@
             <asp:Panel ID="PanelCrearPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2 style="font-size: xx-large">Crear Periodo</h2>
                 <table style="width:100%; height: 213px;">
-                <tr>
-                    <td>
-                        <span class="auto-style4">Fecha Inicio: </span>
-                        <asp:Calendar style=" margin: 0 auto;" ID="CalendarInicio" runat="server"></asp:Calendar>
-                    </td>
-                    <td>
-                        <span class="auto-style4">Fecha Fin</span>:
-                        <asp:Calendar style=" margin: 0 auto;" ID="CalendarFinal" runat="server"></asp:Calendar>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <span class="auto-style4">Fecha Inicio: </span>
+                            <asp:Calendar style=" margin: 0 auto;" ID="CalendarInicio" runat="server"></asp:Calendar>
+                        </td>
+                        <td>
+                            <span class="auto-style4">Fecha Fin</span>:
+                            <asp:Calendar style=" margin: 0 auto;" ID="CalendarFinal" runat="server"></asp:Calendar>
+                        </td>
+                    </tr>
                 </table>                
                 <asp:Button ID="ButtonCrearPeriodoOK" runat="server" OnClick="ButtonCrearPeriodoOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
             </asp:Panel>
-            
             <asp:Panel ID="PanelAnularPeriodo" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4" >Anular Periodo</h2>
                 <span class="auto-style7">Seleccione el ID del Periodo: </span>
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos2" runat="server" RepeatDirection="Horizontal">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos1" runat="server" RepeatDirection="Horizontal">
                 </asp:RadioButtonList>
                 <br />
                 <asp:Button ID="ButtonAnularPeriodoOK" runat="server" OnClick="ButtonAnularPeriodoOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
@@ -94,66 +91,63 @@
             <asp:Button ID="ButtonGrupoxRubros" runat="server" Text="Rubros por Grupo" OnClick="ButtonGrupoxRubro_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
             <asp:Button ID="ButtonEvaluaciones" runat="server" Text="Evaluaciones" Width="33%" Height="50px" OnClick="ButtonEvaluacion_Click" CssClass="auto-style6" />
             <asp:Panel ID="PanelGrupo" runat="server" Visible="false">
-            <h1>Grupos</h1>
-            <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-            <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
-            <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="33%" Height="50px" OnClick="ButtonAnularGrupo_Click" CssClass="auto-style6" />
-            <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
-                <h2 class="auto-style4" >Crear Grupo</h2>
-                <span class="auto-style7">
-                <br />
-                Seleccione el ID del Periodo:
-                <asp:RadioButtonList ID="RadioButtonListPeriodos4" runat="server" style=" margin: 0 auto;" RepeatDirection="Horizontal" >
-                </asp:RadioButtonList>
-                <br />
-                Seleccione el estado del Grupo:
-                <asp:RadioButtonList ID="RadioButtonListEstadoGrupo" runat="server" style=" margin: 0 auto;" RepeatDirection="Horizontal">
-                </asp:RadioButtonList>
-                <br />
-                Nombre Curso:&nbsp; </span>
-                <asp:TextBox ID="TextBoxNombreGrupo" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <span class="auto-style7">
-                <br />
-                Código Grupo :&nbsp;&nbsp; </span>
-                <asp:TextBox ID="TextBoxCodigoGrupo" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br />
-                <br />
-                <br />
-                <asp:Button ID="ButtonCrearGrupoOK" runat="server" OnClick="ButtonCrearGrupoOK_Click"  Text="Crear Grupo" CssClass="auto-style5" Height="75px" Width="200px" />
-            </asp:Panel>               
-            <asp:Panel ID="PanelModificarGrupo" style="text-align:center" runat="server" Visible="false">
-                <span class="auto-style7">
-                <br />
-                Seleccione el ID del Periodo:
-                <asp:RadioButtonList ID="RadioButtonListPeriodos5" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedPeriodo1" style=" margin: 0 auto;" RepeatDirection="Horizontal">
-                </asp:RadioButtonList>
-                <br />
-                Seleccione el Grupo:
-                <asp:RadioButtonList ID="RadioButtonListGrupos1" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo2" style=" margin: 0 auto;">
-                </asp:RadioButtonList>
-                <br />
-                 </span>
-            <asp:Button ID="ButtonModificarNormal" Visible="false" runat="server" Text="Modificar Nombre y Codigo" Width="49%" Height="50px" OnClick="ButtonModificarGrupoNormal_Click" CssClass="auto-style6" />
-            <asp:Button ID="ButtonAgregarEstudiantes" Visible="false" runat="server" Text="Agregar Estudiantes" Width="49%" Height="50px" OnClick="ButtonAgregarEstudiantes_Click" CssClass="auto-style6" />
+                <h1>Grupos</h1>
+                <asp:Button ID="ButtonCrearGrupo" runat="server" Text="Crear Grupo" OnClick="ButtonCrearGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
+                <asp:Button ID="ButtonModificarGrupo" runat="server" Text="Modificar Grupo" OnClick="ButtonModificarGrupo_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
+                <asp:Button ID="ButtonAnularGrupo" runat="server" Text="Anular Grupo" Width="33%" Height="50px" OnClick="ButtonAnularGrupo_Click" CssClass="auto-style6" />
+                <asp:Panel ID="PanelCrearGrupo" style="text-align:center" runat="server" Visible="false">
+                    <h2 class="auto-style4" >Crear Grupo</h2>
+                    <span class="auto-style7">
+                    <br />
+                    Seleccione el ID del Periodo:
+                    <asp:RadioButtonList ID="RadioButtonListPeriodos2" runat="server" style=" margin: 0 auto;" RepeatDirection="Horizontal" >
+                    </asp:RadioButtonList>
+                    <br />
+                    Seleccione el estado del Grupo:
+                    <asp:RadioButtonList ID="RadioButtonListEstadoGrupo" runat="server" style=" margin: 0 auto;" RepeatDirection="Horizontal">
+                    </asp:RadioButtonList>
+                    <br />
+                    Nombre Curso:&nbsp; </span>
+                    <asp:TextBox ID="TextBoxNombreGrupo" runat="server" CssClass="auto-style7"></asp:TextBox>
+                    <br class="auto-style7" />
+                    <span class="auto-style7">
+                    <br />
+                    Código Grupo :&nbsp;&nbsp; </span>
+                    <asp:TextBox ID="TextBoxCodigoGrupo" runat="server" CssClass="auto-style7"></asp:TextBox>
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Button ID="ButtonCrearGrupoOK" runat="server" OnClick="ButtonCrearGrupoOK_Click"  Text="Crear Grupo" CssClass="auto-style5" Height="75px" Width="200px" />
+                </asp:Panel>               
+                <asp:Panel ID="PanelModificarGrupo" style="text-align:center" runat="server" Visible="false">
+                    <span class="auto-style7">
+                    <br />
+                    Seleccione el ID del Periodo:
+                    <asp:RadioButtonList ID="RadioButtonListPeriodos3" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedPeriodo3" style=" margin: 0 auto;" RepeatDirection="Horizontal">
+                    </asp:RadioButtonList>
+                    <br />
+                    Seleccione el Grupo:
+                    <asp:RadioButtonList ID="RadioButtonListGrupos1" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo1" style=" margin: 0 auto;">
+                    </asp:RadioButtonList>
+                    <br />
+                     </span>
+                <asp:Button ID="ButtonModificarNormal" Visible="false" runat="server" Text="Modificar Nombre y Codigo" Width="49%" Height="50px" OnClick="ButtonModificarGrupoNormal_Click" CssClass="auto-style6" />
+                <asp:Button ID="ButtonAgregarEstudiantes" Visible="false" runat="server" Text="Agregar Estudiantes" Width="49%" Height="50px" OnClick="ButtonAgregarEstudiantes_Click" CssClass="auto-style6" />
 
-            <asp:Panel ID="PanelModificarNormal" style="text-align:center" runat="server" Visible="false">
-                <h2 class="auto-style4">Modificar Grupo</h2>
-                Nombre Grupo:&nbsp;
-                <asp:TextBox ID="TextBoxNombreGrupoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br class="auto-style7" />
-                <span class="auto-style7">
-                <br />
-                Código Grupo :&nbsp; </span>
-                <asp:TextBox ID="TextBoxCodigoGrupoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
-                <br />
-                <br />
-                <br class="auto-style7" />
-                <asp:Button ID="ButtonModificarGrupoOK" runat="server" OnClick="ButtonModificarGrupoOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
-            </asp:Panel>
-            
-            
-
+                <asp:Panel ID="PanelModificarNormal" style="text-align:center" runat="server" Visible="false">
+                    <h2 class="auto-style4">Modificar Grupo</h2>
+                    Nombre Grupo:&nbsp;
+                    <asp:TextBox ID="TextBoxNombreGrupoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                    <br class="auto-style7" />
+                    <span class="auto-style7">
+                    <br />
+                    Código Grupo :&nbsp; </span>
+                    <asp:TextBox ID="TextBoxCodigoGrupoNew" runat="server" CssClass="auto-style7"></asp:TextBox>
+                    <br />
+                    <br />
+                    <br class="auto-style7" />
+                    <asp:Button ID="ButtonModificarGrupoOK" runat="server" OnClick="ButtonModificarGrupoOK_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />
+                </asp:Panel>
             </asp:Panel>
             <asp:Panel ID="PanelAgregarEstudiantes" style="text-align:center" runat="server" Visible="false">
                 <h2 class="auto-style4" >Agregar Estudiantes</h2>
@@ -165,7 +159,6 @@
                 </asp:CheckBoxList>
                 <br />
                 <br />
-                
                 <asp:Button ID="ButtonAgregarEstudiantesOK" runat="server" OnClick="ButtonAgregarEstudiantesOK_Click"  Text="Agregar Estudiantes" CssClass="auto-style5" Height="75px" Width="315px" />
             </asp:Panel>               
             <asp:Panel ID="PanelAnularGrupo" style="text-align:center" runat="server" Visible="false">
@@ -173,11 +166,11 @@
                 <span class="auto-style7">
                 <br />
                 Seleccione el ID del Periodo: </span>
-                <asp:RadioButtonList style=" margin: 0 auto; font-size: large;" ID="RadioButtonListPeriodos6" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo2" AutoPostBack="True" RepeatDirection="Horizontal">
+                <asp:RadioButtonList style=" margin: 0 auto; font-size: large;" ID="RadioButtonListPeriodos4" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo4" AutoPostBack="True" RepeatDirection="Horizontal">
                 </asp:RadioButtonList>
                 <br class="auto-style7" />
                 <span class="auto-style7">Seleccione el Grupo: </span>
-                <asp:RadioButtonList style=" margin: 0 auto; font-size: large;" ID="RadioButtonListGrupos2" runat="server" AutoPostBack="True">
+                <asp:RadioButtonList style=" margin: 0 auto; font-size: large;" ID="RadioButtonListGrupos2" runat="server" >
                 </asp:RadioButtonList>
                 <br />
                 <asp:Button ID="ButtonAnularGrupoOK" runat="server" OnClick="ButtonAnularGrupoOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
@@ -188,11 +181,11 @@
                 <span class="auto-style7">
                 <br />
                 Seleccione el ID del Periodo:
-                <asp:RadioButtonList ID="RadioButtonList3" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedPeriodo3" style=" margin: 0 auto;" RepeatDirection="Horizontal">
+                <asp:RadioButtonList ID="RadioButtonListPeriodos5" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedPeriodo5" style=" margin: 0 auto;" RepeatDirection="Horizontal">
                 </asp:RadioButtonList>
                 <br />
                 Seleccione el Grupo:
-                <asp:RadioButtonList ID="RadioButtonList4" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo" style=" margin: 0 auto;">
+                <asp:RadioButtonList ID="RadioButtonListGrupos3" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo3" style=" margin: 0 auto;">
                 </asp:RadioButtonList>
                 <br />
                  </span>
@@ -202,76 +195,74 @@
                 <table style="width:100%; height: 213px;">
                     <tr>
                         <td>
-
-                        <asp:Panel style="text-align:center" ID="PanelCrearRubros" runat="server" Visible="true">
-                    <h2 class="auto-style4" >Crear Rubros por Grupo</h2>
-                            <span class="auto-style7">
-                            <br />
-                            Tipo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:DropDownList ID="DropDownListTipoRubro" runat="server" Width="121px" CssClass="auto-style7">
-                        
-                    </asp:DropDownList>
-                    <br class="auto-style7" />
-                            <span class="auto-style7">
-                            <br />
-                            Porcentaje: </span> <asp:TextBox ID="TextBoxPorcentajeRubro"   runat="server" Width="110px" CssClass="auto-style7"></asp:TextBox>
-                    <br class="auto-style7" />
-                    <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="SelectedIndexChanged" AutoPostBack="True">
-                        <asp:ListItem Selected="True">Fijo</asp:ListItem>
-                        <asp:ListItem>Variable</asp:ListItem>
-                    </asp:RadioButtonList>
-                            <br />
-                    <br class="auto-style7" />
-                            <asp:Label ID="LabelCantidad" runat="server" Text="Cantidad: " CssClass="auto-style7"></asp:Label>
-                            <asp:TextBox ID="TextBoxCantidadRubro"  runat="server" Width="110px" CssClass="auto-style7"></asp:TextBox>
-                            <br />
-                    <br />
-                    <asp:Button  ID="ButtonAgregarRubro1" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubroOK_Click" CssClass="auto-style5" Height="75px" Width="236px" />
-                            <asp:Button ID="ButtonGrupoOK" runat="server" OnClick="ButtonGrupoOK_Click" Text="Terminar" CssClass="auto-style5" Height="75px" Width="200px" />
-                </asp:Panel>
-                    </td>
-                    <td>
-                        <asp:Panel style="text-align:center" ID="PanelAgregarEvaluaciones1" runat="server" Visible="false">
-                        <h2 class="auto-style4">Agregar Evaluaciones</h2>
-                        <textarea id="TextAreaInstancias"  runat="server" name="S1" rows="2"></textarea>
-                        <br /> 
-                            <span class="auto-style7">Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:TextBox ID="TextBoxNombreRubro" runat="server" CssClass="auto-style7"></asp:TextBox>
-                        <br class="auto-style7" />
-                            <span class="auto-style7">
-                            <br />
-                            Descripción: </span> <asp:TextBox ID="TextBoxDescripcionRubro" runat="server" CssClass="auto-style7"></asp:TextBox>
-                        <br class="auto-style7" />
-                            <span class="auto-style7">
-                            <br />
-                            Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:TextBox ID="TextBoxValorRubro" runat="server" CssClass="auto-style7"></asp:TextBox>
-                        <br />
-                        <asp:Calendar style=" margin: 0 auto;" ID="CalendarEvaluacion" runat="server"></asp:Calendar>
-                            <br />
-                        <asp:Button ID="ButtonAgregarRubroOK" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionOK_Click" CssClass="auto-style5" Height="75px" Width="285px" />
-                        <asp:Button ID="ButtonInstanciasOK" runat="server" OnClick="ButtonInstanciasOK_Click" Text="Terminar" CssClass="auto-style5" Height="75px" Width="200px" />
-                    </asp:Panel>
-                    </td>
-                </tr>
-            </table>
+                            <asp:Panel style="text-align:center" ID="PanelCrearRubros" runat="server" Visible="true">
+                                <h2 class="auto-style4" >Crear Rubros por Grupo</h2>
+                                <span class="auto-style7">
+                                <br />
+                                Tipo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:DropDownList ID="DropDownListTipoRubro" runat="server" Width="121px" CssClass="auto-style7">
+                                </asp:DropDownList>
+                                <br class="auto-style7" />
+                                <span class="auto-style7">
+                                <br />
+                                Porcentaje: </span> <asp:TextBox ID="TextBoxPorcentajeRubro"   runat="server" Width="110px" CssClass="auto-style7"></asp:TextBox>
+                                <br class="auto-style7" />
+                                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="SelectedIndexChanged" AutoPostBack="True">
+                                <asp:ListItem Selected="True">Fijo</asp:ListItem>
+                                <asp:ListItem>Variable</asp:ListItem>
+                                </asp:RadioButtonList>
+                                <br />
+                                <br class="auto-style7" />
+                                <asp:Label ID="LabelCantidad" runat="server" Text="Cantidad: " CssClass="auto-style7"></asp:Label>
+                                <asp:TextBox ID="TextBoxCantidadRubro"  runat="server" Width="110px" CssClass="auto-style7"></asp:TextBox>
+                                <br />
+                                <br />
+                                <asp:Button  ID="ButtonAgregarRubro1" runat="server" Text="Agregar Rubro" OnClick="ButtonAgregarRubroOK_Click" CssClass="auto-style5" Height="75px" Width="236px" />
+                                <asp:Button ID="ButtonGrupoOK" runat="server" OnClick="ButtonGrupoOK_Click" Text="Terminar" CssClass="auto-style5" Height="75px" Width="200px" />
+                            </asp:Panel>
+                         </td>
+                        <td>
+                            <asp:Panel style="text-align:center" ID="PanelAgregarEvaluaciones1" runat="server" Visible="false">
+                                <h2 class="auto-style4">Agregar Evaluaciones</h2>
+                                <textarea id="TextAreaInstancias"  runat="server" name="S1" rows="2"></textarea>
+                                <br /> 
+                                    <span class="auto-style7">Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:TextBox ID="TextBoxNombreRubro" runat="server" CssClass="auto-style7"></asp:TextBox>
+                                <br class="auto-style7" />
+                                    <span class="auto-style7">
+                                    <br />
+                                    Descripción: </span> <asp:TextBox ID="TextBoxDescripcionRubro" runat="server" CssClass="auto-style7"></asp:TextBox>
+                                <br class="auto-style7" />
+                                    <span class="auto-style7">
+                                    <br />
+                                    Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> <asp:TextBox ID="TextBoxValorRubro" runat="server" CssClass="auto-style7"></asp:TextBox>
+                                <br />
+                                <asp:Calendar style=" margin: 0 auto;" ID="CalendarEvaluacion" runat="server"></asp:Calendar>
+                                    <br />
+                                <asp:Button ID="ButtonAgregarRubroOK" runat="server" Text="Agregar Evaluacion" OnClick="ButtonAgregarEvaluacionOK_Click" CssClass="auto-style5" Height="75px" Width="285px" />
+                                <asp:Button ID="ButtonInstanciasOK" runat="server" OnClick="ButtonInstanciasOK_Click" Text="Terminar" CssClass="auto-style5" Height="75px" Width="200px" />
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                </table>
             </asp:Panel>
                 <asp:Panel ID="PanelAnularRubro" style="text-align:center" runat="server" Visible="false">
-                <h2 class="auto-style4" >Anular Grupo x Rubro</h2>
-                <span class="auto-style7">Seleccione el Grupo x Rubro </span>
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupoxRubro" runat="server" RepeatDirection="Horizontal" >
-                </asp:RadioButtonList>
-                <br />
-                <asp:Button ID="ButtonAnularRubro" runat="server" OnClick="ButtonAnularGrpoxRubroOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
-            </asp:Panel>
+                    <h2 class="auto-style4" >Anular Grupo x Rubro</h2>
+                    <span class="auto-style7">Seleccione el Grupo x Rubro </span>
+                    <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupoxRubro" runat="server" RepeatDirection="Horizontal" >
+                    </asp:RadioButtonList>
+                    <br />
+                    <asp:Button ID="ButtonAnularRubro" runat="server" OnClick="ButtonAnularGrpoxRubroOK_Click" Text="Anular" CssClass="auto-style5" Height="75px" Width="200px" />
+                </asp:Panel>
             </asp:Panel>
             <asp:Panel ID="PanelEvaluacion" style="text-align:center" runat="server" Visible="false">
                 <h1>Evaluaciones</h1>
                 <span class="auto-style7">
                 <br />
                 Seleccione el ID del Periodo:
-                <asp:RadioButtonList ID="RadioButtonList5" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedPeriodo5" style=" margin: 0 auto;" RepeatDirection="Horizontal">
+                <asp:RadioButtonList ID="RadioButtonListPeriodos6" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedPeriodo6" style=" margin: 0 auto;" RepeatDirection="Horizontal">
                 </asp:RadioButtonList>
                 <br />
                 Seleccione el Grupo:
-                <asp:RadioButtonList ID="RadioButtonList6" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo1" style=" margin: 0 auto;">
+                <asp:RadioButtonList ID="RadioButtonListGrupos4" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo4" style=" margin: 0 auto;">
                 </asp:RadioButtonList>
                 <br />
                  </span>
@@ -379,11 +370,11 @@
             <h1>Registrar Notas</h1>
             <br />
             <span class="auto-style7">Seleccione el ID del Periodo</span>:
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos8" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo4" AutoPostBack="True" CssClass="auto-style7">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListPeriodos7" runat="server" OnSelectedIndexChanged="SelectedIndexChangedPeriodo7" AutoPostBack="True" CssClass="auto-style7">
                 </asp:RadioButtonList>
             <br />
             <span class="auto-style7">Seleccione el Grupo: </span>
-                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos4" runat="server" OnSelectedIndexChanged="SelectedIndexChangedGrupo" AutoPostBack="True" CssClass="auto-style7">
+                <asp:RadioButtonList style=" margin: 0 auto;" ID="RadioButtonListGrupos5" runat="server" OnSelectedIndexChanged="SelectedIndexChangedGrupo5" AutoPostBack="True" CssClass="auto-style7">
                 </asp:RadioButtonList>
             <br />
             <asp:Button ID="ButtonOKGrupo" runat="server" Visible="false" OnClick="ButtonOKGrupo_Click" Text="Aceptar" CssClass="auto-style5" Height="75px" Width="200px" />

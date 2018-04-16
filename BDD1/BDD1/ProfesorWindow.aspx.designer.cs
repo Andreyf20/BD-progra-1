@@ -166,13 +166,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelAnularPeriodo;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos2.
+        /// Control RadioButtonListPeriodos1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos2;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos1;
         
         /// <summary>
         /// Control ButtonAnularPeriodoOK.
@@ -274,13 +274,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelCrearGrupo;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos4.
+        /// Control RadioButtonListPeriodos2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos4;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos2;
         
         /// <summary>
         /// Control RadioButtonListEstadoGrupo.
@@ -328,13 +328,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelModificarGrupo;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos5.
+        /// Control RadioButtonListPeriodos3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos5;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos3;
         
         /// <summary>
         /// Control RadioButtonListGrupos1.
@@ -436,13 +436,13 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelAnularGrupo;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos6.
+        /// Control RadioButtonListPeriodos4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos6;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos4;
         
         /// <summary>
         /// Control RadioButtonListGrupos2.
@@ -472,22 +472,22 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelGrupoxRubro;
         
         /// <summary>
-        /// Control RadioButtonList3.
+        /// Control RadioButtonListPeriodos5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList3;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos5;
         
         /// <summary>
-        /// Control RadioButtonList4.
+        /// Control RadioButtonListGrupos3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList4;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos3;
         
         /// <summary>
         /// Control ButtonCrearGrupoxRubro.
@@ -697,22 +697,22 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelEvaluacion;
         
         /// <summary>
-        /// Control RadioButtonList5.
+        /// Control RadioButtonListPeriodos6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList5;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos6;
         
         /// <summary>
-        /// Control RadioButtonList6.
+        /// Control RadioButtonListGrupos4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList6;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos4;
         
         /// <summary>
         /// Control ButtonCrearEvaluaciones.
@@ -1039,22 +1039,22 @@ namespace BDD1 {
         protected global::System.Web.UI.WebControls.Panel PanelRegistrarNotas;
         
         /// <summary>
-        /// Control RadioButtonListPeriodos8.
+        /// Control RadioButtonListPeriodos7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos8;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListPeriodos7;
         
         /// <summary>
-        /// Control RadioButtonListGrupos4.
+        /// Control RadioButtonListGrupos5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos4;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListGrupos5;
         
         /// <summary>
         /// Control ButtonOKGrupo.

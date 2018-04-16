@@ -204,7 +204,7 @@ CREATE PROCEDURE grupo_crear @idEstado int, @idPeriodo int, @idProfesor int, @No
 @CodigoGrupo varchar(50)
 AS
 BEGIN
-    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EstadoGrupo);
+    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Grupo);
     SET @ID = @ID + 1;
 	DECLARE @result int;
 	INSERT INTO dbo.Grupo(ID, idEstado, idPeriodo,idProfesor ,NombreCurso, CodigoGrupo)
@@ -270,14 +270,14 @@ END
 go
 
 go
-CREATE PROCEDURE estudiante_crear @Nombre varchar(50), @Apellido varchar(50), @Telefono varchar(50),
-@Correo varchar(50), @Contraseña varchar(50)
+CREATE PROCEDURE estudiante_crear @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50),
+@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50)
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Estudiante);
     SET @ID = @ID + 1;
-	INSERT INTO dbo.Estudiante(ID, Nombre, Apellido, Telefono, Correo, Contraseña)
-	VALUES(@ID, @Nombre, @Apellido, @Telefono, @Correo, @Contraseña)
+	INSERT INTO dbo.Estudiante(ID, Nombre, Apellido, Correo, Carnet, Telefono, Contraseña)
+	VALUES(@ID, @Nombre, @Apellido, @Correo, @Carnet, @Telefono, @Contraseña);
 END
 go
 
@@ -716,5 +716,28 @@ BEGIN
 		INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
 		VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @ValorPorcentual, @Descripcion)
 		END
+END
+go
+
+go
+CREATE PROCEDURE verEstudiantes
+AS
+BEGIN
+	DECLARE @estudiantes Table (ID int, Nombre varchar(50), Apellido varchar(50), Correo varchar(50),Carnet varchar(50), Telefono varchar(50),Contraseña varchar(50));
+	INSERT INTO @estudiantes SELECT * FROM dbo.Estudiante AS E;
+
+	SELECT * FROM @estudiantes;
+END
+go
+
+go
+CREATE PROCEDURE estudiante_cambiar @ID int, @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50),
+@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50)
+AS
+BEGIN
+	UPDATE dbo.Estudiante
+	SET Nombre = @Nombre, Apellido = @Apellido, Correo = @Correo, Carnet = @Carnet,
+	Telefono = @Telefono, Contraseña = @Contraseña
+	WHERE ID = @ID;
 END
 go
