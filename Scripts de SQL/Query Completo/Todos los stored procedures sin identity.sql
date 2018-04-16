@@ -741,3 +741,13 @@ BEGIN
 	WHERE ID = @ID;
 END
 go
+
+go
+CREATE PROCEDURE estudiante_nombre @id int
+AS
+BEGIN
+	DECLARE @result Table(Nombre varchar(50))
+	INSERT INTO @result SELECT Nombre FROM dbo.Estudiante WHERE id = @id
+	SELECT * FROM @result;
+END
+go

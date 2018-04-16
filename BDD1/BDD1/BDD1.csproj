@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConsultaEstudiante.aspx" />
+    <Content Include="icon.jpg" />
     <Content Include="LogIn.aspx" />
     <Content Include="ProfesorWindow.aspx" />
     <Content Include="RegistrarNotas.aspx" />

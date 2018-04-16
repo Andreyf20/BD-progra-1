@@ -47,5 +47,10 @@ namespace BDD1
             ponerGrupos();
 
         }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Server.Transfer("LogIn.aspx");
+        }
     }
 }

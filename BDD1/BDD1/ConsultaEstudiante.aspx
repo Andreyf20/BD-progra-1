@@ -18,6 +18,7 @@
 <body>
     <form id="formTitulo" runat="server">
         <div>
+            <asp:ImageButton ID="ImageButton1" ImageUrl="~/icon.jpg" runat="server" Height="47px" Width="5%" OnClick="ImageButton1_Click" />
             <h1>
                 Notas del Estudiante
             </h1>          

@@ -43,12 +43,13 @@
     <form id="form1" runat="server">
         <div >
         </div>
-        <asp:Panel ID="PanelMenu" runat="server" Visible="true" BackColor="#3333FF">
-            <asp:Button ID="ButtonInicio" runat="server" Text="Inicio" OnClick="ButtonInicio_Click" Width="19%" Height="50px" BorderStyle="None" CssClass="auto-style2"/>
-            <asp:Button ID="ButtonPeriodos" runat="server" Text="Periodos" OnClick="ButtonPeriodos_Click" Width="19%" Height="50px" BackColor="#3333FF" BorderStyle="None" CssClass="auto-style1" Font-Size="XX-Large"/>
-            <asp:Button ID="ButtonGrupos" runat="server" Text="Grupos" OnClick="ButtonGrupos_Click" Width="19%" Height="50px" BorderStyle="None" CssClass="auto-style2"/>
-            <asp:Button ID="ButtonEstudiantes" runat="server" Text="Estudiantes" OnClick="ButtonEstudiantes_Click" Width="19%" Height="50px" BorderStyle="None" CssClass="auto-style2"/>
-            <asp:Button ID="ButtonRegistrarNotas" runat="server" Text="Registrar Notas" OnClick="ButtonRegistrarNotas_Click" Width="20%" Height="50px" BorderStyle="None" CssClass="auto-style2"/>
+        <asp:Panel ID="PanelMenu"  runat="server" Visible="true" BackColor="#3333FF">
+            <asp:ImageButton ID="ImageButton1" ImageUrl="~/icon.jpg" runat="server" Height="50px" Width="5%" OnClick="ImageButton1_Click" />
+            <asp:Button ID="ButtonInicio" runat="server"  BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonInicio_Click" Text="Inicio" Width="18%" />
+            <asp:Button ID="ButtonPeriodos" runat="server" BackColor="#3333FF" BorderStyle="None" CssClass="auto-style1" Font-Size="XX-Large" Height="50px" OnClick="ButtonPeriodos_Click" Text="Periodos" Width="18%" />
+            <asp:Button ID="ButtonGrupos" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonGrupos_Click" Text="Grupos" Width="18%" />
+            <asp:Button ID="ButtonEstudiantes" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonEstudiantes_Click" Text="Estudiantes" Width="18%" />
+            <asp:Button ID="ButtonRegistrarNotas" runat="server" BorderStyle="None" CssClass="auto-style2" Height="50px" OnClick="ButtonRegistrarNotas_Click" Text="Registrar Notas" Width="18%" />
         </asp:Panel>
         <asp:Panel style="text-align:center" ID="PanelInicio" runat="server" Visible="true">
             <h1>
@@ -129,6 +130,7 @@
                     Seleccione el Grupo:
                     <asp:RadioButtonList ID="RadioButtonListGrupos1" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChangedGrupo1" style=" margin: 0 auto;">
                     </asp:RadioButtonList>
+                    <br />
                     <br />
                      </span>
                 <asp:Button ID="ButtonModificarNormal" Visible="false" runat="server" Text="Modificar Nombre y Codigo" Width="49%" Height="50px" OnClick="ButtonModificarGrupoNormal_Click" CssClass="auto-style6" />

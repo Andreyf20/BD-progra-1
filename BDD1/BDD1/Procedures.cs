@@ -106,6 +106,24 @@ namespace BDD1
             return ret;
         }
 
+        public static string estudiante_nombre(int id)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("estudiante_nombre", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = @id;
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable dataset = new DataTable();
+            adapt.Fill(dataset);
+            List<string> nombre = new List<string>();
+            foreach (DataRow row in dataset.Rows)
+            {
+                string Nota = row["Nombre"].ToString();
+                nombre.Add(Nota);
+            }
+            return nombre[0];
+        }
+
         public static void estudiante_crear(string Nombre, string Apellido, string Correo, string Carnet, string Telefono, string Contraseña)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");

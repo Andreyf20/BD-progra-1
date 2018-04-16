@@ -23,22 +23,22 @@ namespace BDD1
             evaluaciones = new List<Evaluacion>();
             grupoxestudiantes = Procedures.ver_grupoxestudiante_grupo(grupo.ID);
 
-            
+
 
             List<GrupoxRubro> grupoxRubros = Procedures.ver_grupoxrubro_grupo(grupo.ID);
 
-            for (int i = 0;i <grupoxRubros.Count;i++)
+            for (int i = 0; i < grupoxRubros.Count; i++)
             {
                 GrupoxRubro gr = grupoxRubros[i];
                 List<Evaluacion> ev = Procedures.ver_evaluacion_grupoxrubro(gr.ID);
-                for (int j=0;j<ev.Count;j++)
+                for (int j = 0; j < ev.Count; j++)
                 {
                     evaluaciones.Add(ev[j]);
                 }
             }
-            
 
-           registrarNotas(evaluaciones, grupoxestudiantes);
+
+            registrarNotas(evaluaciones, grupoxestudiantes);
         }
 
         public int buscarIndiceEvaluacion(string nombre)
@@ -96,7 +96,15 @@ namespace BDD1
                     for (int i = 0; i < grupoxestudiantes.Count; i++)
                     {
                         tCell = new TableCell();
-                        tCell.Text = "Estudiante: "+ grupoxestudiantes[i].IdEstudiante;
+                        //    tCell.Text = "Estudiante: "+ grupoxestudiantes[i].IdEstudiante;
+                        //    tRow.Cells.Add(tCell);
+
+
+                        Button Btn = new Button();
+                        Btn.Text = " Ver Estudiante: " + grupoxestudiantes[i].IdEstudiante;
+                        Btn.ID = grupoxestudiantes[i].IdEstudiante.ToString();
+                        Btn.Click += new EventHandler(verEstudiante);
+                        tCell.Controls.Add(Btn);
                         tRow.Cells.Add(tCell);
                     }
                     TableCell Cell = new TableCell();
@@ -134,6 +142,17 @@ namespace BDD1
                     tRow.Cells.Add(Cell);
                 }
             }
+        }
+
+        private void verEstudiante(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int estudianteID = int.Parse(btn.ID);
+            System.Data.DataTable dt = Procedures.ver_notas_estudiante_grupo(estudianteID, grupo.ID);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            string estudiante = Procedures.estudiante_nombre(estudianteID);
+            Label1.Text = "Estudiante: "+estudiante+ "  Nota Acumulada: " + Procedures.actualizar_nota_acumulada_estudiante(grupo.ID, estudianteID);
         }
 
         protected void Button1_Click(object sender, EventArgs e)

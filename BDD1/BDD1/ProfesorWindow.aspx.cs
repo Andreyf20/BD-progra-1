@@ -733,5 +733,10 @@ namespace BDD1
             Server.Transfer("RegistrarNotas.aspx");
         }
 
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Server.Transfer("LogIn.aspx");
+
+        }
     }
 }
