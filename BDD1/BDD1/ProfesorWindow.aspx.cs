@@ -16,6 +16,7 @@ namespace BDD1
         public static int GrupoID;
         public static int GrupoxRubroID;
         public static int EvaluacionID;
+        public static int EstudianteID;
         public static Grupo notas;
         List<Evaluacion> evaluaciones = new List<Evaluacion>();
         protected void Page_Load(object sender, EventArgs e)
@@ -87,6 +88,7 @@ namespace BDD1
         
         protected void ButtonAnularPeriodo_Click(object sender, EventArgs e)
         {
+            Inicio();
             PanelPeriodo.Visible = true;
             PanelAnularPeriodo.Visible = true;
             List<Periodo> periodos = Procedures.xmlPeriodos();
@@ -103,7 +105,11 @@ namespace BDD1
         protected void ButtonAnularPeriodoOK_Click(object sender, EventArgs e)
         {
             PeriodoID = int.Parse(RadioButtonListPeriodos2.SelectedItem.Text);
-            Procedures.periodo_borrar(PeriodoID);
+            int result = Procedures.periodo_borrar(PeriodoID);
+            if (result == -1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No se puede anular\");", true);
+            }
             Inicio();
         }
 
@@ -274,7 +280,11 @@ namespace BDD1
             PeriodoID = int.Parse(RadioButtonListPeriodos6.SelectedItem.Text);
             int indexGrupo = RadioButtonListGrupos2.SelectedIndex;
             List<Grupo> grupos = Procedures.ver_grupos_periodo_profesor(PeriodoID, ProfesorID);
-            Procedures.grupo_borrar(grupos[indexGrupo].ID);
+            int result = Procedures.grupo_borrar(grupos[indexGrupo].ID);
+            if (result == -1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No se puede anular\");", true);
+            }
             Inicio();
         }
 
@@ -389,7 +399,11 @@ namespace BDD1
         {
             List<GrupoxRubro> grupoxRubros = Procedures.ver_grupoxrubro_grupo(GrupoID);
             int index = RadioButtonListGrupoxRubro.SelectedIndex;
-            Procedures.grupoxrubro_borrar(grupoxRubros[index].ID);
+            int result = Procedures.grupoxrubro_borrar(grupoxRubros[index].ID);
+            if (result == -1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No se puede anular\");", true);
+            }
             Inicio();
         }
 
@@ -471,7 +485,11 @@ namespace BDD1
         {
             int index = RadioButtonListEvaluaciones2.SelectedIndex;
             EvaluacionID = evaluaciones[index].ID;
-            Procedures.evaluacion_borrar(EvaluacionID);
+            int result = Procedures.evaluacion_borrar(EvaluacionID);
+            if (result == -1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No se puede anular\");", true);
+            }
             Inicio();
         }
 
@@ -500,7 +518,7 @@ namespace BDD1
             string Correo = TextBoxCorreo.Text;
             string Contraseña = TextBoxContraseña.Text;
 
-            Procedures.estudiante_crear(Nombre, Apellido, Carnet, Correo, Contraseña);
+            Procedures.estudiante_crear(Nombre, Apellido,Correo, Carnet, Telefono, Contraseña);
 
             TextBoxNombre.Text = "";
             TextBoxApellido.Text = "";
@@ -531,6 +549,23 @@ namespace BDD1
 
         protected void ButtonModificarEstudianteOK_Click(object sender, EventArgs e)
         {
+            string Nombre = TextBoxNombreNew.Text;
+            string Apellido = TextBoxApellidoNew.Text;
+            string Telefono = TextBoxTelefonoNew.Text;
+            string Carnet = TextBoxCarnetNew.Text;
+            string Correo = TextBoxCorreoNew.Text;
+            string Contraseña = TextBoxContraseñaNew.Text;
+
+            Procedures.estudiante_cambiar(EstudianteID,Nombre, Apellido, Correo, Carnet, Telefono, Contraseña);
+
+            TextBoxNombreNew.Text = "";
+            TextBoxApellidoNew.Text = "";
+            TextBoxTelefonoNew.Text = "";
+            TextBoxCorreoNew.Text = "";
+            TextBoxContraseñaNew.Text = "";
+            TextBoxCarnetNew.Text = "";
+
+            Inicio();
 
         }
 
@@ -557,7 +592,11 @@ namespace BDD1
             List<Estudiante> estudiantes = Procedures.verEstudiantes();
             int index = RadioButtonListEstudiantes1.SelectedIndex;
             Estudiante estudiante = estudiantes[index];
-            Procedures.estudiante_borrar(estudiante.ID);
+            int result = Procedures.estudiante_borrar(estudiante.ID);
+            if (result == -1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No se puede anular\");", true);
+            }
             Inicio();
         }
 
@@ -711,6 +750,7 @@ namespace BDD1
             TextBoxCarnetNew.Text = estudiante.carnet;
             TextBoxCorreoNew.Text = estudiante.correo;
             TextBoxContraseñaNew.Text = estudiante.contraseña;
+            EstudianteID = estudiante.ID;
         }
     }
 }

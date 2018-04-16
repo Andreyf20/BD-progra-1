@@ -11,15 +11,18 @@ namespace BDD1
     {
         //Estado Grupo
 
-        public static void estadogrupo_borrar(int id)
+        public static int estadogrupo_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("estadogrupo_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static void estadogrupo_crear(string nombre)
@@ -35,15 +38,18 @@ namespace BDD1
 
         //Estado Grupo x Estudiante
 
-        public static void estadogxe_borrar(int id)
+        public static int estadogxe_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("estadogxe_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static void estadogxe_crear(string nombre)
@@ -86,26 +92,47 @@ namespace BDD1
             }
         }
         
-        public static void estudiante_borrar(int id)
+        public static int estudiante_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("estudiante_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
-        public static void estudiante_crear(string Nombre, string Apellido, string Telefono, string Correo, string Contraseña)
+        public static void estudiante_crear(string Nombre, string Apellido, string Correo, string Carnet, string Telefono, string Contraseña)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("estudiante_crear", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
             cmd.Parameters.Add("@Apellido", SqlDbType.VarChar).Value = Apellido;
-            cmd.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = Telefono;
             cmd.Parameters.Add("@Correo", SqlDbType.VarChar).Value = Correo;
+            cmd.Parameters.Add("@Carnet", SqlDbType.VarChar).Value = Carnet;
+            cmd.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = Telefono;
+            cmd.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Contraseña;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public static void estudiante_cambiar(int ID,string Nombre, string Apellido, string Correo, string Carnet, string Telefono, string Contraseña)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("estudiante_cambiar", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
+            cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+            cmd.Parameters.Add("@Apellido", SqlDbType.VarChar).Value = Apellido;
+            cmd.Parameters.Add("@Correo", SqlDbType.VarChar).Value = Correo;
+            cmd.Parameters.Add("@Carnet", SqlDbType.VarChar).Value = Carnet;
+            cmd.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = Telefono;
             cmd.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Contraseña;
             con.Open();
             cmd.ExecuteNonQuery();
@@ -115,15 +142,18 @@ namespace BDD1
 
         //Evaluación
 
-        public static void evaluacion_borrar(int id)
+        public static int evaluacion_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("evaluacion_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static void evaluacion_crear(int idGrupoxRubro, string Nombre, DateTime Fecha, decimal ValorPorcentual, string Descripcion)
@@ -143,15 +173,18 @@ namespace BDD1
 
         //Evaluación x Estudiante
 
-        public static void evaluacionxestudiante_borrar(int id)
+        public static int evaluacionxestudiante_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("evaluacionxestudiante_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static void evaluacionxestudiante_cambiar_nota(int @idGrupoxEstudiante ,int @idEvaluacion,  decimal Nota)
@@ -182,15 +215,18 @@ namespace BDD1
 
         //Grupo
 
-        public static void grupo_borrar(int id)
+        public static int grupo_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupo_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static int grupo_crear(int idEstado, int idPeriodo, int idPforesor, string NombreCurso, string CodigoGrupo)
@@ -262,15 +298,18 @@ namespace BDD1
             con.Close();
         }
 
-        public static void grupoxrubro_borrar(int id)
+        public static int grupoxrubro_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("grupoxrubro_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static void grupoxrubro_cambiar_cantidad(int id, int cantidad)
@@ -305,15 +344,18 @@ namespace BDD1
 
         //Periodo
 
-        public static void periodo_borrar(int id)
+        public static int periodo_borrar(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-5TPABM1;Initial Catalog=BBD1;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("periodo_borrar", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             con.Open();
             cmd.ExecuteNonQuery();
+            int ret = int.Parse(cmd.Parameters["@result"].Value.ToString());
             con.Close();
+            return ret;
         }
 
         public static void periodo_CambiarActivo(int id, string activo)

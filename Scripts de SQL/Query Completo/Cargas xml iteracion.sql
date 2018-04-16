@@ -6,9 +6,9 @@ DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
 DECLARE @xmlTable Table (ID int, name varchar(50), lastName varchar(50), email varchar(50), 
@@ -39,9 +39,9 @@ DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
 
@@ -68,9 +68,9 @@ DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
@@ -97,9 +97,9 @@ DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
@@ -125,9 +125,9 @@ DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
 SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
@@ -153,9 +153,9 @@ DECLARE @XML_Periodo AS XML, @hDoc_Periodo AS INT, @SQL_Periodo NVARCHAR (MAX)
 SET @XML_Periodo = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 EXEC sp_xml_preparedocument @hDoc_Periodo OUTPUT, @XML_Periodo
 
@@ -178,9 +178,9 @@ DECLARE @XML_Grupos AS XML, @hDoc_Grupos AS INT, @SQL_Grupo NVARCHAR (MAX)
 SET @XML_Grupos = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc_Grupos OUTPUT, @XML_Grupos
@@ -207,9 +207,9 @@ DECLARE @XML_GrupoxRubro AS XML, @hDoc_GrupoxRubro AS INT, @SQL_GrupoxRubro NVAR
 SET @XML_GrupoxRubro = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc_GrupoxRubro OUTPUT, @XML_GrupoxRubro;
@@ -236,9 +236,9 @@ DECLARE @XML_GXE AS XML, @hDoc_GXE AS INT, @SQL_GXE NVARCHAR (MAX)
 SET @XML_GXE = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc_GXE OUTPUT, @XML_GXE
@@ -263,9 +263,9 @@ DECLARE @XML_eval AS XML, @hDoc_eval AS INT, @SQL_eval NVARCHAR (MAX)
 SET @XML_eval = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 
 EXEC sp_xml_preparedocument @hDoc_eval OUTPUT, @XML_eval
@@ -296,9 +296,9 @@ DECLARE @XML_evalestu AS XML, @hDoc_evalestu AS INT, @SQL_evalestu NVARCHAR (MAX
 SET @XML_evalestu = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 --FROM OPENROWSET(BULK 'C:\Users\torre\Documents\GIT_ROOT\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
 
---FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomData.XML', SINGLE_BLOB) AS x)
+FROM OPENROWSET(BULK 'C:\Users\Rubén González V\Documents\GitHub\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
-FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
+--FROM OPENROWSET(BULK 'K:\GIT_ROOT\BD-progra-1\randomDataNuevo.XML', SINGLE_BLOB) AS x)
 
 EXEC sp_xml_preparedocument @hDoc_evalestu OUTPUT, @XML_evalestu
 
