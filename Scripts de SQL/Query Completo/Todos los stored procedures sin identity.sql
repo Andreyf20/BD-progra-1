@@ -1,5 +1,38 @@
 use BBD1;
 go
+CREATE PROCEDURE sp_tabla_mantenimiento @idTipoEM int, @XMLAntes varchar(2000), @XMLDespues varchar(2000),
+@PostIn varchar(50), @PostBy varchar(50), @PostDate Date
+AS
+BEGIN
+    DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EventosDeMantenimiento);
+    SET @ID = @ID + 1;
+	IF @ID IS NULL
+		SET @ID = 0;
+	INSERT INTO dbo.EventosDeMantenimiento(ID, IdTipoEM, XMLAntes, XMLDespues, PostIn, PostBy, PostDate)
+	VALUES(@ID, @idTipoEM, @XMLAntes, @XMLDespues, @PostIn, @PostBy, @PostDate);
+END
+go
+
+go
+INSERT INTO dbo.TipoEM Values(0, 'Crear Periodo');
+INSERT INTO dbo.TipoEM Values(1, 'Anular Periodo');
+INSERT INTO dbo.TipoEM Values(2, 'Terminar Periodo');
+INSERT INTO dbo.TipoEM Values(3, 'Crear Grupo');
+INSERT INTO dbo.TipoEM Values(4, 'Modificar Grupo');
+INSERT INTO dbo.TipoEM Values(5, 'Agregar Estudiante a Grupo');
+INSERT INTO dbo.TipoEM Values(6, 'Anular Grupo');
+INSERT INTO dbo.TipoEM Values(7, 'Crear GrupoxRubro');
+INSERT INTO dbo.TipoEM Values(8, 'Crear Evaluacion');
+INSERT INTO dbo.TipoEM Values(9, 'Anular GrupoxRubro');
+INSERT INTO dbo.TipoEM Values(10, 'Anular Evaluacion');
+INSERT INTO dbo.TipoEM Values(11, 'Crear Estudiante');
+INSERT INTO dbo.TipoEM Values(12, 'Modificar Estudiante');
+INSERT INTO dbo.TipoEM Values(13, 'Anular Estudiante');
+INSERT INTO dbo.TipoEM Values(14, 'Crear EvaluacionesxEstudiantes');
+INSERT INTO dbo.TipoEM Values(15, 'Cambiar Nota EvaluacionesxEstudiantes');
+go
+
+go
 CREATE PROCEDURE validar_login_profesor @email varchar(50), @password varchar(50)
 AS
 BEGIN
@@ -55,23 +88,33 @@ END
 go
 
 go
-CREATE PROCEDURE periodo_CambiarActivo @id int, @activo varchar(6)
+CREATE PROCEDURE periodo_CambiarActivo @id int, @activo varchar(6), 
+@PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
+	DECLARE @XMLAntes varchar(2000);
+	SET @XMLAntes = (SELECT * FROM dbo.Periodo WHERE id = @id FOR XML PATH('Periodo'));
 	UPDATE dbo.Periodo
 	SET Activo = @activo
 	WHERE id = @id
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.Periodo WHERE id = @id FOR XML PATH('Periodo'));
+	EXEC sp_tabla_mantenimiento 2, @XMLAntes, @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
 go
-CREATE PROCEDURE periodo_borrar @id int
+CREATE PROCEDURE periodo_borrar @id int, @PostIn varchar(50), 
+@PostBy varchar(50), @PostDate Date
 AS
 BEGIN
 	DECLARE @result int;
 	BEGIN TRY
 		DELETE FROM dbo.Periodo WHERE id = @id;
 		SET @result = 0;
+		DECLARE @XMLAntes varchar(2000);
+		SET @XMLAntes = (SELECT * FROM dbo.Periodo WHERE id = @ID FOR XML PATH('Periodo'));
+		EXEC sp_tabla_mantenimiento 1, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
 	END TRY
 	BEGIN CATCH
 		SET @result = -1;
@@ -81,7 +124,7 @@ END
 go
 
 go
-CREATE PROCEDURE periodo_crear @inicio date, @final date
+CREATE PROCEDURE periodo_crear @inicio date, @final date, @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Periodo);
@@ -92,12 +135,18 @@ BEGIN
 		INSERT INTO dbo.Periodo(ID, FechaInicio, FechaFinal, Activo)
 		VALUES(@ID, @inicio, @final, 'True'); --SE INSERTA UN "1" PORQUE ESTA ACTIVO
 		SET @result = 1;
+		DECLARE @XMLDespues varchar(2000);
+		SET @XMLDespues = (SELECT * FROM dbo.Periodo WHERE id = @ID FOR XML PATH('Periodo'));
+		EXEC sp_tabla_mantenimiento 0, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 	END
 	ELSE
 	BEGIN
 		INSERT INTO dbo.Periodo(ID, FechaInicio, FechaFinal, Activo)
 		VALUES(@ID, @inicio, @final, 'False'); --SE INSERTA UN "0" PORQUE ESTA INACTIVO
 		SET @result = 0;
+		DECLARE @XMLDespues_false varchar(2000);
+		SET @XMLDespues_false = (SELECT * FROM dbo.Periodo WHERE id = @ID FOR XML PATH('Periodo'));
+		EXEC sp_tabla_mantenimiento 0, '', @XMLDespues_false, @PostIn, @PostBy, @PostDate;
 	END
 	RETURN @result;
 END
@@ -114,13 +163,16 @@ END
 go
 
 go
-CREATE PROCEDURE grupoxrubro_borrar @id int
+CREATE PROCEDURE grupoxrubro_borrar @id int, @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
 	DECLARE @result int;
 	BEGIN TRY
+		DECLARE @XMLAntes varchar(2000);
+		SET @XMLAntes = (SELECT * FROM dbo.GrupoxRubro WHERE id = @ID FOR XML PATH('GrupoxRubro'));
 		DELETE FROM dbo.GrupoxRubro WHERE id = @id;
 		SET @result = 0;
+		EXEC sp_tabla_mantenimiento 9, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
 	END TRY
 	BEGIN CATCH
 		SET @result = -1;
@@ -130,7 +182,8 @@ END
 go
 
 go
-CREATE PROCEDURE grupoxrubro_crear @idGrupo int, @idRubro int, @valorPorcentual int, @esFijo varchar(6), @cantidad int
+CREATE PROCEDURE grupoxrubro_crear @idGrupo int, @idRubro int, @valorPorcentual int, @esFijo varchar(6), @cantidad int, 
+@PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.GrupoxRubro);
@@ -139,19 +192,25 @@ BEGIN
 	INSERT INTO dbo.GrupoxRubro(ID, idGrupo, idRubro, ValorPorcentual, Esfijo, Cantidad)
 	VALUES(@ID, @idGrupo, @idRubro, @valorPorcentual, @esFijo, @cantidad);
 	SET @result = (SELECT SCOPE_IDENTITY());
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.GrupoxRubro WHERE id = @ID FOR XML PATH('GrupoxRubro'));
+	EXEC sp_tabla_mantenimiento 7, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 	RETURN @result;
 END
 go
 
 go
 CREATE PROCEDURE grupoxestudiante_crear @idgrupo int, @idestadogxe int, @idestudiante int,
-@NotaAcumulada decimal(7, 4)
+@NotaAcumulada decimal(7, 4), @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.GrupoxEstudiante);
     SET @ID = @ID + 1;
 	INSERT INTO dbo.GrupoxEstudiante (ID, idGrupo, idEstadoGxE, idEstudiante, NotaAcumulada)
 	VALUES(@ID, @idgrupo, @idestadogxe, @idestudiante, @NotaAcumulada)
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.GrupoxEstudiante WHERE ID = @ID FOR XML PATH('GrupoxEstudiante'));
+	EXEC sp_tabla_mantenimiento 5, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
@@ -183,14 +242,17 @@ END
 go
 
 go
-CREATE PROCEDURE grupo_borrar @id int
+CREATE PROCEDURE grupo_borrar @id int, @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
 	DECLARE @result int;
 	BEGIN TRY
+		DECLARE @XMLAntes varchar(2000);
+		SET @XMLAntes = (SELECT * FROM dbo.Grupo WHERE ID = @id FOR XML PATH('Grupo'));
 		DELETE FROM dbo.Grupo
 		WHERE id = @id
 		SET @result = 0;
+		EXEC sp_tabla_mantenimiento 6, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
 	END TRY
 	BEGIN CATCH
 		SET @result = -1;
@@ -201,7 +263,7 @@ go
 
 go
 CREATE PROCEDURE grupo_crear @idEstado int, @idPeriodo int, @idProfesor int, @NombreCurso varchar(50),
-@CodigoGrupo varchar(50)
+@CodigoGrupo varchar(50), @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Grupo);
@@ -209,29 +271,46 @@ BEGIN
 	DECLARE @result int;
 	INSERT INTO dbo.Grupo(ID, idEstado, idPeriodo,idProfesor ,NombreCurso, CodigoGrupo)
 	VALUES(@ID, @idEstado, @idPeriodo,@idProfesor ,@NombreCurso, @CodigoGrupo);
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.Grupo WHERE id = @ID FOR XML PATH('Grupo'));
+	EXEC sp_tabla_mantenimiento 3, '', @XMLDespues, @PostIn, @PostBy, @PostDate
 	SET @result = (SELECT SCOPE_IDENTITY());
 	RETURN @result;
 END
 go
 
 go
-CREATE PROCEDURE evaluacionxestudiante_crear @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4)
+CREATE PROCEDURE evaluacionxestudiante_crear @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4), 
+@PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.EvaluacionesxEstudiantes);
     SET @ID = @ID + 1;
 	INSERT INTO dbo.EvaluacionesxEstudiantes(ID, idGrupoxEstudiante, idEvaluacion, Nota)
 	VALUES(@ID, @idGrupoxEstudiante, @idEvaluacion, @Nota)
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE id = @ID FOR XML PATH('EvaluacionesxEstudiantes'));
+	EXEC sp_tabla_mantenimiento 14, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
 go
-CREATE PROCEDURE evaluacionesxestudiantes_cambiar_nota @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4)
+CREATE PROCEDURE evaluacionesxestudiantes_cambiar_nota @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4),
+@PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
+	DECLARE @XMLAntes varchar(2000);
+	SET @XMLAntes = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE IdGrupoxEstudiante = @idGrupoxEstudiante 
+	AND IdEvaluacion = @idEvaluacion 
+	FOR XML PATH('EvaluacionesxEstudiantes'));
 	UPDATE dbo.EvaluacionesxEstudiantes
 	SET Nota = @Nota
 	WHERE  IdGrupoxEstudiante = @idGrupoxEstudiante	AND IdEvaluacion = @idEvaluacion;
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE IdGrupoxEstudiante = @idGrupoxEstudiante 
+	AND IdEvaluacion = @idEvaluacion 
+	FOR XML PATH('EvaluacionesxEstudiantes'));
+	EXEC sp_tabla_mantenimiento 15, @XMLAntes, @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
@@ -253,14 +332,17 @@ END
 go
 
 go
-CREATE PROCEDURE evaluacion_borrar @id int
+CREATE PROCEDURE evaluacion_borrar @id int, @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
 	DECLARE @result int;
 	BEGIN TRY
+		DECLARE @XMLAntes varchar(2000);
+		SET @XMLAntes = (SELECT * FROM dbo.Evaluacion WHERE id = @id FOR XML PATH('Evaluacion'));
 		DELETE FROM dbo.Evaluacion
 		WHERE ID = @id
 		SET @result = 0;
+		EXEC sp_tabla_mantenimiento 10, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
 	END TRY
 	BEGIN CATCH
 		SET @result = -1;
@@ -271,25 +353,33 @@ go
 
 go
 CREATE PROCEDURE estudiante_crear @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50),
-@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50)
+@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50), @PostIn varchar(50), 
+@PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Estudiante);
     SET @ID = @ID + 1;
 	INSERT INTO dbo.Estudiante(ID, Nombre, Apellido, Correo, Carnet, Telefono, Contraseña)
 	VALUES(@ID, @Nombre, @Apellido, @Correo, @Carnet, @Telefono, @Contraseña);
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.Estudiante WHERE id = @id FOR XML PATH('Estudiante'));
+	EXEC sp_tabla_mantenimiento 11, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
 go
-CREATE PROCEDURE estudiante_borrar @id int
+CREATE PROCEDURE estudiante_borrar @id int, @PostIn varchar(50), 
+@PostBy varchar(50), @PostDate Date
 AS
 BEGIN
 	DECLARE @result int;
 	BEGIN TRY
+		DECLARE @XMLAntes varchar(2000);
+		SET @XMLAntes = (SELECT * FROM dbo.Estudiante WHERE id = @id FOR XML PATH('Estudiante'));
 		DELETE FROM dbo.Estudiante 
 		WHERE ID = @id
 		SET @result = 0;
+		EXEC sp_tabla_mantenimiento 13, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
 	END TRY
 	BEGIN CATCH
 		SET @result = -1;
@@ -638,12 +728,18 @@ END
 go
 
 go
-CREATE PROCEDURE actualizar_grupo_nombre_codigo @idGrupo int, @NombreCurso varchar(50), @CodigoGrupo varchar(50)
+CREATE PROCEDURE actualizar_grupo_nombre_codigo @idGrupo int, @NombreCurso varchar(50), 
+@CodigoGrupo varchar(50), @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
+	DECLARE @XMLAntes varchar(2000);
+	SET @XMLAntes = (SELECT * FROM dbo.Grupo WHERE id = @idGrupo FOR XML PATH('Grupo'));
 	UPDATE dbo.Grupo
 	SET NombreCurso = @NombreCurso, CodigoGrupo = @CodigoGrupo
 	WHERE ID = @idGrupo;
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.Grupo WHERE id = @idGrupo FOR XML PATH('Grupo'));
+	EXEC sp_tabla_mantenimiento 4, @XMLAntes, @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
@@ -690,7 +786,8 @@ go
 
 go
 CREATE PROCEDURE evaluacion_crear @idGrupoxRubro int, @Nombre varchar(50), @Fecha Date,
-@ValorPorcentual decimal(7, 4), @Descripcion varchar(100)
+@ValorPorcentual decimal(7, 4), @Descripcion varchar(100), @PostIn varchar(50), 
+@PostBy varchar(50), @PostDate Date
 AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Evaluacion);
@@ -716,6 +813,9 @@ BEGIN
 		INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
 		VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @ValorPorcentual, @Descripcion)
 		END
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.Evaluacion WHERE id = @ID FOR XML PATH('Evaluacion'));
+	EXEC sp_tabla_mantenimiento 8, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
@@ -732,13 +832,19 @@ go
 
 go
 CREATE PROCEDURE estudiante_cambiar @ID int, @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50),
-@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50)
+@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50), @PostIn varchar(50), 
+@PostBy varchar(50), @PostDate Date
 AS
 BEGIN
+	DECLARE @XMLAntes varchar(2000);
+	SET @XMLAntes = (SELECT * FROM dbo.Estudiante WHERE id = @ID FOR XML PATH('Estudiante'));
 	UPDATE dbo.Estudiante
 	SET Nombre = @Nombre, Apellido = @Apellido, Correo = @Correo, Carnet = @Carnet,
 	Telefono = @Telefono, Contraseña = @Contraseña
 	WHERE ID = @ID;
+	DECLARE @XMLDespues varchar(2000);
+	SET @XMLDespues = (SELECT * FROM dbo.Estudiante WHERE id = @ID FOR XML PATH('Estudiante'));
+	EXEC sp_tabla_mantenimiento 12, @XMLAntes, @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
