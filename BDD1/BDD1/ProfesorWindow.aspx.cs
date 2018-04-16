@@ -11,6 +11,7 @@ namespace BDD1
 {
     public partial class ProfesorWindow : System.Web.UI.Page
     {
+        public static string IP;
         public static int ProfesorID;
         public static int PeriodoID;
         public static int GrupoID;
@@ -22,6 +23,7 @@ namespace BDD1
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "Bienvenido Profesor " + Procedures.nombreProfesor(ProfesorID);
+            IP = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(0).ToString();
         }
         
         //Inicio
