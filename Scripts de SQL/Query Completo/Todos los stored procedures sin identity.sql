@@ -191,7 +191,7 @@ BEGIN
 	DECLARE @result int;
 	INSERT INTO dbo.GrupoxRubro(ID, idGrupo, idRubro, ValorPorcentual, Esfijo, Cantidad)
 	VALUES(@ID, @idGrupo, @idRubro, @valorPorcentual, @esFijo, @cantidad);
-	SET @result = (SELECT SCOPE_IDENTITY());
+	SET @result = @ID;
 	DECLARE @XMLDespues varchar(2000);
 	SET @XMLDespues = (SELECT * FROM dbo.GrupoxRubro WHERE id = @ID FOR XML PATH('GrupoxRubro'));
 	EXEC sp_tabla_mantenimiento 7, '', @XMLDespues, @PostIn, @PostBy, @PostDate;

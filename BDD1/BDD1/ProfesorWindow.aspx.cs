@@ -18,7 +18,7 @@ namespace BDD1
         public static int EvaluacionID;
         public static int EstudianteID;
         public static Grupo notas;
-        List<Evaluacion> evaluaciones = new List<Evaluacion>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "Bienvenido Profesor " + Procedures.nombreProfesor(ProfesorID);
@@ -185,12 +185,12 @@ namespace BDD1
             PanelGrupo.Visible = true;
             PanelModificarGrupo.Visible = true;
             List<Periodo> periodos = Procedures.xmlPeriodos();
-            RadioButtonListPeriodos5.Items.Clear();
+            RadioButtonListPeriodos3.Items.Clear();
             if (periodos.Count != 0)
             {
                 for (int i = 0; i < periodos.Count; i++)
                 {
-                    RadioButtonListPeriodos5.Items.Add(new ListItem(periodos[i].ID.ToString()));
+                    RadioButtonListPeriodos3.Items.Add(new ListItem(periodos[i].ID.ToString()));
                 }
             }
         }
@@ -539,23 +539,22 @@ namespace BDD1
             PanelAnularEvaluacion.Visible = true;
 
             List<GrupoxRubro> grupoxRubros = Procedures.ver_grupoxrubro_grupo(GrupoID);
-
+            RadioButtonListEvaluaciones2.Items.Clear();
             for (int i = 0; i < grupoxRubros.Count; i++)
             {
                 GrupoxRubro gr = grupoxRubros[i];
                 List<Evaluacion> ev = Procedures.ver_evaluacion_grupoxrubro(gr.ID);
                 for (int j = 0; j < ev.Count; j++)
                 {
-                    evaluaciones.Add(ev[j]);
-                    RadioButtonListEvaluaciones2.Items.Add(new ListItem(ev[j].nombre));
+                    RadioButtonListEvaluaciones2.Items.Add(new ListItem(ev[j].nombre,ev[j].ID.ToString()));
                 }
             }
         }
 
         protected void ButtonAnularEvaluacionOK_Click(object sender, EventArgs e)
         {
-            int index = RadioButtonListEvaluaciones2.SelectedIndex;
-            EvaluacionID = evaluaciones[index].ID;
+
+            EvaluacionID = int.Parse(RadioButtonListEvaluaciones2.SelectedValue);
             int result = Procedures.evaluacion_borrar(EvaluacionID);
             if (result == -1)
             {
