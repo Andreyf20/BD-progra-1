@@ -88,7 +88,7 @@ END
 go
 
 go
-CREATE PROCEDURE periodo_CambiarActivo @id int, @activo varchar(6), 
+CREATE PROCEDURE periodo_CambiarActivo @id int, @activo varchar(6),
 @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -104,17 +104,17 @@ END
 go
 
 go
-CREATE PROCEDURE periodo_borrar @id int, @PostIn varchar(50), 
+CREATE PROCEDURE periodo_borrar @id int, @PostIn varchar(50),
 @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
 	DECLARE @result int;
 	BEGIN TRY
+        DECLARE @XMLAntes varchar(2000);
+        SET @XMLAntes = (SELECT * FROM dbo.Periodo WHERE id = @ID FOR XML PATH('Periodo'));
 		DELETE FROM dbo.Periodo WHERE id = @id;
 		SET @result = 0;
-		DECLARE @XMLAntes varchar(2000);
-		SET @XMLAntes = (SELECT * FROM dbo.Periodo WHERE id = @ID FOR XML PATH('Periodo'));
-		EXEC sp_tabla_mantenimiento 1, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
+        EXEC sp_tabla_mantenimiento 1, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
 	END TRY
 	BEGIN CATCH
 		SET @result = -1;
@@ -182,7 +182,7 @@ END
 go
 
 go
-CREATE PROCEDURE grupoxrubro_crear @idGrupo int, @idRubro int, @valorPorcentual int, @esFijo varchar(6), @cantidad int, 
+CREATE PROCEDURE grupoxrubro_crear @idGrupo int, @idRubro int, @valorPorcentual int, @esFijo varchar(6), @cantidad int,
 @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -280,7 +280,7 @@ END
 go
 
 go
-CREATE PROCEDURE evaluacionxestudiante_crear @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4), 
+CREATE PROCEDURE evaluacionxestudiante_crear @idGrupoxEstudiante int, @idEvaluacion int, @Nota decimal(7, 4),
 @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -300,15 +300,15 @@ CREATE PROCEDURE evaluacionesxestudiantes_cambiar_nota @idGrupoxEstudiante int, 
 AS
 BEGIN
 	DECLARE @XMLAntes varchar(2000);
-	SET @XMLAntes = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE IdGrupoxEstudiante = @idGrupoxEstudiante 
-	AND IdEvaluacion = @idEvaluacion 
+	SET @XMLAntes = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE IdGrupoxEstudiante = @idGrupoxEstudiante
+	AND IdEvaluacion = @idEvaluacion
 	FOR XML PATH('EvaluacionesxEstudiantes'));
 	UPDATE dbo.EvaluacionesxEstudiantes
 	SET Nota = @Nota
 	WHERE  IdGrupoxEstudiante = @idGrupoxEstudiante	AND IdEvaluacion = @idEvaluacion;
 	DECLARE @XMLDespues varchar(2000);
-	SET @XMLDespues = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE IdGrupoxEstudiante = @idGrupoxEstudiante 
-	AND IdEvaluacion = @idEvaluacion 
+	SET @XMLDespues = (SELECT * FROM dbo.EvaluacionesxEstudiantes WHERE IdGrupoxEstudiante = @idGrupoxEstudiante
+	AND IdEvaluacion = @idEvaluacion
 	FOR XML PATH('EvaluacionesxEstudiantes'));
 	EXEC sp_tabla_mantenimiento 15, @XMLAntes, @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
@@ -353,7 +353,7 @@ go
 
 go
 CREATE PROCEDURE estudiante_crear @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50),
-@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50), @PostIn varchar(50), 
+@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50), @PostIn varchar(50),
 @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -368,7 +368,7 @@ END
 go
 
 go
-CREATE PROCEDURE estudiante_borrar @id int, @PostIn varchar(50), 
+CREATE PROCEDURE estudiante_borrar @id int, @PostIn varchar(50),
 @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -376,7 +376,7 @@ BEGIN
 	BEGIN TRY
 		DECLARE @XMLAntes varchar(2000);
 		SET @XMLAntes = (SELECT * FROM dbo.Estudiante WHERE id = @id FOR XML PATH('Estudiante'));
-		DELETE FROM dbo.Estudiante 
+		DELETE FROM dbo.Estudiante
 		WHERE ID = @id
 		SET @result = 0;
 		EXEC sp_tabla_mantenimiento 13, @XMLAntes, '', @PostIn, @PostBy, @PostDate;
@@ -728,7 +728,7 @@ END
 go
 
 go
-CREATE PROCEDURE actualizar_grupo_nombre_codigo @idGrupo int, @NombreCurso varchar(50), 
+CREATE PROCEDURE actualizar_grupo_nombre_codigo @idGrupo int, @NombreCurso varchar(50),
 @CodigoGrupo varchar(50), @PostIn varchar(50), @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -786,7 +786,7 @@ go
 
 go
 CREATE PROCEDURE evaluacion_crear @idGrupoxRubro int, @Nombre varchar(50), @Fecha Date,
-@ValorPorcentual decimal(7, 4), @Descripcion varchar(100), @PostIn varchar(50), 
+@ValorPorcentual decimal(7, 4), @Descripcion varchar(100), @PostIn varchar(50),
 @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
@@ -832,7 +832,7 @@ go
 
 go
 CREATE PROCEDURE estudiante_cambiar @ID int, @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50),
-@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50), @PostIn varchar(50), 
+@Carnet varchar(50), @Telefono varchar(50), @Contraseña varchar(50), @PostIn varchar(50),
 @PostBy varchar(50), @PostDate Date
 AS
 BEGIN
