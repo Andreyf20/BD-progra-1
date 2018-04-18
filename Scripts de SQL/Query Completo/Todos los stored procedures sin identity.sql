@@ -792,30 +792,35 @@ AS
 BEGIN
     DECLARE @ID int = (SELECT MAX(ID) FROM dbo.Evaluacion);
     SET @ID = @ID + 1;
-	Declare @TablaValores Table (Cantidad int, esfijo varchar(6));
-	INSERT INTO @TablaValores SELECT Cantidad, esfijo FROM dbo.GrupoxRubro WHERE ID = @idGrupoxRubro;
-	SELECT * FROM @TablaValores
-	IF (SELECT esfijo FROM @TablaValores) = 'False'
-		BEGIN
-		DECLARE @CantidadDeEvaluaciones int;
-		SET @CantidadDeEvaluaciones = (SELECT Cantidad FROM @TablaValores);
-		DECLARE @Porcentaje Decimal(7, 4);
-		SET @Porcentaje = (SELECT TOP 1 ValorPorcentual FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro);
-		DECLARE @PorcentajeNuevo Decimal(7, 4);
-		SET @PorcentajeNuevo = @Porcentaje / @CantidadDeEvaluaciones;
-		INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
-		VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @PorcentajeNuevo, @Descripcion);
-		UPDATE dbo.Evaluacion SET ValorPorcentual = @PorcentajeNuevo WHERE IdGrupoxRubro = @idGrupoxRubro;
-		EXEC grupoxrubro_aumentar_cantidad @idGrupoxRubro;
-		END
-	ELSE
-		BEGIN
-		INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
-		VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @ValorPorcentual, @Descripcion)
-		END
-	DECLARE @XMLDespues varchar(2000);
-	SET @XMLDespues = (SELECT * FROM dbo.Evaluacion WHERE id = @ID FOR XML PATH('Evaluacion'));
-	EXEC sp_tabla_mantenimiento 8, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
+    Declare @TablaValores Table (Cantidad int, esfijo varchar(6));
+    INSERT INTO @TablaValores SELECT Cantidad, esfijo FROM dbo.GrupoxRubro WHERE ID = @idGrupoxRubro;
+    IF (SELECT esfijo FROM @TablaValores) = 'False' OR (SELECT esfijo FROM @TablaValores) = 'false'
+        BEGIN
+        DECLARE @CantidadDeEvaluaciones int;
+        SET @CantidadDeEvaluaciones = (SELECT COUNT(*) FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro);
+		IF @CantidadDeEvaluaciones = 0
+			SET @CantidadDeEvaluaciones = 1;
+        DECLARE @Porcentaje Decimal(7, 4);
+        SET @Porcentaje = (SELECT TOP 1 ValorPorcentual FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro);
+        IF @Porcentaje IS NULL
+            BEGIN
+            SET @Porcentaje = (SELECT ValorPorcentual FROM dbo.GrupoxRubro WHERE id = @idGrupoxRubro);
+            END
+        DECLARE @PorcentajeNuevo Decimal(7, 4);
+        SET @PorcentajeNuevo = @Porcentaje / @CantidadDeEvaluaciones;
+        INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
+        VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @PorcentajeNuevo, @Descripcion);
+        UPDATE dbo.Evaluacion SET ValorPorcentual = @PorcentajeNuevo WHERE IdGrupoxRubro = @idGrupoxRubro;
+        EXEC grupoxrubro_aumentar_cantidad @idGrupoxRubro;
+        END
+    ELSE
+        BEGIN
+        INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
+        VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @ValorPorcentual, @Descripcion)
+        END
+    DECLARE @XMLDespues varchar(2000);
+    SET @XMLDespues = (SELECT * FROM dbo.Evaluacion WHERE id = @ID FOR XML PATH('Evaluacion'));
+    EXEC sp_tabla_mantenimiento 8, '', @XMLDespues, @PostIn, @PostBy, @PostDate;
 END
 go
 
