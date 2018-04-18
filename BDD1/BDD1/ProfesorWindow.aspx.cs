@@ -523,7 +523,7 @@ namespace BDD1
             List<GrupoxRubro> grupoxRubros = Procedures.ver_grupoxrubro_grupo_nofijos(GrupoID);
             int grupoxRubroIndex = RadioButtonList2.SelectedIndex;
             GrupoxRubroID = grupoxRubros[grupoxRubroIndex].ID;
-            DateTime date = CalendarEvaluacion.SelectedDate;
+            DateTime date = Calendar1.SelectedDate;
             string nombre = TextBox1.Text;
             string descripción = TextBox2.Text;
             Procedures.evaluacion_crear(GrupoxRubroID, nombre, date, 0, descripción);
