@@ -797,21 +797,15 @@ BEGIN
     IF (SELECT esfijo FROM @TablaValores) = 'False' OR (SELECT esfijo FROM @TablaValores) = 'false'
         BEGIN
         DECLARE @CantidadDeEvaluaciones int;
-        SET @CantidadDeEvaluaciones = (SELECT COUNT(*) FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro);
-		IF @CantidadDeEvaluaciones = 0
-			SET @CantidadDeEvaluaciones = 1;
+        SET @CantidadDeEvaluaciones = (SELECT COUNT(*) FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro) + 1;
         DECLARE @Porcentaje Decimal(7, 4);
-        SET @Porcentaje = (SELECT TOP 1 ValorPorcentual FROM dbo.Evaluacion WHERE IdGrupoxRubro = @idGrupoxRubro);
-        IF @Porcentaje IS NULL
-            BEGIN
-            SET @Porcentaje = (SELECT ValorPorcentual FROM dbo.GrupoxRubro WHERE id = @idGrupoxRubro);
-            END
+        SET @Porcentaje = (SELECT TOP 1 ValorPorcentual FROM dbo.GrupoxRubro WHERE ID = @idGrupoxRubro);
         DECLARE @PorcentajeNuevo Decimal(7, 4);
         SET @PorcentajeNuevo = @Porcentaje / @CantidadDeEvaluaciones;
         INSERT INTO dbo.Evaluacion(ID, idGrupoxRubro, Nombre, Fecha, ValorPorcentual, Descripcion)
         VALUES(@ID, @idGrupoxRubro, @Nombre, @Fecha, @PorcentajeNuevo, @Descripcion);
         UPDATE dbo.Evaluacion SET ValorPorcentual = @PorcentajeNuevo WHERE IdGrupoxRubro = @idGrupoxRubro;
-        EXEC grupoxrubro_aumentar_cantidad @idGrupoxRubro;
+        UPDATE dbo.GrupoxRubro SET Cantidad = @CantidadDeEvaluaciones WHERE ID = @idGrupoxRubro;
         END
     ELSE
         BEGIN
