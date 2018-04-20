@@ -39,10 +39,10 @@
                 <asp:TextBox ID="contraseña_Profesor" runat="server" CssClass="auto-style1" Width="350px" AutoCompleteType="Disabled"></asp:TextBox>
                 </p>
                 <p ;="" style="text-align:center">
-                <asp:Button ID="buscar_Profesor" runat="server" Height="50px" OnClick="buscar_Profesor_Click" style="font-size: xx-large; background-color: #3366FF" Text="Buscar Registros" Width="350px" />
+                <asp:Button ID="buscar_Profesor" runat="server"  Height="50px" OnClick="buscar_Profesor_Click" style="font-size: xx-large; background-color: #3366FF" Text="Buscar Registros" Width="350px" />
                 </p>
                 <p ;="" style="text-align:center">
-                <asp:Label ID="Label1" runat="server" style="font-weight: 700; font-size: xx-large" Text="Label" Visible="False"></asp:Label>
+                <asp:Label ID="Label1" runat="server"   style="font-weight: 700; font-size: xx-large" Text="Label" Visible="False"></asp:Label>
                 </p>
             </asp:Panel>
             <asp:Panel ID="Panel2" runat="server" Visible="false" >
@@ -55,13 +55,13 @@
                     Correo:
                 </p>
                 <p style="text-align:center";>
-                    <asp:TextBox ID="correo_Estudiante" runat="server" style="font-size: large" Width="350px" ></asp:TextBox>
+                    <asp:TextBox ID="correo_Estudiante" AutoCompleteType="Disabled" runat="server" style="font-size: large" Width="350px" ></asp:TextBox>
                 </p>
                 <p style="text-align:center; font-size: xx-large;";>
                     Contraseña:
                 </p>
                 <p style="text-align:center";>
-                    <asp:TextBox ID="contraseña_Estudiante" runat="server" style="font-size: large" Width="350px" ></asp:TextBox>
+                    <asp:TextBox ID="contraseña_Estudiante" AutoCompleteType="Disabled" runat="server" style="font-size: large" Width="350px" ></asp:TextBox>
                 </p>
                 <p style="text-align:center";>
                     <asp:Button ID="buscar_estudiante" runat="server" Text="Buscar Notas" OnClick="buscar_estudiante_Click" Height="50px" Width="350px" style="font-size: xx-large; background-color: #3366FF" />
