@@ -13,24 +13,7 @@ BEGIN
 END
 go
 
-go
-INSERT INTO dbo.TipoEM Values(0, 'Crear Periodo');
-INSERT INTO dbo.TipoEM Values(1, 'Anular Periodo');
-INSERT INTO dbo.TipoEM Values(2, 'Terminar Periodo');
-INSERT INTO dbo.TipoEM Values(3, 'Crear Grupo');
-INSERT INTO dbo.TipoEM Values(4, 'Modificar Grupo');
-INSERT INTO dbo.TipoEM Values(5, 'Agregar Estudiante a Grupo');
-INSERT INTO dbo.TipoEM Values(6, 'Anular Grupo');
-INSERT INTO dbo.TipoEM Values(7, 'Crear GrupoxRubro');
-INSERT INTO dbo.TipoEM Values(8, 'Crear Evaluacion');
-INSERT INTO dbo.TipoEM Values(9, 'Anular GrupoxRubro');
-INSERT INTO dbo.TipoEM Values(10, 'Anular Evaluacion');
-INSERT INTO dbo.TipoEM Values(11, 'Crear Estudiante');
-INSERT INTO dbo.TipoEM Values(12, 'Modificar Estudiante');
-INSERT INTO dbo.TipoEM Values(13, 'Anular Estudiante');
-INSERT INTO dbo.TipoEM Values(14, 'Crear EvaluacionesxEstudiantes');
-INSERT INTO dbo.TipoEM Values(15, 'Cambiar Nota EvaluacionesxEstudiantes');
-go
+
 
 go
 CREATE PROCEDURE validar_login_profesor @email varchar(50), @password varchar(50)
@@ -854,5 +837,15 @@ BEGIN
 	DECLARE @result Table(Nombre varchar(50))
 	INSERT INTO @result SELECT Nombre FROM dbo.Estudiante WHERE id = @id
 	SELECT * FROM @result;
+END
+go
+
+go
+CREATE PROCEDURE ver_cantidad_grupoxrubro @idGrupoxRubro int
+AS
+BEGIN
+	DECLARE @Cantidad int;
+	SELECT @Cantidad = Cantidad FROM dbo.GrupoxRubro WHERE @idGrupoxRubro = ID;
+	RETURN @Cantidad;
 END
 go

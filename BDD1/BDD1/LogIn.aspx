@@ -18,8 +18,8 @@
         <div>
             <table style="width:100%; ">
                 <tr>
-                    <td><asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Profesor" Height="200px" Width="740px" style="font-size: xx-large; background-color: #3366FF; font-weight: 700;" Font-Bold="True" Font-Size="XX-Large" /></td>
-                    <td><asp:Button ID="Button2" runat="server" Text="Estudiante" OnClick="Button2_Click" Height="200px" Width="740px" style="font-size: xx-large; background-color: #FF3300; font-weight: 700;" /></td>
+                    <td><asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Profesor" Height="200px" Width="740px" style="font-size: xx-large; background-color: #660033; font-weight: 700; color: #FFFFFF;" Font-Bold="True" Font-Size="XX-Large"  /></td>
+                    <td><asp:Button ID="Button2" runat="server" Text="Estudiante" OnClick="Button2_Click" Height="200px" Width="740px" style="font-size: xx-large; background-color: #660033; font-weight: 700; color: #FFFFFF;" Font-Bold="True" Font-Size="XX-Large" /></td>
                 </tr>
             </table>
             <asp:Panel ID="Panel1" runat="server" Visible="false">

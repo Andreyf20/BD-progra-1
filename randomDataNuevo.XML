@@ -545,31 +545,31 @@
 		<groupItem ID="4" itemID="0" groupID="1" percentage="38.16746760791418" count="1" constantCount="True" />
 		<groupItem ID="5" itemID="1" groupID="1" percentage="31.803140825214083" count="2" constantCount="True" />
 		<groupItem ID="6" itemID="2" groupID="1" percentage="17.699066770171424" count="5" constantCount="True" />
-		<groupItem ID="7" itemID="3" groupID="1" percentage="12.330324796700296" count="1" constantCount="True" />
+		<groupItem ID="7" itemID="3" groupID="1" percentage="12.330324796700296" count="1" constantCount="False" />
 		<groupItem ID="8" itemID="0" groupID="2" percentage="52.90288119608398" count="1" constantCount="True" />
 		<groupItem ID="9" itemID="1" groupID="2" percentage="34.99140132791233" count="1" constantCount="True" />
 		<groupItem ID="10" itemID="2" groupID="2" percentage="6.029097846788552" count="3" constantCount="True" />
-		<groupItem ID="11" itemID="3" groupID="2" percentage="6.076619629215122" count="3" constantCount="True" />
+		<groupItem ID="11" itemID="3" groupID="2" percentage="6.076619629215122" count="3" constantCount="False" />
 		<groupItem ID="12" itemID="0" groupID="3" percentage="34.785731725988505" count="5" constantCount="True" />
 		<groupItem ID="13" itemID="1" groupID="3" percentage="13.916205419523315" count="3" constantCount="True" />
 		<groupItem ID="14" itemID="2" groupID="3" percentage="30.423069216743045" count="1" constantCount="True" />
-		<groupItem ID="15" itemID="3" groupID="3" percentage="20.874993637745135" count="1" constantCount="True" />
+		<groupItem ID="15" itemID="3" groupID="3" percentage="20.874993637745135" count="1" constantCount="False" />
 		<groupItem ID="16" itemID="0" groupID="4" percentage="21.88304119746494" count="4" constantCount="True" />
 		<groupItem ID="17" itemID="1" groupID="4" percentage="3.764548805770947" count="1" constantCount="True" />
 		<groupItem ID="18" itemID="2" groupID="4" percentage="28.816086620223352" count="3" constantCount="True" />
-		<groupItem ID="19" itemID="3" groupID="4" percentage="45.53632337654074" count="4" constantCount="True" />
+		<groupItem ID="19" itemID="3" groupID="4" percentage="45.53632337654074" count="4" constantCount="False" />
 		<groupItem ID="20" itemID="0" groupID="5" percentage="38.64680923384067" count="5" constantCount="True" />
 		<groupItem ID="21" itemID="1" groupID="5" percentage="27.899192742075165" count="5" constantCount="True" />
 		<groupItem ID="22" itemID="2" groupID="5" percentage="6.6955764633762085" count="1" constantCount="True" />
-		<groupItem ID="23" itemID="3" groupID="5" percentage="26.758421560707962" count="1" constantCount="True" />
+		<groupItem ID="23" itemID="3" groupID="5" percentage="26.758421560707962" count="1" constantCount="False" />
 		<groupItem ID="24" itemID="0" groupID="6" percentage="30.64881859915006" count="5" constantCount="True" />
 		<groupItem ID="25" itemID="1" groupID="6" percentage="32.37135267265919" count="5" constantCount="True" />
 		<groupItem ID="26" itemID="2" groupID="6" percentage="33.109310326866655" count="1" constantCount="True" />
-		<groupItem ID="27" itemID="3" groupID="6" percentage="3.870518401324102" count="1" constantCount="True" />
+		<groupItem ID="27" itemID="3" groupID="6" percentage="3.870518401324102" count="1" constantCount="False" />
 		<groupItem ID="28" itemID="0" groupID="7" percentage="16.897957180649826" count="1" constantCount="True" />
 		<groupItem ID="29" itemID="1" groupID="7" percentage="25.980218024859173" count="1" constantCount="True" />
 		<groupItem ID="30" itemID="2" groupID="7" percentage="27.079406927267065" count="2" constantCount="True" />
-		<groupItem ID="31" itemID="3" groupID="7" percentage="30.042417867223946" count="4" constantCount="True" />
+		<groupItem ID="31" itemID="3" groupID="7" percentage="30.042417867223946" count="4" constantCount="False" />
 	</groupItemData>
 	<evaluationData>
 		<evaluation ID="0" groupItemID="0" name="Examen 0" date="01/01/2017 01:00 AM" percentage="11.075058751498112" description="Na dae foeqasfo opiaci. He saalusi denbaate haeaki. Gomaabi jauko abeovu nal. Xo abelo honhis hanlaige cluvi ocusi lomoliji roja hife." />

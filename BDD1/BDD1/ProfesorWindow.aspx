@@ -285,7 +285,7 @@
                 </asp:RadioButtonList>
                 <br />
                  </span>
-                <asp:Button ID="ButtonCrearEvaluaciones" Visible="false" runat="server" Text="Crear Evaluaciones Variables" OnClick="ButtonCrearEvaluaciones_Click" Width="33%" Height="50px" CssClass="auto-style6"/>
+                <asp:Button ID="ButtonCrearEvaluaciones" Visible="false" runat="server" Text="Crear Evaluaciones Variables" OnClick="ButtonCrearEvaluaciones_Click" Width="34%" Height="50px" CssClass="auto-style6"/>
                 <asp:Button ID="ButtonAnularEvaluaciones" Visible="false" runat="server" Text="Anular Evaluaciones" Width="33%" Height="50px" OnClick="ButtonAnularEvaluaciones_Click" CssClass="auto-style6" />
                 
                 <asp:Panel ID="PanelAgregarEvaluaciones2" style="text-align:center" runat="server" Visible="false">
