@@ -1,3 +1,4 @@
+--TAREA--           Rubén González Villanueva y Andrey Torres           --TAREA--
 Create Procedure VASP_RestaDiario
 As
 Begin
@@ -16,7 +17,7 @@ Begin
 	From dbo.Empleados as E inner join @Solicitudes as S on S.FK_Emp = E.ID  
 	Order by E.Id
 	Update E
-	Set textoEmail = 'Felicidades funcionario, su saldo de vacaciones es' + convert(varchar,E.Saldo - 1)
+	Set textoEmail = 'Su saldo de vacaciones es' + convert(varchar,E.Saldo - 1)
 	From @EmpCumple E
 	If exists (Select 1 Fom @EmpCumple E inner join dbo.Empleados EZ (nolock) 	on E.IdEmp = EZ.ID 	where E.Saldo-1 != Ez.Saldo)
 		Return -50020
