@@ -1,58 +1,47 @@
-Create Procedure VASP_AcreditaDiario
-	@FechaProceso date
+Create Procedure VASP_RestaDiario
 As
 Begin
-	--Validar que el  proceso no corre dos o más veces para el mismo día
-	If exists (Select 1 From Eventos E where fk.TipoEvento = 47 and E.Fecha = @FechaProceso)
+	Declare @fechaNow date = getDate();
+	If exists (Select 1 From Eventos E where fk.TipoEvento = 48 and E.Fecha = @FechaNow)
 		Return -50075
-	--Validar que el proceso no brinque días
-	Declare @maxFecha date
-	Select e.MaxFecha = max(E.Fechas)
-	From Eventos E
-	Where E.FkTipoEvento =47
-	If not (date add(@maxFecha,d,1=@FechProceso)
-		Return -50078
+	Declare @Solicitudes Table (sec int identity(1,1), FK_Emp int,  fechaFinal date)
+	Insert @Solicitudes(FK_Emp,  fechaFinal)
+	Select S.FK_Emp, S.fechaFinal
+	From dbo.SolicitudesVacacionesAprobadas S (nolock) 
+	Where S.fechaFinal >= @fechaNow
+	Order by S.ID
 	Declare @EmpCumple Table (sec int identity(1,1), IdEmp int, email varchar(100), Saldo int, textoEmail varchar(2000))
-	--Uso variable tabla para cargar todo lo encesario y trabajar sobre ella para uasr la tabla base (Empleados) lo menos posible para no bloquearla
 	Insert @EmpCumple(idEmp, email, saldo, textoEmail)
-	Select E.Id, E.Email, E.Saldo, ''
-	From dbo.Empleados E (nolock) --uplock xlock
-	Where dbo.VAFN(@FechaProc, E.FechaContrat) = 1
+	Select E.ID, E.Email, E.Saldo, ''
+	From dbo.Empleados as E inner join @Solicitudes as S on S.FK_Emp = E.ID  
 	Order by E.Id
 	Update E
-	Set textoEmail = 'Felicidades funcionario, su saldo de vacaciones es' + convert(varchar,E.Saldo)
+	Set textoEmail = 'Felicidades funcionario, su saldo de vacaciones es' + convert(varchar,E.Saldo - 1)
 	From @EmpCumple E
-
-	If exists (Select 1 Fom @EmpCumple E ,	inner join dbo.Empleados EZ (nolock) 	on El.IdEmp = EZ.ID 	where E.Saldo+1<>Ez.Saldo)
-		Return -5002T
+	If exists (Select 1 Fom @EmpCumple E inner join dbo.Empleados EZ (nolock) 	on E.IdEmp = EZ.ID 	where E.Saldo-1 != Ez.Saldo)
+		Return -50020
 	Begin try
-	--Control para evitar anidacion de transacciones
-		If @@transcount =0
+		If @@transcount = 0
 		Begin
 			Set insolution level Read Uncommitted
 			Begin transaction
 		End
-	
-		Insert email(email, FK_Empleado, texto)
-		Select E.Email, E.ID_Emp , E.textoEmail
+		Insert email(email, IdEmp, texto)
+		Select E.Email, E.IdEmp , E.textoEmail
+		From @EmpCumple as E
+		Order by E.IdEmp
+		Set @MaxID = scope_Identity();
+		Insert movimientos(FK_Empleado, FK_Email, Fecha , Monto, NuevoSaldo)
+		Select E.IdEmp, @MaxID ,-1,E.Saldo
 		From @EmpCumple
 		Order by E.IdEmp
-		Set @MaxID = scope_Identity()
-		Set @Q = Select count(1) From @EmpCumple --cant filas insertadas
-	
-		Insert movimientos(FK_Empleado, FK_Email, Fecha , Monto, NuevoSaldo)
-		Select E.IdEmp, @MaxID -@Q + E.Sec,1,E.Saldo
-		From @EmpCumple
-		Order by E.IdCumple
-	
 		Update E
-		Set Saldo = EZ.Saldo
-		From dbo.Empleado E
-		Inner join  @EmpCumple  on EI.Id = EZ.IdEmp
-	
+		Set Saldo = Saldo -1
+		From dbo.Empleado as E
+		Inner join  @EmpCumple as EZ on E.ID = EZ.IdEmp 
 		If @@transcount =1
 			Commit
-		Return @Q --Cantidad De Filas procesadas
+		Return 1
 	End Try
 	Begin Catch
 		If @@transcount > 0 
