@@ -9,7 +9,7 @@ Begin
 	Insert @Solicitudes(FK_Emp,  fechaFinal)
 	Select S.FK_Emp, S.fechaFinal
 	From dbo.SolicitudesVacacionesAprobadas S (nolock) 
-	Where S.fechaFinal >= @fechaNow
+	Where S.fechaFinal >= @fechaNow AND S.fechaInicial <= @fechaNow
 	Order by S.ID
 	Declare @EmpCumple Table (sec int identity(1,1), IdEmp int, email varchar(100), Saldo int, textoEmail varchar(2000))
 	Insert @EmpCumple(idEmp, email, saldo, textoEmail)
